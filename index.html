@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+	<html lang='pt-BR'>
+		<head>
+			<meta charset="Utf-8">
+			<title>Portifolio</title>			
+			<!-- Bootstrap -->
+			<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+			<!-- CSS -->
+			<link rel="stylesheet" type="text/css" href="pportifolio.css">
+		</head>
+		<body>
+			<nav class = "navbar navbar-default">
+				<div class = "container-fluid">
+					<div class = "navbar-header">
+						<a href="#" target="_self" class = "navbar-brand fsize" id = "brand">Meu portifólio</a><!-- fim do nav-brand -->
+					</div><!-- fim do nav-header -->
+					<div id = "navbar-item">
+						<ul class = "nav navbar-nav navbar-right fsize">
+							<li> <a href="#aboutTitle"> About</a></li>
+							<li><a href="#portfolioTitle"> Portfolio</a></li>
+							<li><a href="#contactTitle"> Contacs</a></li>
+						</ul>
+					</div><!-- fim do nav-item -->
+				</div><!-- fim do container -->
+			</nav><!-- fim do navbar -->
+			<div class = "container-fluid">
+				<div id = "conteudo">
+					<div id = "about">
+						<p class = "fsize text-center grey" id="aboutTitle">About</p>
+						<div class = "row text-center">
+							<div class = "col-md-8">
+								<p id = "textAbout">I am a student from the university UNIT, i am spending hours to train my programming skills. I love do process management and i hope some day i'll work in that.</p>
+							</div><!-- Fim do Texto -->
+							<div class = "col-md-4">
+								<img src="https://scontent.fssa1-1.fna.fbcdn.net/v/t1.0-1/c0.62.160.160/p160x160/16830759_1751143761577837_3706182942671816397_n.jpg?oh=1a35b07822a2d3a2868fb6ee408dcc0e&oe=599FCF77" class = "img-responsive img-circle">
+							</div><!-- Fim da Imagem -->
+						</div><!-- Fim do row -->
+					</div><!-- Fim do About -->
+					<div id = "portfolio" class = "text-center">
+						<p id = "portfolioTitle" class="fsize grey"> PORTFOLIO </p>
+						<div class = "row">
+							<div class = "col-md-6">
+								<img class = "img-responsive" src="imagens/1site.png">
+							</div>
+							<div class = "col-md-6">
+								<img src="imagens/2site.png" class = "img-responsive">
+							</div>
+						</div>
+					</div><!-- Fim do portfolio -->
+					<div id = "contact" class = "text-center">
+						<p id = "contactTitle" class="fsize grey"> CONTACT ME </p>
+						<div class = "row">
+							<div class = "col-md-6">
+								<form action = "mailto:raffaeluniverso@gmail.com" method="post" enctype="text/plain" class = "fsize"> 
+									<input name="Name" type="text" placeholder = "Name" class = "form-control">
+									<input name="Email" type="text" placeholder="E-mail" class = "form-control">
+									<input name="Phone" type="text" placeholder="Phone number" class = "form-control">
+									<textarea class = "form-control" placeholder="Mensagem" rows="7"></textarea>
+									<button type="submit" class = "btn" id = "buttonC">Send</button>
+								</form>
+							</div><!-- Fim do formulário -->
+							<div class = "col-md-6" id = "contactC">
+								<p>If you wanna to contact me by any meaning, just contact me, i will gracefully help you. <br>:)</p>
+								<p>Promess to answer the fastest i can!</p>
+								<p id = "ps">Please, no spam ;P</p>
+							</div><!-- Fim do comentário -->
+						</div><!-- Fim do row -->
+					</div><!-- Fim do contact -->
+				</div><!-- Fim do conteudo -->
+			</div><!-- Fim do container -->
+			<div id="details" class = "container-fluid">
+					<div class = "row text-center">
+						<div class = "col-md-6" id = "sobreP">
+							<p class = "fsize">About this page</p>
+							<p>Made with <a href="https://www.sublimetext.com/">Sublime Text</a></p>
+						</div><!-- Fim do sobre-->
+						<div class = "col-md-6" id = "sobreP">
+							<p class = "fsize">My contacts</p>
+							<p><a href = "https://github.com/rraffael">Github page</a></p>
+							<p><a href = "https://www.facebook.com/Raffael.Castr0">Facebook page</a></p>
+						</div><!-- Fim de contatos -->
+					</div><!-- Fim da row -->
+			</div><!-- fim do container-->
+			<footer class = "container-fluid">
+				Raffael de Castro Rodrigues &copy;
+			</footer>
+		</body>
+	</html>

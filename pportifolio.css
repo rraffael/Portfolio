@@ -1,0 +1,39 @@
+body {background-color: #666;}
+nav {margin-bottom: 0px !important;}
+footer{background-color: #888;;
+		color: white;
+		text-align: center;
+		font-size: 150%;}
+a{color:green;}
+
+.redborder{border: 1px solid red;}
+.fsize{font-size: 200%;}
+#navbar-item{margin-right: 150px;}
+#brand{margin-left: 150px;}
+#conteudo{
+	margin-left: 150px;
+	margin-right: 150px;
+}
+#about{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: #AAA;
+	margin-bottom: 0px !important;
+	font-size: 150%;
+}
+#portfolio{
+	background-color: #DDD;
+	padding: 50px 20px 20px 20px;
+}
+#contact{
+	background-color: #DDD;
+	border-top: 2px solid #9A9A9A;
+	padding: 30px 20px 20px 20px;
+}
+.grey{color: grey;}
+#contactC{font-size: 150%; color:grey; text-align: left;}
+#buttonC{border: 1px solid silver}
+#ps{text-align: right; color: white;}
+#sobreP{color:white; }
+#textAbout{padding-left: 100px; color: white;}
+#details{background-color: #888; padding: 50px 50px 10px 50px;}
