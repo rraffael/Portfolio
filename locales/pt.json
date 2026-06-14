@@ -1,0 +1,39 @@
+{
+  "menu": {
+    "home": "Portfolio",
+    "about": "Sobre",
+    "contact": "Contato",
+    "projects": "Projetos",
+    "work": "Trabalho",
+    "language": "Idioma"
+  },
+  "home": {
+    "title": "Homepage",
+    "subtitle": "Bem-vindo ao meu portfólio",
+    "description": "Este portfólio one-page é feito em Next.js, com seções responsivas para layout futuro."
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Uma seção sobre quem eu sou, o que faço e como trabalho."
+  },
+  "contact": {
+    "title": "Contact Me",
+    "button": "Pay Me a Coffee",
+    "apiTitle": "Exemplo de conexão com API",
+    "apiLoading": "Verificando a API local em http://localhost:8000...",
+    "apiError": "Não foi possível acessar a API local.",
+    "apiSuccess": "Resposta da API local:",
+    "apiEmpty": "Nenhum dado de resposta disponível."
+  },
+  "projects": {
+    "title": "Projetos próprios",
+    "description": "Projetos que desenvolvi personalizadamente, com código, design e entrega."
+  },
+  "work": {
+    "title": "Participações e trabalhos",
+    "description": "Colaborações, contribuições e trabalhos profissionais."
+  },
+  "footer": {
+    "text": "Rodapé reservado para copyright e links de contato."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "menu": {
+    "home": "Portfolio",
+    "about": "About",
+    "contact": "Contact",
+    "projects": "Projects",
+    "work": "Work",
+    "language": "Language"
+  },
+  "home": {
+    "title": "Homepage",
+    "subtitle": "Welcome to my portfolio",
+    "description": "This one-page portfolio is built with Next.js and responsive sections for future design layout."
+  },
+  "about": {
+    "title": "About Me",
+    "description": "A section for who I am, what I do and how I work."
+  },
+  "contact": {
+    "title": "Contact Me",
+    "button": "Pay Me a Coffee",
+    "apiTitle": "API Connection Example",
+    "apiLoading": "Checking local API at http://localhost:8000...",
+    "apiError": "Unable to reach the local API.",
+    "apiSuccess": "Local API response:",
+    "apiEmpty": "No response data available."
+  },
+  "projects": {
+    "title": "Own Projects",
+    "description": "Projects I built myself, with code, design and delivery."
+  },
+  "work": {
+    "title": "Participations and Work",
+    "description": "Collaborations, contributions and professional work."
+  },
+  "footer": {
+    "text": "Footer placeholder for copyright and contact links."
+  }
+}

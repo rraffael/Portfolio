@@ -1,6 +1,6 @@
 # Portfolio Next.js Starter
 
-This is a minimal front-end only Next.js portfolio starter that connects to an external API.
+This is a one-page portfolio starter built with Next.js and React. It uses a componentized structure and translation files under `locales/`.
 
 ## Setup
 
@@ -10,42 +10,44 @@ This is a minimal front-end only Next.js portfolio starter that connects to an e
 npm install
 ```
 
-2. Create a local environment file:
-
-```bash
-copy .env.example .env.local
-```
-
-3. Edit `.env.local` and set your API URL:
-
-```env
-NEXT_PUBLIC_API_URL=https://your-api.example.com
-```
-
-4. Start the development server:
+2. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-5. Open the app at `http://localhost:3000`
+3. Open the app at `http://localhost:3000`
 
-## How it works
+## Translations
 
-- `pages/index.jsx` loads data from your API using `fetch`.
-- Update `pages/index.jsx` to call the exact endpoint you need, for example:
+This project uses `locales/en.json` and `locales/pt.json`.
+Each translation file follows the same key structure so new languages can be added without missing values.
 
-```js
-fetch(`${process.env.NEXT_PUBLIC_API_URL}/your-endpoint`)
-```
+The translation helper falls back to English if a key is missing in the selected language.
 
-- The API base URL is stored in `NEXT_PUBLIC_API_URL`.
-- The `.env.local` file is ignored by Git so your private values stay local.
+## Menu and layout
 
-## CORS and API whitelisting
+- Static header with desktop navigation
+- Mobile hamburger menu on smaller screens
+- Language switcher with flag labels
+- Scroll-snap sections for each page area
+- The first section fills the viewport under the fixed header
 
-If your API is whitelisted, make sure it allows requests from the URL where your app is hosted.
-For local development, that is usually `http://localhost:3000`.
+## Sections
+
+The page is split into these sections:
+
+- Home
+- About
+- Contact
+- Projects
+- Work
+- Footer
+
+## Local API example
+
+The contact section includes an example fetch from `http://localhost:8000`.
+If you want to connect to your own API, start it on port 8000 or change the URL in `components/SectionContact.jsx`.
 
 ## Deployment
 
@@ -54,7 +56,5 @@ You can deploy this app to Vercel, Netlify, or any platform that supports Next.j
 ### Architecture
 
 - Website (React / Next.js)
-- API (hosted online, must allow requests from your domain)
-- Database (managed by the API backend)
-
-This gives you a clean front-end app that talks to your cloud API and leaves the database behind the API layer.
+- API (hosted online or locally for development)
+- Database (behind the API)
