@@ -155,19 +155,18 @@ button {
   margin-top: var(--header-height);
   height: calc(100vh - var(--header-height));
   overflow-y: auto;
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   display: grid;
-  gap: 24px;
+  gap: 16px;
   padding-block: 16px;
 }
 
 .section {
-  scroll-snap-align: start;
+  scroll-margin-top: calc(var(--header-height) + 16px);
   min-height: calc(100vh - var(--header-height) - 24px);
   display: grid;
   place-items: center;
-  padding: 32px 16px;
+  padding: 24px 16px;
 }
 
 .section-home,

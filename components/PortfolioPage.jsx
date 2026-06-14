@@ -48,10 +48,9 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
   }
 
   const handleScroll = () => {
-    if (!containerRef.current || isAutoScrolling) return
+    if (!containerRef.current) return
 
-    const { scrollTop, clientHeight } = containerRef.current
-    const threshold = clientHeight * 0.35
+    const { scrollTop } = containerRef.current
     const offsets = sectionRefs.current.map((section) => section?.offsetTop || 0)
     let currentIndex = 0
 
@@ -61,16 +60,7 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
       }
     }
 
-    const currentTop = offsets[currentIndex] || 0
-    const distance = scrollTop - currentTop
-
-    if (distance > threshold && currentIndex < offsets.length - 1) {
-      scrollToSection(currentIndex + 1)
-    } else if (distance < -threshold && currentIndex > 0) {
-      scrollToSection(currentIndex - 1)
-    } else {
-      setActiveSection(currentIndex)
-    }
+    setActiveSection(currentIndex)
   }
 
   const handleLocaleSelect = (code) => {
