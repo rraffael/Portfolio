@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relatório — Portfolio Next.js Starter</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --surface: #ffffff;
+      --border: #e2e5ea;
+      --text: #1f2530;
+      --muted: #5b6573;
+      --accent: #2f5fd0;
+      --accent-soft: #e8efff;
+      --alerta: #c0392b;
+      --alerta-soft: #fdecea;
+      --info: #1e7a4d;
+      --info-soft: #e6f4ec;
+      --code-bg: #0f172a;
+      --code-fg: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+    }
+    header h1 {
+      margin: 0 0 .25rem 0;
+      font-size: 1.6rem;
+      letter-spacing: -0.01em;
+    }
+    header .meta {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 3rem;
+    }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .25rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      padding-top: .5rem;
+      z-index: 10;
+    }
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      border-bottom: none;
+      padding: .65rem 1rem;
+      font-size: .92rem;
+      cursor: pointer;
+      color: var(--muted);
+      border-radius: 8px 8px 0 0;
+      transition: background .15s, color .15s;
+    }
+    .tab-btn:hover { background: var(--accent-soft); color: var(--accent); }
+    .tab-btn.active {
+      background: var(--surface);
+      border-color: var(--border);
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: -1px;
+    }
+    .tab-panel {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0 8px 8px 8px;
+      padding: 1.5rem 1.75rem;
+    }
+    .tab-panel.active { display: block; animation: fade .2s ease-out; }
+    @keyframes fade { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; } }
+    .tab-panel h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .5rem;
+    }
+    .tab-panel h3 { font-size: 1.02rem; margin-top: 1.5rem; }
+    .tab-panel ul, .tab-panel ol { padding-left: 1.25rem; }
+    .tab-panel li { margin: .25rem 0; }
+    .tab-panel table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: .75rem 0 1rem;
+      font-size: 1rem;
+    }
+    .tab-panel th, .tab-panel td {
+      text-align: left;
+      padding: .55rem .75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tab-panel th {
+      background: #f9fafc;
+      font-weight: 600;
+      color: #3a4452;
+      font-size: .92rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+    .tab-panel pre {
+      background: var(--code-bg);
+      color: var(--code-fg);
+      padding: 1rem 1.15rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 1rem;
+      line-height: 1.55;
+      margin: .6rem 0 1.1rem;
+    }
+    .tab-panel pre code {
+      font-size: inherit;
+      color: inherit;
+      background: transparent;
+      padding: 0;
+    }
+    .tab-panel code {
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+    }
+    .tab-panel p code, .tab-panel li code, .tab-panel td code, .tab-panel th code {
+      background: #eef0f4;
+      color: #1f2530;
+      padding: .08rem .4rem;
+      border-radius: 3px;
+      font-size: .95em;
+    }
+    .card {
+      background: #fafbfd;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: .85rem 1rem;
+      margin: .75rem 0;
+    }
+    .card h4 { margin: 0 0 .35rem 0; font-size: 1.05rem; }
+    .card .fonte {
+      display: inline-block;
+      font-size: .85rem;
+      color: #4a5260;
+      margin-top: .35rem;
+      font-style: italic;
+    }
+    .card--alerta { border-left-color: var(--alerta); background: var(--alerta-soft); }
+    .card--info   { border-left-color: var(--info);   background: var(--info-soft); }
+    .badge {
+      display: inline-block;
+      font-size: .8rem;
+      padding: .15rem .55rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-right: .4rem;
+    }
+    .badge--alerta { background: var(--alerta-soft); color: var(--alerta); }
+    .badge--info   { background: var(--info-soft);   color: var(--info); }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .82rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Relatório — Portfolio Next.js Starter</h1>
+    <div class="meta">Gerado em <strong>22/06/2026</strong></div>
+  </header>
+
+  <main>
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="visao">Visão Geral</button>
+      <button class="tab-btn" data-tab="alteracoes">Últimas Alterações</button>
+      <button class="tab-btn" data-tab="regras">Regras de Negócio</button>
+      <button class="tab-btn" data-tab="entrada">Dados de Entrada</button>
+      <button class="tab-btn" data-tab="saida">Dados de Saída</button>
+      <button class="tab-btn" data-tab="processamento">Processamento</button>
+      <button class="tab-btn" data-tab="abertos">Pontos em Aberto</button>
+    </div>
+
+    <section class="tab-panel active" id="visao">
+      <h2>Visão Geral</h2>
+      <p>
+        Portfólio pessoal de página única (<em>one-page</em>) construído com
+        <strong>Next.js (Pages Router)</strong> e <strong>React 18</strong>. Existe exatamente
+        uma rota (<code>pages/index.jsx</code>). A página é composta por seções empilhadas
+        em ordem fixa — Home, About, Contact, Projects, Work e Footer — com navegação por
+        scroll-snap, menu desktop, menu hambúrguer no mobile e um seletor de idioma
+        (inglês / português).
+      </p>
+      <p>
+        O projeto está em <strong>estágio inicial de scaffold</strong>: a arquitetura está
+        montada e funcional, mas o conteúdo de todas as seções ainda é
+        <em>placeholder</em> proveniente dos arquivos de tradução.
+      </p>
+
+      <h3>Stack principal</h3>
+      <table>
+        <thead>
+          <tr><th>Camada</th><th>Tecnologia</th><th>Versão</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Framework</td><td>Next.js (Pages Router)</td><td><code>16.2.9</code></td></tr>
+          <tr><td>Biblioteca UI</td><td>React / React DOM</td><td><code>18.3.1</code></td></tr>
+          <tr><td>Estilo</td><td>CSS global único (<code>styles/globals.css</code>)</td><td>—</td></tr>
+          <tr><td>i18n</td><td>Camada própria (<code>lib/locales.js</code> + JSON)</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p class="card fonte">Fontes: <code>package.json</code>, <code>README.md</code>, <code>CLAUDE.md</code>.</p>
+
+      <h3>Estrutura de arquivos relevante</h3>
+      <ul>
+        <li><code>pages/index.jsx</code> — única rota; detém o estado <code>locale</code>.</li>
+        <li><code>pages/_app.jsx</code> — importa apenas o CSS global.</li>
+        <li><code>components/PortfolioPage.jsx</code> — componente de topo real (header, nav, container de scroll).</li>
+        <li><code>components/Section*.jsx</code> + <code>Footer.jsx</code> — seções, todas recebendo a prop <code>t</code>.</li>
+        <li><code>lib/locales.js</code> — resolução de mensagens por dot-path com fallback.</li>
+        <li><code>locales/en.json</code>, <code>locales/pt.json</code> — dicionários de tradução.</li>
+      </ul>
+    </section>
+
+    <section class="tab-panel" id="alteracoes">
+      <h2>Últimas Alterações</h2>
+      <p>Histórico do repositório Git (branch <code>master</code>). Note o salto de quase
+      9 anos entre os commits originais de 2017 e a retomada do projeto em 2026.</p>
+      <ul>
+        <li><strong>2026-06-14</strong> — Fixed visuals</li>
+        <li><strong>2026-06-14</strong> — Added translation and base page structure</li>
+        <li><strong>2026-06-14</strong> — Portfolio huge update</li>
+        <li><strong>2017-05-26</strong> — arrumando imagem</li>
+        <li><strong>2017-05-26</strong> — 2commit</li>
+        <li><strong>2017-05-26</strong> — 1commit</li>
+        <li><strong>2017-05-26</strong> — Initial commit</li>
+      </ul>
+      <h3>Working tree na data do relatório</h3>
+      <ul>
+        <li><code>CLAUDE.md</code> — arquivo não rastreado (untracked), ainda não commitado.</li>
+      </ul>
+      <p class="card fonte">Fonte: <code>git log</code>, <code>git status</code>.</p>
+    </section>
+
+    <section class="tab-panel" id="regras">
+      <h2>Regras de Negócio Válidas</h2>
+      <p>Como se trata de um portfólio (e não de uma aplicação de domínio), esta aba
+      documenta as <strong>invariantes de código e decisões de arquitetura</strong> que
+      governam o projeto hoje.</p>
+
+      <div class="card">
+        <h4>Estado global mínimo: apenas o <code>locale</code></h4>
+        <p>O único estado de aplicação é o idioma ativo (<code>'en'</code> | <code>'pt'</code>),
+        mantido em <code>useState</code> em <code>index.jsx</code> e passado para baixo. Não há
+        persistência (sem localStorage nem i18n routing do Next): um refresh sempre volta para
+        <code>'en'</code>.</p>
+        <span class="fonte">Fonte: <code>pages/index.jsx:5</code>, <code>CLAUDE.md</code>.</span>
+      </div>
+
+      <div class="card">
+        <h4>Convenção da prop <code>t</code></h4>
+        <p><code>PortfolioPage</code> cria <code>t = (path) =&gt; getMessage(locale, path)</code> e
+        repassa como prop. As seções <strong>não</strong> importam o sistema de locale — só chamam
+        <code>t('secao.chave')</code>. Ao adicionar uma seção, é preciso registrá-la no array
+        <code>sections</code> e na lista <code>sectionRefs.current[N]</code> na ordem correta.</p>
+        <span class="fonte">Fonte: <code>components/PortfolioPage.jsx:24</code>, <code>CLAUDE.md</code>.</span>
+      </div>
+
+      <div class="card">
+        <h4>Resolução de tradução com cascata de fallback</h4>
+        <p><code>getMessage</code> resolve dot-paths contra <code>locales/&lt;locale&gt;.json</code>;
+        se não achar, cai para inglês; se ainda assim faltar, devolve a própria string do path.
+        Os dois JSONs devem manter estrutura de chaves idêntica.</p>
+        <span class="fonte">Fonte: <code>lib/locales.js:18-25</code>.</span>
+      </div>
+
+      <div class="card">
+        <h4>Rastreio de seção ativa por <code>scrollTop</code></h4>
+        <p><code>handleScroll</code> compara <code>scrollTop</code> com o <code>offsetTop</code> de
+        cada seção para definir <code>activeSection</code>. Cliques na nav usam
+        <code>scrollIntoView</code> e ativam <code>isAutoScrolling</code> por 550ms. O scroll-snap
+        é feito em CSS.</p>
+        <span class="fonte">Fonte: <code>components/PortfolioPage.jsx:50-64</code>, <code>styles/globals.css</code>.</span>
+      </div>
+
+      <div class="card">
+        <h4>Estilização 100% global</h4>
+        <p>Todo o estilo vive em <code>styles/globals.css</code> (variáveis CSS, <code>clamp()</code>
+        para tipografia fluida, breakpoints em 900px e 640px). Não há CSS Modules nem
+        styled-components.</p>
+        <span class="fonte">Fonte: <code>pages/_app.jsx</code>, <code>styles/globals.css</code>.</span>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="entrada">
+      <h2>Dados de Entrada</h2>
+      <p>Sendo um site estático com uma demo de conectividade, as "entradas" são os
+      dicionários de tradução, a variável de ambiente prevista e o endpoint de API consumido.</p>
+
+      <h3>Arquivos de tradução</h3>
+      <table>
+        <thead><tr><th>Arquivo</th><th>Idioma</th><th>Chaves de topo</th></tr></thead>
+        <tbody>
+          <tr><td><code>locales/en.json</code></td><td>Inglês (fallback)</td><td>menu, home, about, contact, projects, work, footer</td></tr>
+          <tr><td><code>locales/pt.json</code></td><td>Português</td><td>menu, home, about, contact, projects, work, footer</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Variáveis de ambiente</h3>
+      <table>
+        <thead><tr><th>Variável</th><th>Exemplo</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><code>NEXT_PUBLIC_API_URL</code></td>
+            <td><code>https://api.example.com</code></td>
+            <td>Anunciada em <code>.env.example</code> mas <strong>atualmente não utilizada</strong> no código.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Endpoint externo consumido</h3>
+      <p>A seção de contato faz <code>fetch</code> de <code>http://localhost:8000</code> na montagem,
+      como demonstração de conectividade. A URL está <strong>hardcoded</strong> — não lê a env var acima.</p>
+      <span class="card fonte">Fontes: <code>components/SectionContact.jsx:13</code>, <code>.env.example</code>, <code>locales/*.json</code>.</span>
+    </section>
+
+    <section class="tab-panel" id="saida">
+      <h2>Dados de Saída</h2>
+      <p>O projeto produz uma aplicação web Next.js. Não há geração de arquivos de dados
+      ou respostas de API próprias — a única "saída" funcional é a UI renderizada.</p>
+
+      <h3>Build de produção</h3>
+      <table>
+        <thead><tr><th>Comando</th><th>Produz</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm run build</code></td><td>Build de produção do Next.js (diretório <code>.next/</code>).</td></tr>
+          <tr><td><code>npm start</code></td><td>Serve o build de produção.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Estados renderizados pela seção de contato</h3>
+      <table>
+        <thead><tr><th>Estado</th><th>Renderização</th></tr></thead>
+        <tbody>
+          <tr><td>Carregando</td><td>Mensagem <code>contact.apiLoading</code>.</td></tr>
+          <tr><td>Erro</td><td>Mensagem <code>contact.apiError</code> (esperado fora de localhost:8000).</td></tr>
+          <tr><td>Sucesso</td><td>Mensagem <code>contact.apiSuccess</code> + corpo da resposta em <code>&lt;pre&gt;</code>.</td></tr>
+        </tbody>
+      </table>
+      <span class="card fonte">Fontes: <code>components/SectionContact.jsx</code>, <code>CLAUDE.md</code> (seção Commands).</span>
+    </section>
+
+    <section class="tab-panel" id="processamento">
+      <h2>Como o Processamento é Executado</h2>
+      <p>Não há linter, runner de testes nem config de TypeScript no projeto —
+      <code>npm run build</code> é o único gate de correção.</p>
+
+      <h3>Comandos disponíveis</h3>
+      <pre><code>npm install     # instala dependências
+npm run dev     # dev server em http://localhost:3000
+npm run build   # build de produção (único gate de correção)
+npm start       # serve o build de produção</code></pre>
+
+      <h3>Fluxo de renderização (runtime)</h3>
+      <ol>
+        <li><code>pages/_app.jsx</code> carrega o CSS global e monta o componente da página.</li>
+        <li><code>pages/index.jsx</code> inicializa <code>locale = 'en'</code> e renderiza <code>PortfolioPage</code>.</li>
+        <li><code>PortfolioPage</code> constrói <code>t</code>, monta header + nav + container de scroll,
+        e renderiza as 6 seções na ordem fixa (Home, About, Contact, Projects, Work, Footer).</li>
+        <li>Cada seção chama <code>t('...')</code> para puxar textos do dicionário do idioma ativo.</li>
+        <li><code>SectionContact</code> dispara, na montagem, um <code>fetch</code> para
+        <code>http://localhost:8000</code> e exibe loading/erro/sucesso.</li>
+        <li>O scroll é monitorado por <code>handleScroll</code> para destacar a seção ativa; cliques
+        na nav usam <code>scrollIntoView</code> com guarda de 550ms.</li>
+      </ol>
+      <span class="card fonte">Fontes: <code>CLAUDE.md</code>, <code>package.json</code>, <code>components/PortfolioPage.jsx</code>.</span>
+    </section>
+
+    <section class="tab-panel" id="abertos">
+      <h2>Principais Pontos em Aberto</h2>
+      <p>Não há <code>ROADMAP.md</code> nem <code>TODO.md</code> no projeto. Os itens abaixo combinam
+      observações da documentação com divergências entre doc/código encontradas na revisão.</p>
+
+      <div class="card card--alerta">
+        <h4>Fetch hardcoded para <code>localhost:8000</code></h4>
+        <p><span class="badge badge--alerta">Bloqueio em prod</span>
+        <strong>Impacto:</strong> em produção o fetch sempre cai no estado de erro.
+        <strong>Decisão pendente:</strong> trocar a URL fixa por <code>process.env.NEXT_PUBLIC_API_URL</code>
+        (com guarda para quando não estiver definida), alinhando código e <code>.env.example</code>.</p>
+        <span class="fonte">Fonte: <code>components/SectionContact.jsx:13</code>, <code>.env.example</code>.</span>
+      </div>
+
+      <div class="card card--alerta">
+        <h4><code>isAutoScrolling</code> é estado morto</h4>
+        <p><span class="badge badge--alerta">Bug</span>
+        <strong>Impacto:</strong> a flag é definida mas nunca lida por <code>handleScroll</code>;
+        o "guard" descrito no <code>CLAUDE.md</code> não guarda nada — durante o scroll suave do clique,
+        <code>activeSection</code> continua sendo sobrescrito.
+        <strong>Decisão pendente:</strong> usar a flag (early-return em <code>handleScroll</code>) ou removê-la.</p>
+        <span class="fonte">Fonte: <code>components/PortfolioPage.jsx:18,38,46,50</code>.</span>
+      </div>
+
+      <div class="card card--info">
+        <h4>Campo <code>component</code> do array <code>sections</code> não utilizado</h4>
+        <p><span class="badge badge--info">Refactor</span>
+        <strong>Impacto:</strong> o array define <code>component: HomeSection</code> etc., mas o JSX
+        renderiza cada seção manualmente — duas fontes de verdade e risco de desalinhar o índice do ref.
+        <strong>Decisão pendente:</strong> mapear via <code>section.component</code> (DRY) ou remover o campo.</p>
+        <span class="fonte">Fonte: <code>components/PortfolioPage.jsx:26-32,167-213</code>.</span>
+      </div>
+
+      <div class="card card--info">
+        <h4>Conteúdo todo placeholder</h4>
+        <p><span class="badge badge--info">Conteúdo</span>
+        <strong>Impacto:</strong> Home, About, Projects, Work e Footer têm texto genérico; o portfólio
+        ainda não é entregável.
+        <strong>Decisão pendente:</strong> preencher com conteúdo real e revisar mistura EN/PT nos JSONs
+        (ex.: <code>about.title</code> = "About Me" também no pt.json).</p>
+        <span class="fonte">Fonte: <code>locales/en.json</code>, <code>locales/pt.json</code>.</span>
+      </div>
+
+      <div class="card card--info">
+        <h4>Sem SEO / metadata e sem persistência de idioma</h4>
+        <p><span class="badge badge--info">Melhoria</span>
+        <strong>Impacto:</strong> não há <code>next/head</code> (sem <code>&lt;title&gt;</code>, meta
+        description ou favicon); e o idioma reseta no refresh.
+        <strong>Decisão pendente:</strong> adicionar <code>&lt;Head&gt;</code> com metadados e persistir o
+        locale (ex.: localStorage). A bandeira PT usa 🇵🇹 enquanto o conteúdo é PT-BR.</p>
+        <span class="fonte">Fonte: revisão de código; <code>components/PortfolioPage.jsx:12</code>.</span>
+      </div>
+
+      <div class="card card--info">
+        <h4><code>CLAUDE.md</code> ainda não commitado</h4>
+        <p><span class="badge badge--info">Higiene</span>
+        <strong>Impacto:</strong> aparece como untracked no <code>git status</code>.
+        <strong>Decisão pendente:</strong> commitar ou ignorar conforme a intenção.</p>
+        <span class="fonte">Fonte: <code>git status</code>.</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>Portfolio Next.js Starter · Relatório autocontido · sem dependências externas</footer>
+
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll('.tab-btn');
+      const panels  = document.querySelectorAll('.tab-panel');
+      function activate(tab) {
+        buttons.forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+        panels.forEach(p => p.classList.toggle('active', p.id === tab));
+        if (history.replaceState) history.replaceState(null, '', '#' + tab);
+      }
+      buttons.forEach(b => b.addEventListener('click', () => activate(b.dataset.tab)));
+      const hash = (location.hash || '').replace('#', '');
+      if (hash && document.getElementById(hash)) activate(hash);
+    })();
+  </script>
+</body>
+</html>

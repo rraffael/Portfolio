@@ -1,39 +1,150 @@
 {
   "menu": {
-    "home": "Portfolio",
+    "home": "Início",
     "about": "Sobre",
-    "contact": "Contato",
+    "skills": "Skills",
     "projects": "Projetos",
-    "work": "Trabalho",
-    "language": "Idioma"
+    "work": "Experiência",
+    "contact": "Contato",
+    "language": "Idioma",
+    "previous": "Seção anterior",
+    "next": "Próxima seção"
   },
   "home": {
-    "title": "Homepage",
-    "subtitle": "Bem-vindo ao meu portfólio",
-    "description": "Este portfólio one-page é feito em Next.js, com seções responsivas para layout futuro."
+    "brand": "RAFFAEL.DEV",
+    "greeting": "> Olá, mundo.",
+    "name": "Raffael Castro Rodrigues",
+    "role": "Engenheiro de Software",
+    "headline": "Construo software confiável em todo o ciclo de vida — da arquitetura à interface pixel-perfect.",
+    "location": "Portugal",
+    "status": "Disponível para novos projetos",
+    "ctaProjects": "Ver Projetos",
+    "ctaContact": "Entrar em Contato",
+    "scroll": "role para baixo",
+    "scrollHint": "navegue"
   },
   "about": {
-    "title": "About Me",
-    "description": "Uma seção sobre quem eu sou, o que faço e como trabalho."
+    "title": "Sobre Mim",
+    "lead": "Engenheiro de software que domina todo o ciclo de vida — idealização, arquitetura, desenvolvimento, depuração e otimização.",
+    "paragraph1": "Sou o Raffael, engenheiro de software brasileiro radicado em Portugal. Gosto de transformar ideias em produtos confiáveis e de atuar como ponte entre as equipes técnica e de negócio. Atualmente sou Engenheiro de Software na Kito Health e Gestor de TI & Programador na HumanizeIT.",
+    "paragraph2": "Sou bacharel em Sistemas para Internet e curso o Mestrado em Multimédia na Universidade do Porto (FEUP). Apaixonado por jogos desde sempre, levo essa mesma curiosidade e leveza para criar bons softwares — e, um dia, jogos.",
+    "stat1Value": "8+",
+    "stat1Label": "Anos em tecnologia",
+    "stat2Value": "10+",
+    "stat2Label": "Projetos entregues",
+    "stat3Value": "3",
+    "stat3Label": "Idiomas falados",
+    "educationTitle": "Formação",
+    "education": [
+      { "degree": "Mestrado em Multimédia", "school": "Universidade do Porto — FEUP", "period": "2019 — Atual" },
+      { "degree": "Bacharel em Sistemas para Internet", "school": "Universidade Tiradentes", "period": "2017 — 2019" }
+    ],
+    "languagesTitle": "Idiomas",
+    "languages": [
+      { "name": "Português", "level": "Nativo" },
+      { "name": "Inglês", "level": "B2" },
+      { "name": "Espanhol", "level": "A2" }
+    ]
   },
-  "contact": {
-    "title": "Contact Me",
-    "button": "Pay Me a Coffee",
-    "apiTitle": "Exemplo de conexão com API",
-    "apiLoading": "Verificando a API local em http://localhost:8000...",
-    "apiError": "Não foi possível acessar a API local.",
-    "apiSuccess": "Resposta da API local:",
-    "apiEmpty": "Nenhum dado de resposta disponível."
+  "skills": {
+    "title": "Skills",
+    "lead": "A stack que uso para desenhar, construir e entregar.",
+    "groups": [
+      { "title": "Linguagens", "items": ["JavaScript", "C#", "PHP", "Python", "SQL"] },
+      { "title": "Frontend", "items": ["React", "HTML5", "CSS", "Material-UI"] },
+      { "title": "Backend", "items": ["Laravel", "ASP.NET / MVC", "Flask", "REST APIs"] },
+      { "title": "Ferramentas & Dados", "items": ["Git", "AWS", "MySQL", "Scrum / Kanban"] }
+    ]
   },
   "projects": {
-    "title": "Projetos próprios",
-    "description": "Projetos que desenvolvi personalizadamente, com código, design e entrega."
+    "title": "Projetos",
+    "lead": "Coisas que desenhei, construí e entreguei.",
+    "codeLabel": "Código",
+    "demoLabel": "Demo",
+    "items": [
+      {
+        "name": "7 Seconds",
+        "year": "2020",
+        "desc": "Site multimédia responsivo que desenvolvi individualmente dentro de um projeto em grupo do Laboratório de Multimédia da Universidade do Porto.",
+        "stack": ["React", "JavaScript", "HTML5", "Material-UI"],
+        "code": "https://github.com/rraffael/MM-7-Seconds",
+        "demo": "https://rraffael.github.io/MM-7-Seconds/"
+      },
+      {
+        "name": "Through My Eyes",
+        "year": "2020",
+        "desc": "Outro site multimédia responsivo feito por mim dentro de um projeto em grupo do Mestrado em Multimédia da Universidade do Porto.",
+        "stack": ["React", "JavaScript", "HTML5", "Material-UI"],
+        "code": "https://github.com/rraffael/MM-Through-My-Eyes",
+        "demo": "https://rraffael.github.io/MM-Through-My-Eyes/"
+      },
+      {
+        "name": "Evasion Predict",
+        "year": "2019",
+        "desc": "Aplicação de machine learning que prevê a evasão de alunos antes que ela ocorra, com meta de 80%+ de acerto. Meu trabalho de conclusão de curso.",
+        "stack": ["Python", "Pandas", "Scikit-learn", "Flask", "REST"],
+        "code": "https://github.com/rraffael/EvasionPredict",
+        "demo": ""
+      },
+      {
+        "name": "Web Chat Bot",
+        "year": "2019",
+        "desc": "Integração de chatbot construída sobre o IBM Watson, conectando vários grupos de projeto via uma API conversacional compartilhada.",
+        "stack": ["IBM Watson", "ASP.NET Core", "MVC"],
+        "code": "https://github.com/rraffael/WebChatBot",
+        "demo": ""
+      }
+    ]
   },
   "work": {
-    "title": "Participações e trabalhos",
-    "description": "Colaborações, contribuições e trabalhos profissionais."
+    "title": "Experiência",
+    "lead": "Onde trabalhei e o que construí.",
+    "items": [
+      {
+        "role": "Engenheiro de Software",
+        "company": "Kito Health",
+        "period": "2021 — Atual",
+        "location": "Lisboa, Portugal",
+        "desc": "Responsável por todo o ciclo de vida do software: ideação, arquitetura, desenvolvimento, depuração e otimização. Atuo como ponte entre os departamentos técnico e de negócio, transformando necessidades em soluções."
+      },
+      {
+        "role": "Gestor de TI & Programador",
+        "company": "HumanizeIT",
+        "period": "2020 — Atual",
+        "location": "Remoto, Portugal",
+        "desc": "Defini os padrões de engenharia da startup (Git, AWS, ferramentas ágeis) e construí seu primeiro produto responsivo em React. Depois entreguei um e-commerce próprio com PHP, Laravel e MySQL."
+      },
+      {
+        "role": "Desenvolvedor de Software",
+        "company": "Protech Solutions",
+        "period": "2019",
+        "location": "Aracaju, Brasil",
+        "desc": "Criei funcionalidades, corrigi bugs e escrevi testes unitários para o software de um grande banco regional, no front-end e back-end, lidando diretamente com as APIs do projeto em sprints quinzenais Scrum/Kanban. (C#, ASP.NET, MVC)"
+      },
+      {
+        "role": "Diretor de Tecnologia",
+        "company": "Universo de Estudos",
+        "period": "2015 — 2017",
+        "location": "Aracaju, Brasil",
+        "desc": "Produzi e editei o conteúdo em vídeo do estúdio e construí o blog e o site da empresa, adotando novas tecnologias de mídia. (WordPress, Adobe Premiere)"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Entrar em Contato",
+    "lead": "Aberto a oportunidades e colaborações. Vamos conversar.",
+    "emailLabel": "E-mail",
+    "linkedinLabel": "LinkedIn",
+    "githubLabel": "GitHub",
+    "locationLabel": "Localização",
+    "location": "Portugal",
+    "email": "raffaelcr.ti@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/raffael-castro-rodrigues-117463142/",
+    "github": "https://github.com/rraffael",
+    "button": "Envie-me um e-mail"
   },
   "footer": {
-    "text": "Rodapé reservado para copyright e links de contato."
+    "text": "Raffael Castro Rodrigues — Engenheiro de Software",
+    "rights": "Todos os direitos reservados."
   }
 }

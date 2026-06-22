@@ -1,68 +1,39 @@
-import { useEffect, useState } from 'react'
-
 export default function ContactSection({ t }) {
-  const [apiResponse, setApiResponse] = useState(null)
-  const [apiError, setApiError] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    let active = true
-
-    async function fetchApi() {
-      try {
-        const response = await fetch('http://localhost:8000')
-        const contentType = response.headers.get('content-type') || ''
-        const data = contentType.includes('application/json') ? await response.json() : await response.text()
-
-        if (!active) {
-          return
-        }
-
-        if (!response.ok) {
-          throw new Error(`${response.status}`)
-        }
-
-        setApiResponse(data)
-      } catch (error) {
-        if (active) {
-          setApiError(error.message)
-        }
-      } finally {
-        if (active) {
-          setIsLoading(false)
-        }
-      }
-    }
-
-    fetchApi()
-
-    return () => {
-      active = false
-    }
-  }, [])
+  const email = t('contact.email')
 
   return (
-    <div className="section-content">
-      <div>
-        <h1>{t('contact.title')}</h1>
-        <button className="primary-button" type="button">
-          {t('contact.button')}
-        </button>
+    <div className="section-content contact-content">
+      <div className="section-head">
+        <span className="section-kicker">[ 05 ]</span>
+        <h2 className="section-title">{t('contact.title')}</h2>
+        <p className="section-lead">{t('contact.lead')}</p>
+      </div>
 
-        <div className="api-card">
-          <h2>{t('contact.apiTitle')}</h2>
-          {isLoading ? (
-            <p>{t('contact.apiLoading')}</p>
-          ) : apiError ? (
-            <p className="api-error">{t('contact.apiError')}</p>
-          ) : (
-            <div>
-              <p>{t('contact.apiSuccess')}</p>
-              <pre>{apiResponse ? JSON.stringify(apiResponse, null, 2) : t('contact.apiEmpty')}</pre>
-            </div>
-          )}
+      <div className="contact-links">
+        <a className="panel contact-link" href={`mailto:${email}`}>
+          <span className="contact-link-label">✉ {t('contact.emailLabel')}</span>
+          <span className="contact-link-value">{email}</span>
+        </a>
+
+        <a className="panel contact-link" href={t('contact.linkedin')} target="_blank" rel="noreferrer">
+          <span className="contact-link-label">in {t('contact.linkedinLabel')}</span>
+          <span className="contact-link-value">@raffael-castro-rodrigues</span>
+        </a>
+
+        <a className="panel contact-link" href={t('contact.github')} target="_blank" rel="noreferrer">
+          <span className="contact-link-label">{'</>'} {t('contact.githubLabel')}</span>
+          <span className="contact-link-value">@rraffael</span>
+        </a>
+
+        <div className="panel contact-link">
+          <span className="contact-link-label">◈ {t('contact.locationLabel')}</span>
+          <span className="contact-link-value">{t('contact.location')}</span>
         </div>
       </div>
+
+      <a className="pixel-btn pixel-btn--mint" href={`mailto:${email}`}>
+        {t('contact.button')}
+      </a>
     </div>
   )
 }
