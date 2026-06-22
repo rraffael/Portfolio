@@ -2,7 +2,7 @@ export default function SectionHome({ t }) {
   return (
     <div className="section-content home-wrap">
       <div className="home-card">
-        <img className="home-avatar" src="/avatar.svg" alt={t('home.name')} width="150" height="150" />
+        <img className="home-avatar" src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/avatar.svg`} alt={t('home.name')} width="150" height="150" />
         <p className="home-greeting">{t('home.greeting')}</p>
         <h1 className="home-name">{t('home.name')}</h1>
         <p className="home-role">{t('home.role')}</p>
