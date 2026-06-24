@@ -1,103 +1,89 @@
 # ROADMAP — Portfólio Pixel Art · Raffael de Castro Rodrigues
 
-Acompanhamento da implementação de um portfólio profissional de engenheiro de
-software em **estilo pixel art**, com conteúdo *placeholder* baseado no perfil do
-LinkedIn (a preencher com dados reais).
-Marque cada item conforme for concluído: `[ ]` → `[x]`.
+Acompanhamento de um portfólio profissional de engenheiro de software em
+**estilo pixel art**, construído com Next.js (Pages Router) + React 18 e
+publicado como site estático no **GitHub Pages**.
 
-**Legenda de status das fases:** ⬜ Não iniciada · 🟡 Em andamento · ✅ Concluída
+**Legenda:** `[x]` concluído · `[ ]` pendente · ⬜ Não iniciada · 🟡 Em andamento · ✅ Concluída
 
 ---
 
 ## Estado atual
 
-**Concluído (todas as 8 fases):** design system pixel art (fontes `Press Start
-2P`/`VT323`/`Inter`, paleta retro em `:root`, `image-rendering: pixelated`);
-seções reescritas — Home (avatar SVG + CTA + scroll indicator), About + Skills,
-Projects (grid de cards), Work (timeline), Contact (links reais mailto/
-LinkedIn/GitHub, sem fetch de demo), Footer (ano dinâmico); i18n EN/PT
-expandido e consistente (55 chaves idênticas nos dois locales); nova seção
-Skills registrada em `PortfolioPage.jsx` (refs 0–6) com item de menu.
+Portfólio **funcional e publicado**. O conteúdo já é **real** (bio, formação,
+skills, projetos e experiências do Raffael) — não há mais placeholders.
 
-**Gate:** `npm run build` passa (Next.js 16, sem erros de TypeScript).
+- **Stack:** Next.js 16.2.9 (Turbopack), React 18.3.1, CSS global único.
+- **Navegação:** *deck* horizontal — uma seção por "slide", com roda do mouse
+  (uma seção por gesto, com lock de 700ms), setas do teclado (◄/►), botões de
+  seta na tela e itens de menu. Não é scroll-snap vertical.
+- **Seções (nesta ordem):** Home → About → Skills → Projects → Work → Contact,
+  mais o Footer fixo.
+- **i18n:** EN/PT via `lib/locales.js` + `locales/{en,pt}.json` (mesma estrutura
+  de chaves, fallback para EN). Idioma em `useState`, **não** persistido.
+- **Build/deploy:** `next build` com `output: 'export'` → pasta `out/`,
+  publicada no GitHub Pages sob `/Portfolio` (`NEXT_PUBLIC_BASE_PATH`).
 
-**Pendente:** substituir os textos *placeholder* em `locales/*.json` pelos
-dados reais do LinkedIn (bio, projetos, experiências, links).
-
----
-
-## Fase 1 — Design system pixel art ✅
-Base visual que todas as seções vão herdar; precisa vir primeiro.
-
-- [x] Importar fonte pixel (`Press Start 2P` para títulos, `VT323`/`Inter` para corpo) em `styles/globals.css` via `@import`/`<link>` no `_document` ou CSS
-- [x] Definir paleta retro em `:root` (variáveis CSS: fundo, primária, acento, texto, bordas)
-- [x] Criar utilitários pixel: `image-rendering: pixelated`, bordas sólidas grossas, sombras *hard* (box-shadow sem blur, offset fixo)
-- [x] Estilizar header (`.site-header`, `.nav-link`, `.language-button`) no tema pixel
-- [x] Ajustar `.section-*` e `.scroll-area` para o novo visual (cards com borda pixel)
-- [x] Garantir contraste/legibilidade ("extremamente profissional") apesar do pixel
-
-## Fase 2 — Conteúdo i18n (perfil placeholder) ✅
-Centraliza todo o texto novo antes de tocar nos componentes.
-
-- [x] Expandir `locales/en.json` e `locales/pt.json` com chaves para todas as seções (mesma estrutura nos dois)
-- [x] `home`: headline, cargo, CTA, status ("disponível para projetos")
-- [x] `about`: bio placeholder baseada no perfil de Raffael de Castro Rodrigues
-- [x] `skills`: grupos (linguagens, frameworks, ferramentas, cloud)
-- [x] `projects`: 3–4 cards (título, descrição, stack, links placeholder)
-- [x] `work`: 2–3 experiências (empresa, cargo, período, descrição) — placeholder
-- [x] `contact`: rótulos de e-mail, LinkedIn, GitHub
-- [x] `footer`: copyright + ano dinâmico
-
-## Fase 3 — Seção Home ✅
-Primeira impressão; avatar pixel art + headline.
-
-- [x] Avatar pixel art placeholder (SVG blocky ou `<img>` com `image-rendering: pixelated`) em `public/`
-- [x] Reescrever `SectionHome.jsx`: avatar, nome, cargo, headline e botões de CTA (ver projetos / contato)
-- [x] Indicador de "scroll down" no estilo pixel
-
-## Fase 4 — Seção About + Skills ✅
-Quem é, o que faz, e o stack técnico.
-
-- [x] Reescrever `SectionAbout.jsx` com bio + destaques (anos de experiência, foco)
-- [x] Criar `components/SectionSkills.jsx` com grid de skills agrupadas (badges pixel)
-- [x] Registrar Skills no array `sections` e em `sectionRefs.current[N]` de `PortfolioPage.jsx` (manter ordem dos índices)
-- [x] Adicionar item de menu "Skills" em `locales/*.json` (`menu.skills`)
-
-## Fase 5 — Seção Projects ✅
-Vitrine de projetos próprios com cards.
-
-- [x] Reescrever `SectionProjects.jsx` com grid de cards (mapeando dados do i18n)
-- [x] Cada card: thumb/ícone pixel, título, descrição, tags de stack, links (repo/demo placeholder)
-- [x] Estilo hover/foco pixel (deslocamento da sombra)
-
-## Fase 6 — Seção Work (experiência) ✅
-Histórico profissional em timeline.
-
-- [x] Reescrever `SectionWork.jsx` como timeline/lista de experiências (empresa, cargo, período, bullets)
-- [x] Estilo pixel da timeline (marcadores blocky)
-
-## Fase 7 — Seção Contact ✅
-Substituir a demo de API por contato real.
-
-- [x] Reescrever `SectionContact.jsx`: remover/condicionar o fetch de demo; manter o componente focado em links
-- [x] Botões pixel para e-mail (`mailto:`), LinkedIn, GitHub
-- [x] (Opcional) usar `process.env.NEXT_PUBLIC_API_URL` se mantiver o teste de API
-
-## Fase 8 — Footer + polimento ✅
-Acabamento e consistência.
-
-- [x] Reescrever `Footer.jsx`: nome, ano dinâmico, mini-links sociais
-- [x] Revisar responsividade (mobile/tablet) de todas as seções
-- [x] Conferir scroll tracking após adicionar a seção Skills (índices dos refs)
-- [x] `npm run build` como gate de correção (único gate do projeto)
+**Gate de correção:** `npm run build` passa (sem linter/testes no projeto).
 
 ---
 
-## Ordem recomendada
+## Fases concluídas ✅
 
-Fase **1 → 2** são pré-requisitos de tudo (visual + textos). Depois, as seções
-(**3, 4, 5, 6, 7**) podem ser feitas em qualquer ordem, mas **4 altera o array
-de seções** em `PortfolioPage.jsx`, então faça-a antes de validar o scroll na
-Fase 8. A **Fase 8** fecha com build + responsividade. Substituir os
-placeholders pelos dados reais do LinkedIn pode ser feito a qualquer momento
-editando apenas `locales/*.json`.
+### Fase 1 — Design system pixel art ✅
+- [x] Fontes `Press Start 2P` (títulos), `VT323` (mono) e `Inter` (corpo) via `@import` em `globals.css`
+- [x] Paleta retro "night" em `:root` (gold/mint/pink/blue, sombras *hard*, bordas grossas)
+- [x] Utilitários pixel: `image-rendering: pixelated`, scanlines CRT sutis no `body`
+- [x] Header, painéis (`.panel`), botões (`.pixel-btn`) e cards no tema pixel
+
+### Fase 2 — Conteúdo i18n ✅
+- [x] `locales/en.json` e `locales/pt.json` com estrutura idêntica para todas as seções
+- [x] Conteúdo **real**: home, about (bio + formação + idiomas + stats), skills, projects, work, contact, footer
+
+### Fase 3 — Home ✅
+- [x] Avatar pixel (`public/avatar.svg`, resolve via `NEXT_PUBLIC_BASE_PATH`)
+- [x] Greeting, nome, cargo, headline, status "disponível", CTAs (ver projetos / contato), dica de navegação
+
+### Fase 4 — About + Skills ✅
+- [x] `SectionAbout.jsx`: bio, stats (anos/projetos/idiomas), formação e idiomas a partir do i18n
+- [x] `SectionSkills.jsx`: grupos de skills em badges pixel
+- [x] Skills registrada em `PortfolioPage.jsx` (refs 0–5) e no menu (`menu.skills`)
+
+### Fase 5 — Projects ✅
+- [x] `SectionProjects.jsx`: grid de cards (nome, ano, descrição, stack, links code/demo condicionais)
+
+### Fase 6 — Work ✅
+- [x] `SectionWork.jsx`: timeline de experiências (cargo, empresa, período, local, descrição) com marcadores blocky
+
+### Fase 7 — Contact ✅
+- [x] `SectionContact.jsx`: links reais (mailto, LinkedIn, GitHub) + localização — demo de fetch `localhost:8000` removida
+
+### Fase 8 — Footer + deploy ✅
+- [x] `Footer.jsx`: nome + ano dinâmico + direitos
+- [x] Responsividade revisada
+- [x] Export estático (`output: 'export'`) + workflow de GitHub Pages
+
+---
+
+## Próximas features / melhorias 🚧
+
+### Qualidade & correção
+- [ ] **Resolver workflows de deploy duplicados** — `deploy.yml` e `nextjs.yml` disparam ambos no push para `master` no mesmo grupo de concorrência `pages` (ver "Problemas conhecidos" no README). Manter apenas um.
+- [ ] Adicionar ESLint + Prettier (hoje o único gate é `npm run build`)
+- [ ] Configurar TypeScript ou ao menos checagem de tipos básica
+- [ ] Testes (componentes/i18n) — ex.: garantir que `en.json` e `pt.json` têm as mesmas chaves
+
+### Funcionalidades
+- [ ] **Persistir idioma** em `localStorage` (hoje um refresh volta para EN) e respeitar `navigator.language`
+- [ ] SEO: `<Head>` com `title`, `meta description`, Open Graph / Twitter cards e favicon próprio
+- [ ] Acessibilidade: foco visível no deck, `aria-current` no item de menu ativo, navegação por teclado nos cards, respeitar `prefers-reduced-motion`
+- [ ] Formulário de contato funcional (ex.: Formspree/serviço estático) usando o `NEXT_PUBLIC_API_URL` já anunciado no `.env.example`
+- [ ] Toggle de tema (dark/light) mantendo a estética pixel
+- [ ] Thumbnails/ícones pixel reais para os cards de projeto
+- [ ] Indicador de progresso do deck (dots/paginação) e deep-link por hash (`#projects`) sincronizado com o slide ativo
+- [ ] Botão "baixar CV" (PDF)
+- [ ] Adicionar um terceiro idioma (ex.: ES) para validar a camada de i18n
+
+### Conteúdo
+- [ ] Revisar/expandir descrições de projetos e adicionar novos trabalhos conforme surgirem
+- [ ] Métricas/resultados concretos nas experiências (impacto, números)

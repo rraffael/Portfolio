@@ -17,12 +17,12 @@ export default function ContactSection({ t }) {
 
         <a className="panel contact-link" href={t('contact.linkedin')} target="_blank" rel="noreferrer">
           <span className="contact-link-label">in {t('contact.linkedinLabel')}</span>
-          <span className="contact-link-value">@raffael-castro-rodrigues</span>
+          <span className="contact-link-value">{t('contact.linkedinHandle')}</span>
         </a>
 
         <a className="panel contact-link" href={t('contact.github')} target="_blank" rel="noreferrer">
           <span className="contact-link-label">{'</>'} {t('contact.githubLabel')}</span>
-          <span className="contact-link-value">@rraffael</span>
+          <span className="contact-link-value">{t('contact.githubHandle')}</span>
         </a>
 
         <div className="panel contact-link">

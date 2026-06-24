@@ -1,60 +1,106 @@
-# Portfolio Next.js Starter
+# Portfolio — Raffael de Castro Rodrigues
 
-This is a one-page portfolio starter built with Next.js and React. It uses a componentized structure and translation files under `locales/`.
+A single-page **pixel-art** developer portfolio built with **Next.js (Pages
+Router) + React 18**, deployed as a static site to **GitHub Pages**. Bilingual
+(English / Portuguese), one route, all styling in a single global stylesheet.
 
-## Setup
+🔗 Live: https://rraffael.github.io/Portfolio/
 
-1. Install dependencies:
+## Tech stack
+
+- **Next.js 16** (`output: 'export'` — static HTML export, no server)
+- **React 18**
+- Plain global CSS (`styles/globals.css`) — no CSS modules / styled-components
+- Fonts: `Press Start 2P`, `VT323`, `Inter` (Google Fonts)
+
+## Getting started
 
 ```bash
 npm install
+npm run dev      # dev server at http://localhost:3000
 ```
 
-2. Start the development server:
+Other scripts:
 
 ```bash
-npm run dev
+npm run build    # static production build → out/  (the only correctness gate)
+npm start        # serve the production build
 ```
 
-3. Open the app at `http://localhost:3000`
+> There is no linter, test runner, or TypeScript config — `npm run build` is the
+> only correctness gate.
 
-## Translations
+## How it works
 
-This project uses `locales/en.json` and `locales/pt.json`.
-Each translation file follows the same key structure so new languages can be added without missing values.
+- **`pages/index.jsx`** holds the only app-wide state: the active `locale`
+  (`'en'` | `'pt'`) in `useState`, passed down to `PortfolioPage`. It is **not**
+  persisted — a refresh resets to English.
+- **`components/PortfolioPage.jsx`** is the real top-level component. It renders
+  the fixed header (desktop nav + mobile hamburger + language switcher) and a
+  horizontal **deck**: each section is one full-viewport slide inside
+  `main.scroll-area`.
+- **Navigation** is horizontal, not a vertical scroll-snap:
+  - mouse wheel → one slide per gesture (700 ms lock); a slide's own content can
+    still scroll vertically before the deck advances,
+  - keyboard arrows (← / →),
+  - on-screen ◄ / ► arrow buttons,
+  - header / mobile menu items.
+- **Sections**, in order: **Home → About → Skills → Projects → Work → Contact**,
+  plus a fixed **Footer**. Each lives in `components/Section*.jsx` (+ `Footer.jsx`).
 
-The translation helper falls back to English if a key is missing in the selected language.
+### Translations (i18n)
 
-## Menu and layout
+- `lib/locales.js` resolves dot-paths (e.g. `getMessage(locale, 'contact.title')`)
+  against `locales/<locale>.json`, falling back to English, then to the raw path.
+- `PortfolioPage` builds `t = (path) => getMessage(locale, path)` and passes it to
+  every section as the `t` prop — sections never import the locale system directly.
+- `locales/en.json` and `locales/pt.json` must keep **identical key structures**.
+  To add a language: create `locales/<code>.json`, register it in `LOCALES`
+  (`lib/locales.js`), and add an entry to `languages` in `PortfolioPage.jsx`.
 
-- Static header with desktop navigation
-- Mobile hamburger menu on smaller screens
-- Language switcher with flag labels
-- Scroll-snap sections for each page area
-- The first section fills the viewport under the fixed header
+### Contact
 
-## Sections
-
-The page is split into these sections:
-
-- Home
-- About
-- Contact
-- Projects
-- Work
-- Footer
-
-## Local API example
-
-The contact section includes an example fetch from `http://localhost:8000`.
-If you want to connect to your own API, start it on port 8000 or change the URL in `components/SectionContact.jsx`.
+`components/SectionContact.jsx` renders real links — `mailto:`, LinkedIn and
+GitHub — pulled from the `contact` keys in the locale files. (There is no live
+API call.) `.env.example` advertises `NEXT_PUBLIC_API_URL`, which is currently
+unused and reserved for a future contact form.
 
 ## Deployment
 
-You can deploy this app to Vercel, Netlify, or any platform that supports Next.js.
+`next build` exports a static site to `out/`. The GitHub Pages workflow builds
+with `NEXT_PUBLIC_BASE_PATH=/Portfolio` so assets resolve under the project URL.
+Static export means the Next.js image optimizer is disabled
+(`images.unoptimized`).
 
-### Architecture
+## Roadmap (short)
 
-- Website (React / Next.js)
-- API (hosted online or locally for development)
-- Database (behind the API)
+Full checklist in [`ROADMAP.md`](./ROADMAP.md).
+
+**Done:** pixel-art design system, horizontal deck navigation, EN/PT i18n with
+real content, all six sections (Home, About, Skills, Projects, Work, Contact) +
+footer, static export & GitHub Pages deploy.
+
+**Next:** persist the chosen language (localStorage), SEO `<Head>` / Open Graph,
+accessibility pass, a working contact form, theme toggle, deck progress
+indicator + hash deep-linking, and project thumbnails.
+
+## Known issues
+
+- **Duplicate GitHub Pages workflows:** `.github/workflows/deploy.yml` and
+  `.github/workflows/nextjs.yml` both deploy on push to `master` and share the
+  `pages` concurrency group (with conflicting `cancel-in-progress` settings).
+  They race each other — keep only one (recommended: `deploy.yml`, which sets
+  `NEXT_PUBLIC_BASE_PATH` explicitly).
+
+## Project structure
+
+```
+pages/            index.jsx (state) · _app.jsx (global CSS only)
+components/       PortfolioPage.jsx + Section*.jsx + Footer.jsx
+lib/locales.js    getMessage() dot-path resolver
+locales/          en.json · pt.json (identical key trees)
+styles/           globals.css (whole design system)
+public/           avatar.svg
+.github/          GitHub Pages deploy workflows
+next.config.js    static export + basePath config
+```
