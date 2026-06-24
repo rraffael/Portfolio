@@ -1,30 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="150" height="150" shape-rendering="crispEdges" role="img" aria-label="Pixel-art avatar placeholder">
-  <!-- background -->
-  <rect width="16" height="16" fill="#1e2238"/>
-  <rect x="1" y="1" width="14" height="14" fill="#252a45"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" width="384" height="256" shape-rendering="crispEdges" role="img" aria-label="Pixel-art window onto the sky">
+  <!-- ===================================================================
+       WEATHER HOOK
+       The window's sky is isolated below. A future weather API can:
+         - recolor   #weather-sky  (day / night / overcast gradients)
+         - swap       #weather-art  contents (sun, clouds, rain, stars…)
+       The frame and room stay untouched. The window is a 4x2 grid
+       (8 panes), wide but keeping the room/floor space below.
+  ==================================================================== -->
 
-  <!-- hair -->
-  <rect x="4" y="2" width="8" height="2" fill="#5a3a22"/>
-  <rect x="3" y="3" width="10" height="2" fill="#5a3a22"/>
-  <rect x="3" y="5" width="1" height="3" fill="#5a3a22"/>
-  <rect x="12" y="5" width="1" height="3" fill="#5a3a22"/>
+  <!-- room -->
+  <rect width="96" height="64" fill="#1b1f33"/>
+  <rect x="0" y="46" width="96" height="18" fill="#14182a"/>
 
-  <!-- face -->
-  <rect x="4" y="4" width="8" height="8" fill="#f1c9a5"/>
-  <rect x="4" y="11" width="8" height="1" fill="#e0a878"/>
+  <!-- window frame -->
+  <rect x="3" y="4" width="90" height="40" fill="#3a4266"/>
 
-  <!-- glasses -->
-  <rect x="4" y="6" width="3" height="2" fill="#11131f"/>
-  <rect x="9" y="6" width="3" height="2" fill="#11131f"/>
-  <rect x="7" y="6" width="2" height="1" fill="#11131f"/>
-  <rect x="5" y="7" width="1" height="1" fill="#5aa9ff"/>
-  <rect x="10" y="7" width="1" height="1" fill="#5aa9ff"/>
+  <!-- ====== weather-controlled region ====== -->
+  <g id="weather-window">
+    <rect id="weather-sky" x="5" y="6" width="86" height="36" fill="#6fb4ff"/>
+    <g id="weather-art">
+      <!-- sun -->
+      <rect x="80" y="9" width="5" height="5" fill="#ffd166"/>
+      <rect x="81" y="10" width="3" height="3" fill="#ffe7a3"/>
+      <rect x="82" y="7" width="1" height="1" fill="#ffd166"/>
+      <rect x="82" y="15" width="1" height="1" fill="#ffd166"/>
+      <rect x="78" y="11" width="1" height="1" fill="#ffd166"/>
+      <rect x="86" y="11" width="1" height="1" fill="#ffd166"/>
 
-  <!-- mouth -->
-  <rect x="6" y="9" width="4" height="1" fill="#c98a63"/>
+      <!-- big hero cloud: bumpy rounded top, flat shaded bottom -->
+      <rect x="25" y="9" width="7" height="1" fill="#ffffff"/>
+      <rect x="16" y="9" width="4" height="1" fill="#ffffff"/>
+      <rect x="15" y="10" width="6" height="1" fill="#ffffff"/>
+      <rect x="23" y="10" width="11" height="1" fill="#ffffff"/>
+      <rect x="33" y="10" width="5" height="1" fill="#ffffff"/>
+      <rect x="13" y="11" width="26" height="1" fill="#ffffff"/>
+      <rect x="11" y="12" width="30" height="1" fill="#eaf2ff"/>
+      <rect x="10" y="13" width="32" height="1" fill="#eaf2ff"/>
+      <rect x="10" y="14" width="33" height="1" fill="#eaf2ff"/>
+      <rect x="10" y="15" width="33" height="1" fill="#d8e8ff"/>
+      <rect x="11" y="16" width="31" height="1" fill="#b8dcfe"/>
+      <rect x="13" y="17" width="27" height="1" fill="#a9d0f5"/>
 
-  <!-- shirt -->
-  <rect x="3" y="12" width="10" height="3" fill="#06d6a0"/>
-  <rect x="7" y="12" width="2" height="1" fill="#f1c9a5"/>
-  <rect x="6" y="13" width="4" height="1" fill="#05b386"/>
+      <!-- small cloud, mid-right -->
+      <rect x="63" y="14" width="6" height="1" fill="#ffffff"/>
+      <rect x="60" y="15" width="12" height="1" fill="#ffffff"/>
+      <rect x="59" y="16" width="14" height="1" fill="#eaf2ff"/>
+      <rect x="60" y="17" width="12" height="1" fill="#b8dcfe"/>
+      <rect x="62" y="18" width="9" height="1" fill="#a9d0f5"/>
+
+      <!-- small cloud, lower-left -->
+      <rect x="20" y="32" width="5" height="1" fill="#ffffff"/>
+      <rect x="18" y="33" width="10" height="1" fill="#eaf2ff"/>
+      <rect x="17" y="34" width="12" height="1" fill="#d8e8ff"/>
+      <rect x="19" y="35" width="8" height="1" fill="#b8dcfe"/>
+    </g>
+  </g>
+  <!-- ====== /weather-controlled region ====== -->
+
+  <!-- window mullions (4 panes wide, 2 rows) -->
+  <rect x="25" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="47" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="69" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="5" y="23" width="86" height="2" fill="#3a4266"/>
+
+  <!-- windowsill -->
+  <rect x="1" y="42" width="92" height="1" fill="#5a6796"/>
+  <rect x="1" y="43" width="92" height="2" fill="#46507a"/>
+  <rect x="1" y="45" width="92" height="1" fill="#2b3150"/>
 </svg>
