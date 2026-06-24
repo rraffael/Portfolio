@@ -104,3 +104,8 @@ public/           avatar.svg
 .github/          GitHub Pages deploy workflows
 next.config.js    static export + basePath config
 ```
+
+## Credits
+
+Designed and built by Raffael de Castro Rodrigues, with development assistance
+from [Claude AI](https://claude.ai) (Anthropic).
