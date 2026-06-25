@@ -63,6 +63,12 @@ skills, projetos e experiências do Raffael) — não há mais placeholders.
 - [x] Responsividade revisada
 - [x] Export estático (`output: 'export'`) + workflow de GitHub Pages
 
+### Fase 9 — Clima local no Home ✅
+- [x] `lib/weather.js`: busca o clima do visitante com **API pública primária + backup** (sem chave, CORS-friendly): `ipapi.co` (IP → lat/lon/cidade) + **Open-Meteo** como primária; **wttr.in** como backup (IP → cidade + clima em uma chamada), com fallback automático e timeout via `AbortController`
+- [x] Normalização dos códigos das duas APIs (WMO e WWO) para **7 condições** com ícone: ☀️ `clear`, ⛅ `partly`, ☁️ `cloudy`, 🌫️ `fog`, 🌧️ `rain`, ❄️ `snow`, ⛈️ `storm`
+- [x] `components/HomeWeatherBadge.jsx`: badge pequeno sobreposto ao avatar (ícone + temperatura), estado de carregando (⏳) e auto-ocultação se as duas APIs falharem
+- [x] Estilo pixel do badge em `globals.css` (`.home-avatar-frame` / `.home-weather`) e chaves `home.weather.*` em `locales/{en,pt}.json`
+
 ---
 
 ## Próximas features / melhorias 🚧

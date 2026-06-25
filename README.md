@@ -58,6 +58,21 @@ npm start        # serve the production build
   To add a language: create `locales/<code>.json`, register it in `LOCALES`
   (`lib/locales.js`), and add an entry to `languages` in `PortfolioPage.jsx`.
 
+### Local weather badge
+
+The home avatar shows a small badge with the **visitor's local weather** (icon +
+temperature). `lib/weather.js` uses two keyless, CORS-friendly public APIs with
+automatic fallback:
+
+1. **Primary** — `ipapi.co` (IP → lat/lon/city) + **Open-Meteo** (coords → weather),
+2. **Backup** — `wttr.in` (IP → city + weather in a single call), tried only if the
+   primary chain throws or times out (`AbortController`).
+
+Both APIs' numeric codes (WMO and WWO) are normalized to **7 conditions** —
+☀️ clear, ⛅ partly cloudy, ☁️ cloudy, 🌫️ fog, 🌧️ rain, ❄️ snow, ⛈️ storm — each
+with an `home.weather.*` translation. `components/HomeWeatherBadge.jsx` fetches on
+mount, shows a ⏳ loading state, and **hides itself** if both APIs fail.
+
 ### Contact
 
 `components/SectionContact.jsx` renders real links — `mailto:`, LinkedIn and
@@ -78,7 +93,8 @@ Full checklist in [`ROADMAP.md`](./ROADMAP.md).
 
 **Done:** pixel-art design system, horizontal deck navigation, EN/PT i18n with
 real content, all six sections (Home, About, Skills, Projects, Work, Contact) +
-footer, static export & GitHub Pages deploy.
+footer, local-weather badge on the home avatar (Open-Meteo + wttr.in fallback),
+static export & GitHub Pages deploy.
 
 **Next:** persist the chosen language (localStorage), SEO `<Head>` / Open Graph,
 accessibility pass, a working contact form, theme toggle, deck progress
@@ -96,8 +112,9 @@ indicator + hash deep-linking, and project thumbnails.
 
 ```
 pages/            index.jsx (state) · _app.jsx (global CSS only)
-components/       PortfolioPage.jsx + Section*.jsx + Footer.jsx
+components/       PortfolioPage.jsx + Section*.jsx + Footer.jsx + HomeWeatherBadge.jsx
 lib/locales.js    getMessage() dot-path resolver
+lib/weather.js    local-weather lookup (Open-Meteo primary + wttr.in fallback)
 locales/          en.json · pt.json (identical key trees)
 styles/           globals.css (whole design system)
 public/           avatar.svg
