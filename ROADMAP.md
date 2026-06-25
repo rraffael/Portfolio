@@ -74,7 +74,7 @@ skills, projetos e experiências do Raffael) — não há mais placeholders.
 ## Próximas features / melhorias 🚧
 
 ### Qualidade & correção
-- [ ] **Resolver workflows de deploy duplicados** — `deploy.yml` e `nextjs.yml` disparam ambos no push para `master` no mesmo grupo de concorrência `pages` (ver "Problemas conhecidos" no README). Manter apenas um.
+- [x] **Resolver workflows de deploy duplicados** — removido `.github/workflows/nextjs.yml` (template padrão do Next.js). Mantido apenas `deploy.yml`, que define `NEXT_PUBLIC_BASE_PATH=/Portfolio` explicitamente. Acaba a corrida no grupo de concorrência `pages`.
 - [ ] Adicionar ESLint + Prettier (hoje o único gate é `npm run build`)
 - [ ] Configurar TypeScript ou ao menos checagem de tipos básica
 - [ ] Testes (componentes/i18n) — ex.: garantir que `en.json` e `pt.json` têm as mesmas chaves

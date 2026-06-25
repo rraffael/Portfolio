@@ -100,14 +100,6 @@ static export & GitHub Pages deploy.
 accessibility pass, a working contact form, theme toggle, deck progress
 indicator + hash deep-linking, and project thumbnails.
 
-## Known issues
-
-- **Duplicate GitHub Pages workflows:** `.github/workflows/deploy.yml` and
-  `.github/workflows/nextjs.yml` both deploy on push to `master` and share the
-  `pages` concurrency group (with conflicting `cancel-in-progress` settings).
-  They race each other — keep only one (recommended: `deploy.yml`, which sets
-  `NEXT_PUBLIC_BASE_PATH` explicitly).
-
 ## Project structure
 
 ```
@@ -118,7 +110,7 @@ lib/weather.js    local-weather lookup (Open-Meteo primary + wttr.in fallback)
 locales/          en.json · pt.json (identical key trees)
 styles/           globals.css (whole design system)
 public/           avatar.svg
-.github/          GitHub Pages deploy workflows
+.github/          deploy.yml — GitHub Pages deploy workflow
 next.config.js    static export + basePath config
 ```
 
