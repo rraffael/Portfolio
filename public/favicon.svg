@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <!-- Retro "night" palette favicon: blocky R monogram, matching the site theme -->
+  <rect x="0" y="0" width="16" height="16" fill="#11131f"/>
+  <rect x="0" y="0" width="16" height="16" fill="none" stroke="#0a0b14" stroke-width="1"/>
+  <!-- R, drawn from unit blocks in gold (#ffd166) -->
+  <g fill="#ffd166">
+    <rect x="4" y="3" width="2" height="10"/>   <!-- left stem -->
+    <rect x="6" y="3" width="4" height="2"/>    <!-- top bar -->
+    <rect x="9" y="3" width="2" height="4"/>    <!-- bowl right -->
+    <rect x="6" y="7" width="4" height="2"/>    <!-- middle bar -->
+    <rect x="8" y="9" width="2" height="2"/>    <!-- leg upper -->
+    <rect x="10" y="11" width="2" height="2"/>  <!-- leg lower -->
+  </g>
+  <!-- mint accent pixel (#06d6a0) -->
+  <rect x="12" y="3" width="1" height="1" fill="#06d6a0"/>
+</svg>

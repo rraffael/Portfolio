@@ -6,9 +6,19 @@
 //   2. Backup   — wttr.in (IP → city + weather in a single call)
 // If the primary chain throws or times out, the backup is tried before giving up.
 
+export type Condition = 'clear' | 'partly' | 'cloudy' | 'fog' | 'rain' | 'snow' | 'storm'
+
+export interface Weather {
+  condition: Condition
+  icon: string
+  temperature: number
+  city: string
+  source: string
+}
+
 // Shared weather "buckets" the badge knows how to render. Each API maps its own
 // numeric codes onto one of these so the UI only deals with a small, stable set.
-const CONDITIONS = {
+const CONDITIONS: Record<Condition, string> = {
   clear: '☀️',
   partly: '⛅',
   cloudy: '☁️',
@@ -19,32 +29,39 @@ const CONDITIONS = {
 }
 
 // WMO weather codes used by Open-Meteo → condition bucket.
-function wmoToCondition(code) {
+function wmoToCondition(code: number): Condition {
   if (code === 0) return 'clear'
   if (code === 1 || code === 2) return 'partly'
   if (code === 3) return 'cloudy'
   if (code === 45 || code === 48) return 'fog'
   if (code >= 71 && code <= 77) return 'snow'
-  if ((code >= 85 && code <= 86)) return 'snow'
+  if (code >= 85 && code <= 86) return 'snow'
   if (code >= 95) return 'storm'
   if (code >= 51) return 'rain'
   return 'cloudy'
 }
 
 // WWO weather codes used by wttr.in → condition bucket.
-function wwoToCondition(code) {
+function wwoToCondition(code: number): Condition {
   if (code === 113) return 'clear'
   if (code === 116) return 'partly'
   if (code === 119 || code === 122) return 'cloudy'
   if (code === 143 || code === 248 || code === 260) return 'fog'
   if (code >= 200 && code <= 230) return 'storm'
   if ([386, 389, 392, 395].includes(code)) return 'storm'
-  if ([179, 182, 185, 227, 230, 281, 284, 311, 314, 317, 320, 323, 326, 329, 332, 335, 338, 350, 362, 365, 368, 371, 374, 377].includes(code)) return 'snow'
+  if (
+    [
+      179, 182, 185, 227, 230, 281, 284, 311, 314, 317, 320, 323, 326, 329, 332, 335, 338, 350,
+      362, 365, 368, 371, 374, 377
+    ].includes(code)
+  ) {
+    return 'snow'
+  }
   return 'rain'
 }
 
 // Abort a fetch that hangs so we can fall through to the backup quickly.
-async function fetchJson(url, timeoutMs = 6000) {
+async function fetchJson(url: string, timeoutMs = 6000): Promise<any> {
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), timeoutMs)
   try {
@@ -56,7 +73,7 @@ async function fetchJson(url, timeoutMs = 6000) {
   }
 }
 
-async function fetchPrimary() {
+async function fetchPrimary(): Promise<Weather> {
   const loc = await fetchJson('https://ipapi.co/json/')
   if (loc == null || loc.latitude == null || loc.longitude == null) {
     throw new Error('ipapi: no coordinates')
@@ -76,7 +93,7 @@ async function fetchPrimary() {
   }
 }
 
-async function fetchBackup() {
+async function fetchBackup(): Promise<Weather> {
   const data = await fetchJson('https://wttr.in/?format=j1')
   const current = data && data.current_condition && data.current_condition[0]
   if (!current) throw new Error('wttr.in: no current_condition')
@@ -94,14 +111,16 @@ async function fetchBackup() {
 
 // Resolve to a normalized weather object, trying the primary chain first and
 // transparently falling back to the backup. Rejects only if both fail.
-export async function fetchWeather() {
+export async function fetchWeather(): Promise<Weather> {
   try {
     return await fetchPrimary()
   } catch (primaryError) {
     try {
       return await fetchBackup()
     } catch (backupError) {
-      throw new Error(`weather unavailable (primary: ${primaryError.message}; backup: ${backupError.message})`)
+      const primaryMessage = primaryError instanceof Error ? primaryError.message : String(primaryError)
+      const backupMessage = backupError instanceof Error ? backupError.message : String(backupError)
+      throw new Error(`weather unavailable (primary: ${primaryMessage}; backup: ${backupMessage})`)
     }
   }
 }

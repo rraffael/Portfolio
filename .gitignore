@@ -5,3 +5,7 @@ output/
 .env.local
 .env
 .DS_Store
+
+# TypeScript (generated)
+next-env.d.ts
+*.tsbuildinfo
