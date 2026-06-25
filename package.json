@@ -10,7 +10,17 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
-    "test": "node scripts/check-locales.mjs"
+    "test": "node scripts/check-locales.mjs",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,mjs,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "next": "16.2.9",
@@ -23,6 +33,8 @@
     "@types/react-dom": "^18.3.7",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.9",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
     "prettier": "^3.8.4",
     "typescript": "^6.0.3"
   }

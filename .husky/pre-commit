@@ -1,0 +1,5 @@
+# Format + lint only the staged files (auto-fixing and re-staging them),
+# then run the project-wide gates. Any failure aborts the commit.
+npx lint-staged
+npm run typecheck
+npm test
