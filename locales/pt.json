@@ -21,7 +21,16 @@
     "ctaProjects": "Ver Projetos",
     "ctaContact": "Entrar em Contato",
     "scroll": "role para baixo",
-    "scrollHint": "navegue"
+    "scrollHint": "navegue",
+    "weather": {
+      "clear": "Céu limpo",
+      "partly": "Parcialmente nublado",
+      "cloudy": "Nublado",
+      "fog": "Neblina",
+      "rain": "Chuva",
+      "snow": "Neve",
+      "storm": "Tempestade"
+    }
   },
   "about": {
     "title": "Sobre Mim",

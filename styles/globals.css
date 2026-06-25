@@ -369,6 +369,13 @@ a {
   gap: 14px;
 }
 
+.home-avatar-frame {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  margin-bottom: 8px;
+}
+
 .home-avatar {
   width: clamp(280px, 64vw, 460px);
   height: auto;
@@ -376,7 +383,37 @@ a {
   border: var(--border-w) solid var(--line);
   box-shadow: var(--shadow-lg);
   background: var(--panel);
-  margin-bottom: 8px;
+}
+
+/* Live local-weather badge pinned to the avatar's top-right corner. */
+.home-weather {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  line-height: 1;
+  color: var(--ink);
+  background: var(--panel);
+  border: var(--border-w) solid var(--line);
+  box-shadow: var(--shadow);
+  padding: 6px 8px;
+  user-select: none;
+}
+
+.home-weather-icon {
+  font-size: 0.85rem;
+}
+
+.home-weather--loading {
+  opacity: 0.7;
+}
+
+.home-weather--loading .home-weather-icon {
+  animation: blink 1.4s steps(2, jump-none) infinite;
 }
 
 .home-greeting {

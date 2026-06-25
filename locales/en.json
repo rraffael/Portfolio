@@ -21,7 +21,16 @@
     "ctaProjects": "View Projects",
     "ctaContact": "Get in Touch",
     "scroll": "scroll down",
-    "scrollHint": "navigate"
+    "scrollHint": "navigate",
+    "weather": {
+      "clear": "Clear",
+      "partly": "Partly cloudy",
+      "cloudy": "Cloudy",
+      "fog": "Foggy",
+      "rain": "Rainy",
+      "snow": "Snowy",
+      "storm": "Stormy"
+    }
   },
   "about": {
     "title": "About Me",

@@ -1,8 +1,13 @@
+import HomeWeatherBadge from './HomeWeatherBadge'
+
 export default function SectionHome({ t }) {
   return (
     <div className="section-content home-wrap">
       <div className="home-card">
-        <img className="home-avatar" src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/avatar.svg`} alt={t('home.name')} width="384" height="256" />
+        <div className="home-avatar-frame">
+          <img className="home-avatar" src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/avatar.svg`} alt={t('home.name')} width="384" height="256" />
+          <HomeWeatherBadge t={t} />
+        </div>
         <p className="home-greeting">{t('home.greeting')}</p>
         <h1 className="home-name">{t('home.name')}</h1>
         <p className="home-role">{t('home.role')}</p>
