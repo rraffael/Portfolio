@@ -20,7 +20,8 @@ skills, projetos e experiências do Raffael) — não há mais placeholders.
 - **Seções (nesta ordem):** Home → About → Skills → Projects → Work → Contact,
   mais o Footer fixo.
 - **i18n:** EN/PT via `lib/locales.js` + `locales/{en,pt}.json` (mesma estrutura
-  de chaves, fallback para EN). Idioma em `useState`, **não** persistido.
+  de chaves, fallback para EN). Idioma em `useState`, **persistido** em
+  `localStorage` e com fallback para o idioma do navegador.
 - **Build/deploy:** `next build` com `output: 'export'` → pasta `out/`,
   publicada no GitHub Pages sob `/Portfolio` (`NEXT_PUBLIC_BASE_PATH`).
 
@@ -80,7 +81,7 @@ skills, projetos e experiências do Raffael) — não há mais placeholders.
 - [ ] Testes (componentes/i18n) — ex.: garantir que `en.json` e `pt.json` têm as mesmas chaves
 
 ### Funcionalidades
-- [ ] **Persistir idioma** em `localStorage` (hoje um refresh volta para EN) e respeitar `navigator.language`
+- [x] **Persistir idioma** — escolha salva em `localStorage` (`portfolio-locale`) e restaurada após o mount; sem preferência salva, usa `navigator.languages` (`resolvePreferredLocale` em `lib/locales.js`), caindo para EN. Inicializa com EN para casar com o HTML estático e evitar mismatch de hidratação.
 - [ ] SEO: `<Head>` com `title`, `meta description`, Open Graph / Twitter cards e favicon próprio
 - [ ] Acessibilidade: foco visível no deck, `aria-current` no item de menu ativo, navegação por teclado nos cards, respeitar `prefers-reduced-motion`
 - [ ] Formulário de contato funcional (ex.: Formspree/serviço estático) usando o `NEXT_PUBLIC_API_URL` já anunciado no `.env.example`

@@ -33,8 +33,11 @@ npm start        # serve the production build
 ## How it works
 
 - **`pages/index.jsx`** holds the only app-wide state: the active `locale`
-  (`'en'` | `'pt'`) in `useState`, passed down to `PortfolioPage`. It is **not**
-  persisted — a refresh resets to English.
+  (`'en'` | `'pt'`) in `useState`, passed down to `PortfolioPage`. It starts at
+  English to match the static HTML, then after mount restores the persisted
+  choice from `localStorage` (`portfolio-locale`) or, failing that, falls back to
+  the browser's preferred language (`navigator.languages`). Switching languages
+  persists the choice.
 - **`components/PortfolioPage.jsx`** is the real top-level component. It renders
   the fixed header (desktop nav + mobile hamburger + language switcher) and a
   horizontal **deck**: each section is one full-viewport slide inside
@@ -96,9 +99,9 @@ real content, all six sections (Home, About, Skills, Projects, Work, Contact) +
 footer, local-weather badge on the home avatar (Open-Meteo + wttr.in fallback),
 static export & GitHub Pages deploy.
 
-**Next:** persist the chosen language (localStorage), SEO `<Head>` / Open Graph,
-accessibility pass, a working contact form, theme toggle, deck progress
-indicator + hash deep-linking, and project thumbnails.
+**Next:** SEO `<Head>` / Open Graph, accessibility pass, a working contact form,
+theme toggle, deck progress indicator + hash deep-linking, and project
+thumbnails.
 
 ## Project structure
 

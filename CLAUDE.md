@@ -14,7 +14,7 @@ There is no linter, test runner, or TypeScript config in this project — `npm r
 
 A single-page portfolio built on Next.js (Pages Router) and React 18. There is exactly one route.
 
-- `pages/index.jsx` owns the only piece of app-wide state: the active `locale` (`'en'` | `'pt'`), held in `useState` and passed down. It is **not** persisted (no localStorage, no Next.js i18n routing) — a refresh resets to `'en'`.
+- `pages/index.jsx` owns the only piece of app-wide state: the active `locale` (`'en'` | `'pt'`), held in `useState` and passed down. It initializes to `'en'` (to match the static-export HTML and avoid a hydration mismatch), then a mount-time `useEffect` restores the persisted choice from `localStorage` (`portfolio-locale`) or falls back to `navigator.languages` via `resolvePreferredLocale` in `lib/locales.js`. Changing the language writes back to `localStorage`. There is no Next.js i18n routing.
 - `pages/_app.jsx` only imports `styles/globals.css`. All styling is global CSS; there are no CSS modules or styled-components.
 - `components/PortfolioPage.jsx` is the real top-level component. It renders the fixed header (desktop nav + mobile hamburger + language switcher) and a horizontal **deck** (`main.scroll-area`) holding all sections in fixed order: Home, About, Skills, Projects, Work, Contact — plus a fixed Footer. Each section is one full-viewport slide.
 - The site is exported as a static build (`output: 'export'` in `next.config.js`) and deployed to GitHub Pages under `/Portfolio` via `NEXT_PUBLIC_BASE_PATH`. The Next.js image optimizer is disabled (`images.unoptimized`); asset paths that need the base path read `process.env.NEXT_PUBLIC_BASE_PATH` directly (e.g. the avatar in `SectionHome.jsx`).
