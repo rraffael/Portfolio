@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" width="384" height="256" shape-rendering="crispEdges" role="img" aria-label="Pixel-art window onto a snowy sky">
+  <!-- room -->
+  <rect width="96" height="64" fill="#1b1f33"/>
+  <rect x="0" y="46" width="96" height="18" fill="#14182a"/>
+
+  <!-- window frame -->
+  <rect x="3" y="4" width="90" height="40" fill="#3a4266"/>
+
+  <!-- ====== weather-controlled region: SNOW ====== -->
+  <g id="weather-window">
+    <rect id="weather-sky" x="5" y="6" width="86" height="36" fill="#aab4d2"/>
+    <g id="weather-art">
+      <!-- soft snow cloud across the top -->
+      <rect x="40" y="8" width="10" height="1" fill="#e7ecf5"/>
+      <rect x="34" y="9" width="20" height="1" fill="#e7ecf5"/>
+      <rect x="29" y="10" width="30" height="1" fill="#d3dbe9"/>
+      <rect x="26" y="11" width="38" height="1" fill="#c0cadd"/>
+      <rect x="26" y="12" width="40" height="1" fill="#b2bdd3"/>
+      <rect x="30" y="13" width="33" height="1" fill="#9fabc6"/>
+
+      <!-- snowflakes (plus-shaped) -->
+      <rect x="33" y="18" width="1" height="3" fill="#ffffff"/>
+      <rect x="32" y="19" width="3" height="1" fill="#ffffff"/>
+      <rect x="45" y="21" width="1" height="3" fill="#ffffff"/>
+      <rect x="44" y="22" width="3" height="1" fill="#ffffff"/>
+      <rect x="56" y="18" width="1" height="3" fill="#ffffff"/>
+      <rect x="55" y="19" width="3" height="1" fill="#ffffff"/>
+      <rect x="18" y="24" width="1" height="3" fill="#ffffff"/>
+      <rect x="17" y="25" width="3" height="1" fill="#ffffff"/>
+      <rect x="72" y="23" width="1" height="3" fill="#ffffff"/>
+      <rect x="71" y="24" width="3" height="1" fill="#ffffff"/>
+      <rect x="38" y="29" width="1" height="3" fill="#ffffff"/>
+      <rect x="37" y="30" width="3" height="1" fill="#ffffff"/>
+      <rect x="60" y="28" width="1" height="3" fill="#ffffff"/>
+      <rect x="59" y="29" width="3" height="1" fill="#ffffff"/>
+      <rect x="28" y="34" width="1" height="3" fill="#ffffff"/>
+      <rect x="27" y="35" width="3" height="1" fill="#ffffff"/>
+      <rect x="50" y="36" width="1" height="3" fill="#ffffff"/>
+      <rect x="49" y="37" width="3" height="1" fill="#ffffff"/>
+    </g>
+  </g>
+  <!-- ====== /weather-controlled region ====== -->
+
+  <!-- window mullions -->
+  <rect x="25" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="47" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="69" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="5" y="23" width="86" height="2" fill="#3a4266"/>
+
+  <!-- windowsill -->
+  <rect x="1" y="42" width="92" height="1" fill="#5a6796"/>
+  <rect x="1" y="43" width="92" height="2" fill="#46507a"/>
+  <rect x="1" y="45" width="92" height="1" fill="#2b3150"/>
+</svg>

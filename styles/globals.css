@@ -15,7 +15,7 @@
   --muted: #9aa1c8;
   --line: #0a0b14;
 
-  --accent: #ffd166;   /* gold */
+  --accent: #ffd166; /* gold */
   --accent-2: #06d6a0; /* mint */
   --accent-3: #ef476f; /* pink */
   --accent-4: #5aa9ff; /* blue */
@@ -117,7 +117,9 @@ a {
   color: var(--muted);
   padding: 10px 12px;
   border-radius: 0;
-  transition: color 0.15s ease, background 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
 }
 
 .nav-link:hover,
@@ -148,7 +150,9 @@ a {
   align-items: center;
   gap: 7px;
   box-shadow: 3px 3px 0 var(--line);
-  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease;
 }
 
 .language-button:hover {
@@ -230,7 +234,7 @@ a {
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
-  scrollbar-width: none;        /* navigation is via arrows / keys / wheel */
+  scrollbar-width: none; /* navigation is via arrows / keys / wheel */
   -ms-overflow-style: none;
 }
 
@@ -272,7 +276,10 @@ a {
   background: var(--accent);
   border: var(--border-w) solid var(--line);
   box-shadow: var(--shadow);
-  transition: transform 0.08s ease, box-shadow 0.08s ease, opacity 0.15s ease;
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    opacity 0.15s ease;
 }
 
 .deck-arrow:hover {
@@ -332,7 +339,9 @@ a {
   border: var(--border-w) solid var(--line);
   box-shadow: var(--shadow);
   text-decoration: none;
-  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease;
 }
 
 .pixel-btn:hover {
@@ -416,6 +425,58 @@ a {
   animation: blink 1.4s steps(2, jump-none) infinite;
 }
 
+/* Dev-only weather mock picker — never rendered in the production build. */
+.weather-mock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  max-width: min(560px, 100%);
+  margin-top: 4px;
+  padding: 8px;
+  background: var(--panel);
+  border: var(--border-w) dashed var(--line);
+}
+
+.weather-mock-label {
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  opacity: 0.85;
+}
+
+.weather-mock-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--ink);
+  background: transparent;
+  border: var(--border-w) solid var(--line);
+  padding: 5px 7px;
+  cursor: pointer;
+}
+
+.weather-mock-btn:hover {
+  background: var(--accent);
+  color: #14182a;
+}
+
+.weather-mock-btn.is-active {
+  background: var(--accent);
+  color: #14182a;
+  box-shadow: var(--shadow);
+}
+
+.weather-mock-name {
+  text-transform: lowercase;
+}
+
 .home-greeting {
   font-family: var(--font-mono);
   font-size: 1.4rem;
@@ -466,7 +527,9 @@ a {
 }
 
 @keyframes blink {
-  50% { opacity: 0.25; }
+  50% {
+    opacity: 0.25;
+  }
 }
 
 .home-cta {
@@ -489,7 +552,9 @@ a {
 }
 
 @keyframes bob {
-  50% { transform: translateX(6px); }
+  50% {
+    transform: translateX(6px);
+  }
 }
 
 /* ---------- Panels (cards used across sections) ---------- */
@@ -623,7 +688,9 @@ a {
 .project-card {
   display: flex;
   flex-direction: column;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
 }
 
 .project-card:hover {
@@ -687,7 +754,9 @@ a {
   border: 2px solid var(--line);
   padding: 8px 11px;
   box-shadow: 3px 3px 0 var(--line);
-  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease;
 }
 
 .project-link:hover {
@@ -787,7 +856,9 @@ a {
   flex-direction: column;
   gap: 6px;
   text-decoration: none;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
 }
 
 .contact-link:hover {

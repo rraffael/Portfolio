@@ -18,7 +18,7 @@ export interface Weather {
 
 // Shared weather "buckets" the badge knows how to render. Each API maps its own
 // numeric codes onto one of these so the UI only deals with a small, stable set.
-const CONDITIONS: Record<Condition, string> = {
+export const CONDITION_ICONS: Record<Condition, string> = {
   clear: '☀️',
   partly: '⛅',
   cloudy: '☁️',
@@ -27,6 +27,10 @@ const CONDITIONS: Record<Condition, string> = {
   snow: '❄️',
   storm: '⛈️'
 }
+
+// Stable display order of every condition the API can resolve to. Used by the UI
+// (window scenes, dev mock picker) so the list stays in sync with this module.
+export const CONDITIONS: Condition[] = ['clear', 'partly', 'cloudy', 'fog', 'rain', 'snow', 'storm']
 
 // WMO weather codes used by Open-Meteo → condition bucket.
 function wmoToCondition(code: number): Condition {
@@ -51,8 +55,8 @@ function wwoToCondition(code: number): Condition {
   if ([386, 389, 392, 395].includes(code)) return 'storm'
   if (
     [
-      179, 182, 185, 227, 230, 281, 284, 311, 314, 317, 320, 323, 326, 329, 332, 335, 338, 350,
-      362, 365, 368, 371, 374, 377
+      179, 182, 185, 227, 230, 281, 284, 311, 314, 317, 320, 323, 326, 329, 332, 335, 338, 350, 362,
+      365, 368, 371, 374, 377
     ].includes(code)
   ) {
     return 'snow'
@@ -86,7 +90,7 @@ async function fetchPrimary(): Promise<Weather> {
   const condition = wmoToCondition(current.weathercode)
   return {
     condition,
-    icon: CONDITIONS[condition],
+    icon: CONDITION_ICONS[condition],
     temperature: Math.round(current.temperature),
     city: loc.city || '',
     source: 'open-meteo'
@@ -102,7 +106,7 @@ async function fetchBackup(): Promise<Weather> {
   const city = area && area.areaName && area.areaName[0] ? area.areaName[0].value : ''
   return {
     condition,
-    icon: CONDITIONS[condition],
+    icon: CONDITION_ICONS[condition],
     temperature: Math.round(Number(current.temp_C)),
     city,
     source: 'wttr.in'
@@ -118,7 +122,8 @@ export async function fetchWeather(): Promise<Weather> {
     try {
       return await fetchBackup()
     } catch (backupError) {
-      const primaryMessage = primaryError instanceof Error ? primaryError.message : String(primaryError)
+      const primaryMessage =
+        primaryError instanceof Error ? primaryError.message : String(primaryError)
       const backupMessage = backupError instanceof Error ? backupError.message : String(backupError)
       throw new Error(`weather unavailable (primary: ${primaryMessage}; backup: ${backupMessage})`)
     }
