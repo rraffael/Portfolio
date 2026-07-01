@@ -39,11 +39,17 @@
         <rect x="5" y="41" width="86" height="1" fill="#2a3140"/>
 
         <!-- fog bands in front of horizon -->
-        <rect x="5" y="12" width="55" height="2" fill="#818aa0" opacity="0.40"/>
-        <rect x="19" y="18" width="72" height="2" fill="#767f95" opacity="0.50"/>
-        <rect x="5" y="24" width="66" height="2" fill="#8a93a8" opacity="0.55"/>
-        <rect x="29" y="31" width="62" height="2" fill="#727c92" opacity="0.50"/>
-        <rect x="5" y="36" width="86" height="3" fill="#868fa4" opacity="0.35"/>
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 0;1 0;2 0;3 0;4 0;3 0;2 0;1 0;0 0" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+          <rect x="5" y="12" width="55" height="2" fill="#818aa0" opacity="0.40"/>
+          <rect x="5" y="24" width="66" height="2" fill="#8a93a8" opacity="0.55"/>
+          <rect x="5" y="36" width="86" height="3" fill="#868fa4" opacity="0.35"/>
+        </g>
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 0;-1 0;-2 0;-3 0;-4 0;-3 0;-2 0;-1 0;0 0" dur="15s" calcMode="discrete" repeatCount="indefinite"/>
+          <rect x="19" y="18" width="72" height="2" fill="#767f95" opacity="0.50"/>
+          <rect x="29" y="31" width="62" height="2" fill="#727c92" opacity="0.50"/>
+        </g>
 
       </g>
     </g>

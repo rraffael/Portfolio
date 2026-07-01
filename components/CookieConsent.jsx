@@ -67,23 +67,24 @@ export default function CookieConsent({ t, onAccept, onReject, onSave }) {
         )}
 
         <div className="cookie-actions">
-          <button
-            type="button"
-            className="cookie-btn cookie-btn--link"
-            onClick={() => setShowDetails((open) => !open)}
-            aria-expanded={showDetails}
-          >
-            {showDetails ? t('cookies.hide') : t('cookies.customize')}
-          </button>
-          <span className="cookie-actions-spacer" />
-          {showDetails && (
-            <button type="button" className="cookie-btn" onClick={() => onSave(weather)}>
-              {t('cookies.save')}
+          <div className="cookie-actions-row">
+            <button
+              type="button"
+              className="cookie-btn cookie-btn--link"
+              onClick={() => setShowDetails((open) => !open)}
+              aria-expanded={showDetails}
+            >
+              {showDetails ? t('cookies.hide') : t('cookies.customize')}
             </button>
-          )}
-          <button type="button" className="cookie-btn" onClick={onReject}>
-            {t('cookies.reject')}
-          </button>
+            {showDetails && (
+              <button type="button" className="cookie-btn" onClick={() => onSave(weather)}>
+                {t('cookies.save')}
+              </button>
+            )}
+            <button type="button" className="cookie-btn" onClick={onReject}>
+              {t('cookies.reject')}
+            </button>
+          </div>
           <button type="button" className="cookie-btn cookie-btn--primary" onClick={onAccept}>
             {t('cookies.accept')}
           </button>

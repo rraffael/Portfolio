@@ -24,15 +24,21 @@
         <rect x="74" y="9" width="8" height="10" fill="#ffd166"/>
         <rect x="75" y="11" width="6" height="6" fill="#fff1b5"/>
     
-        <rect x="14" y="15" width="7" height="1" fill="#ffffff"/>
-        <rect x="12" y="16" width="11" height="1" fill="#edf7ff"/>
-        <rect x="11" y="17" width="13" height="1" fill="#cfe8ff"/>
-        <rect x="13" y="18" width="9" height="1" fill="#9dcced"/>
-    
-        <rect x="45" y="12" width="6" height="1" fill="#ffffff"/>
-        <rect x="43" y="13" width="10" height="1" fill="#edf7ff"/>
-        <rect x="42" y="14" width="12" height="1" fill="#cfe8ff"/>
-        <rect x="44" y="15" width="8" height="1" fill="#9dcced"/>
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 0;1 0;2 0;3 0;2 0;1 0;0 0" dur="10s" calcMode="discrete" repeatCount="indefinite"/>
+          <rect x="14" y="15" width="7" height="1" fill="#ffffff"/>
+          <rect x="12" y="16" width="11" height="1" fill="#edf7ff"/>
+          <rect x="11" y="17" width="13" height="1" fill="#cfe8ff"/>
+          <rect x="13" y="18" width="9" height="1" fill="#9dcced"/>
+        </g>
+
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 0;-1 0;-2 0;-3 0;-2 0;-1 0;0 0" dur="13s" calcMode="discrete" repeatCount="indefinite"/>
+          <rect x="45" y="12" width="6" height="1" fill="#ffffff"/>
+          <rect x="43" y="13" width="10" height="1" fill="#edf7ff"/>
+          <rect x="42" y="14" width="12" height="1" fill="#cfe8ff"/>
+          <rect x="44" y="15" width="8" height="1" fill="#9dcced"/>
+        </g>
     
         <!-- distant horizon -->
         <path d="M5 35 L13 32 L20 34 L28 30 L37 33 L46 31 L55 34 L64 31 L73 33 L91 29 L91 42 L5 42 Z" fill="#58a9c8"/>
@@ -52,8 +58,12 @@
         <rect x="5" y="39" width="86" height="3" fill="#55a7d5"/>
         <rect x="5" y="41" width="86" height="1" fill="#386985"/>
     
-        <rect x="11" y="36" width="1" height="1" fill="#bde9ff"/>
-        <rect x="57" y="36" width="2" height="1" fill="#bde9ff"/>
+        <rect x="11" y="36" width="1" height="1" fill="#bde9ff">
+          <animate attributeName="opacity" values="1;0.3;1" dur="2.6s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="57" y="36" width="2" height="1" fill="#bde9ff">
+          <animate attributeName="opacity" values="0.4;1;0.4" dur="3.1s" repeatCount="indefinite"/>
+        </rect>
 
       </g>
     </g>

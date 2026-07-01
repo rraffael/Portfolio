@@ -23,29 +23,35 @@
         <rect x="27" y="10" width="2" height="2" fill="#d3dcee"/>
         <rect x="30" y="13" width="2" height="2" fill="#d3dcee"/>
 
-        <!-- stars in clear patches -->
-        <rect x="50" y="9"  width="1" height="1" fill="#eaf0ff"/>
-        <rect x="63" y="11" width="1" height="1" fill="#cfe0ff" opacity="0.85"/>
+        <!-- stars in clear patches (twinkling) -->
+        <rect x="50" y="9"  width="1" height="1" fill="#eaf0ff"><animate attributeName="opacity" values="1;0.3;1" dur="2.8s" repeatCount="indefinite"/></rect>
+        <rect x="63" y="11" width="1" height="1" fill="#cfe0ff"><animate attributeName="opacity" values="0.85;0.2;0.85" dur="3.4s" begin="-0.6s" repeatCount="indefinite"/></rect>
         <rect x="18" y="20" width="1" height="1" fill="#cfe0ff" opacity="0.8"/>
-        <rect x="44" y="22" width="1" height="1" fill="#eaf0ff" opacity="0.8"/>
+        <rect x="44" y="22" width="1" height="1" fill="#eaf0ff"><animate attributeName="opacity" values="0.8;0.3;0.8" dur="3.1s" begin="-1.2s" repeatCount="indefinite"/></rect>
         <rect x="84" y="10" width="1" height="1" fill="#ffffff"/>
 
         <!-- clouds (moonlit blue-grey) -->
-        <rect x="36" y="11" width="21" height="1" fill="#7c8bb0"/>
-        <rect x="33" y="12" width="27" height="1" fill="#6b7aa0"/>
-        <rect x="31" y="13" width="31" height="1" fill="#59688e"/>
-        <rect x="32" y="14" width="29" height="1" fill="#47547a"/>
-        <rect x="35" y="15" width="23" height="1" fill="#374262"/>
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 0;1 0;2 0;3 0;2 0;1 0;0 0" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+          <rect x="36" y="11" width="21" height="1" fill="#7c8bb0"/>
+          <rect x="33" y="12" width="27" height="1" fill="#6b7aa0"/>
+          <rect x="31" y="13" width="31" height="1" fill="#59688e"/>
+          <rect x="32" y="14" width="29" height="1" fill="#47547a"/>
+          <rect x="35" y="15" width="23" height="1" fill="#374262"/>
 
-        <rect x="73" y="13" width="9" height="1" fill="#7c8bb0"/>
-        <rect x="71" y="14" width="13" height="1" fill="#6b7aa0"/>
-        <rect x="70" y="15" width="15" height="1" fill="#59688e"/>
-        <rect x="72" y="16" width="11" height="1" fill="#47547a"/>
+          <rect x="73" y="13" width="9" height="1" fill="#7c8bb0"/>
+          <rect x="71" y="14" width="13" height="1" fill="#6b7aa0"/>
+          <rect x="70" y="15" width="15" height="1" fill="#59688e"/>
+          <rect x="72" y="16" width="11" height="1" fill="#47547a"/>
+        </g>
 
-        <rect x="12" y="27" width="8" height="1" fill="#6b7aa0"/>
-        <rect x="10" y="28" width="12" height="1" fill="#59688e"/>
-        <rect x="9" y="29" width="14" height="1" fill="#47547a"/>
-        <rect x="11" y="30" width="10" height="1" fill="#374262"/>
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 0;-1 0;-2 0;-3 0;-2 0;-1 0;0 0" dur="15s" calcMode="discrete" repeatCount="indefinite"/>
+          <rect x="12" y="27" width="8" height="1" fill="#6b7aa0"/>
+          <rect x="10" y="28" width="12" height="1" fill="#59688e"/>
+          <rect x="9" y="29" width="14" height="1" fill="#47547a"/>
+          <rect x="11" y="30" width="10" height="1" fill="#374262"/>
+        </g>
 
         <!-- distant horizon -->
         <path d="M5 35 L13 32 L20 34 L28 30 L37 33 L46 31 L55 34 L64 31 L73 33 L91 29 L91 42 L5 42 Z" fill="#22405f"/>
