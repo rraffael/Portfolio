@@ -4,7 +4,9 @@
 // It silently hides itself if both APIs fail, so the window never shows a broken
 // badge.
 export default function HomeWeatherBadge({ t, weather, status }) {
-  if (status === 'error') return null
+  // Hidden when both APIs fail ('error') or when weather is disabled by the
+  // visitor's cookie choice ('idle') — the window just shows the default scene.
+  if (status === 'error' || status === 'idle') return null
 
   if (status === 'loading' || !weather) {
     return (

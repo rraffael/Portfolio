@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" width="384" height="256" shape-rendering="crispEdges" role="img" aria-label="Pixel-art window onto a clear starry night sky">
+  <!-- room: preserved from the current assets -->
+  <rect width="96" height="64" fill="#1b1f33"/>
+  <rect x="0" y="46" width="96" height="18" fill="#14182a"/>
+
+  <!-- window frame: preserved from the current assets -->
+  <rect x="3" y="4" width="90" height="40" fill="#3a4266"/>
+
+  <!-- ====== weather-controlled region: CLEAR (night) ====== -->
+  <g id="weather-window">
+    <clipPath id="clip-weather"><rect x="5" y="6" width="86" height="36"/></clipPath>
+    <g clip-path="url(#clip-weather)">
+      <rect x="5" y="5" width="86" height="10" fill="#0e1734"/>
+      <rect x="5" y="15" width="86" height="9" fill="#152046"/>
+      <rect x="5" y="24" width="86" height="10" fill="#1e2c5a"/>
+      <rect x="5" y="34" width="86" height="8" fill="#2a3a6e"/>
+      <g id="weather-art">
+
+        <!-- moon -->
+        <rect x="75" y="7" width="6" height="12" fill="#eef2fb"/>
+        <rect x="73" y="9" width="10" height="8" fill="#eef2fb"/>
+        <rect x="74" y="8" width="8" height="10" fill="#eef2fb"/>
+        <rect x="76" y="10" width="2" height="2" fill="#d3dcee"/>
+        <rect x="79" y="13" width="2" height="2" fill="#d3dcee"/>
+        <rect x="76" y="15" width="1" height="1" fill="#d3dcee"/>
+
+        <!-- stars -->
+        <rect x="12" y="9"  width="1" height="1" fill="#eaf0ff"/>
+        <rect x="20" y="13" width="1" height="1" fill="#cfe0ff" opacity="0.85"/>
+        <rect x="28" y="8"  width="1" height="1" fill="#ffffff"/>
+        <rect x="44" y="10" width="1" height="1" fill="#eaf0ff"/>
+        <rect x="52" y="18" width="1" height="1" fill="#cfe0ff" opacity="0.8"/>
+        <rect x="58" y="12" width="1" height="1" fill="#ffffff"/>
+        <rect x="16" y="20" width="1" height="1" fill="#cfe0ff" opacity="0.75"/>
+        <rect x="40" y="23" width="1" height="1" fill="#cfe0ff" opacity="0.7"/>
+        <rect x="62" y="22" width="1" height="1" fill="#eaf0ff" opacity="0.8"/>
+        <!-- twinkle -->
+        <rect x="33" y="11" width="1" height="1" fill="#ffffff"/>
+        <rect x="32" y="12" width="3" height="1" fill="#ffffff"/>
+        <rect x="33" y="13" width="1" height="1" fill="#ffffff"/>
+
+        <!-- distant horizon -->
+        <path d="M5 35 L13 32 L20 34 L28 30 L37 33 L46 31 L55 34 L64 31 L73 33 L91 29 L91 42 L5 42 Z" fill="#1f3a5c"/>
+        <path d="M5 38 L12 36 L22 37 L30 34 L40 37 L50 35 L62 38 L72 35 L83 37 L91 34 L91 42 L5 42 Z" fill="#16304e"/>
+        <!-- tiny skyline -->
+        <rect x="9" y="32" width="3" height="10" fill="#223a5a"/>
+        <rect x="14" y="35" width="4" height="7" fill="#2e496b"/>
+        <rect x="22" y="31" width="4" height="11" fill="#223a5a"/>
+        <rect x="31" y="34" width="3" height="8" fill="#2e496b"/>
+        <rect x="38" y="30" width="4" height="12" fill="#223a5a"/>
+        <rect x="51" y="33" width="3" height="9" fill="#2e496b"/>
+        <rect x="57" y="29" width="5" height="13" fill="#223a5a"/>
+        <rect x="65" y="34" width="4" height="8" fill="#2e496b"/>
+        <rect x="74" y="31" width="3" height="11" fill="#223a5a"/>
+        <rect x="82" y="35" width="5" height="7" fill="#2e496b"/>
+        <!-- water/low land band -->
+        <rect x="5" y="39" width="86" height="3" fill="#1d3b5e"/>
+        <rect x="5" y="41" width="86" height="1" fill="#12283f"/>
+
+        <!-- moon reflection on water -->
+        <rect x="76" y="40" width="2" height="1" fill="#bcd0ee" opacity="0.5"/>
+        <rect x="78" y="41" width="1" height="1" fill="#bcd0ee" opacity="0.4"/>
+
+      </g>
+    </g>
+  </g>
+  <!-- ====== /weather-controlled region ====== -->
+
+  <!-- window mullions: preserved from the current assets -->
+  <rect x="25" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="47" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="69" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="5" y="23" width="86" height="2" fill="#3a4266"/>
+
+  <!-- windowsill: preserved from the current assets -->
+  <rect x="1" y="42" width="92" height="1" fill="#5a6796"/>
+  <rect x="1" y="43" width="92" height="2" fill="#46507a"/>
+  <rect x="1" y="45" width="92" height="1" fill="#2b3150"/>
+</svg>

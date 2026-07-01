@@ -6,7 +6,9 @@ import ContactSection from './SectionContact'
 import ProjectsSection from './SectionProjects'
 import WorkSection from './SectionWork'
 import Footer from './Footer'
+import CookieConsent from './CookieConsent'
 import { getMessage } from '../lib/locales'
+import { loadConsent, saveConsent } from '../lib/consent'
 
 const languages = [
   { code: 'en', label: 'EN', flag: '🇺🇸' },
@@ -17,11 +19,35 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isLanguageOpen, setLanguageOpen] = useState(false)
   const [activeSection, setActiveSection] = useState(0)
+  // Cookie consent: `consent` is null until the mount effect reads localStorage,
+  // and the banner is shown only when no prior decision exists. Kept out of the
+  // static-export initial render so server and first client render match.
+  const [consent, setConsent] = useState(null)
+  const [isBannerOpen, setBannerOpen] = useState(false)
   const containerRef = useRef(null)
   const sectionRefs = useRef([])
   const activeRef = useRef(0)
 
   const t = (path) => getMessage(locale, path)
+
+  useEffect(() => {
+    // One-time read of the persisted decision after hydration (localStorage is
+    // client-only), mirroring how the locale is restored in pages/index.jsx.
+    const stored = loadConsent()
+    if (stored) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setConsent(stored)
+    } else {
+      setBannerOpen(true)
+    }
+  }, [])
+
+  const decide = useCallback((weatherAllowed) => {
+    setConsent(saveConsent(weatherAllowed))
+    setBannerOpen(false)
+  }, [])
+
+  const weatherConsent = consent ? consent.weather : false
 
   const sections = [
     { id: 'home', label: t('menu.home') },
@@ -39,13 +65,16 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
   }, [])
 
   // Move the deck to a slide on the horizontal axis.
-  const goTo = useCallback((index) => {
-    const container = containerRef.current
-    if (!container) return
-    const clamped = Math.max(0, Math.min(index, sectionRefs.current.length - 1))
-    container.scrollTo({ left: clamped * container.clientWidth, behavior: 'smooth' })
-    setActive(clamped)
-  }, [setActive])
+  const goTo = useCallback(
+    (index) => {
+      const container = containerRef.current
+      if (!container) return
+      const clamped = Math.max(0, Math.min(index, sectionRefs.current.length - 1))
+      container.scrollTo({ left: clamped * container.clientWidth, behavior: 'smooth' })
+      setActive(clamped)
+    },
+    [setActive]
+  )
 
   const handleScroll = () => {
     const container = containerRef.current
@@ -83,7 +112,9 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
 
       goTo(activeRef.current + (delta > 0 ? 1 : -1))
       locked = true
-      window.setTimeout(() => { locked = false }, 700)
+      window.setTimeout(() => {
+        locked = false
+      }, 700)
     }
 
     const onKey = (event) => {
@@ -191,51 +222,27 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
       </header>
 
       <main className="scroll-area" ref={containerRef} onScroll={handleScroll}>
-        <section
-          ref={(el) => (sectionRefs.current[0] = el)}
-          id="home"
-          className="section"
-        >
-          <HomeSection t={t} />
+        <section ref={(el) => (sectionRefs.current[0] = el)} id="home" className="section">
+          <HomeSection t={t} weatherConsent={weatherConsent} />
         </section>
 
-        <section
-          ref={(el) => (sectionRefs.current[1] = el)}
-          id="about"
-          className="section"
-        >
+        <section ref={(el) => (sectionRefs.current[1] = el)} id="about" className="section">
           <AboutSection t={t} />
         </section>
 
-        <section
-          ref={(el) => (sectionRefs.current[2] = el)}
-          id="skills"
-          className="section"
-        >
+        <section ref={(el) => (sectionRefs.current[2] = el)} id="skills" className="section">
           <SkillsSection t={t} />
         </section>
 
-        <section
-          ref={(el) => (sectionRefs.current[3] = el)}
-          id="projects"
-          className="section"
-        >
+        <section ref={(el) => (sectionRefs.current[3] = el)} id="projects" className="section">
           <ProjectsSection t={t} />
         </section>
 
-        <section
-          ref={(el) => (sectionRefs.current[4] = el)}
-          id="work"
-          className="section"
-        >
+        <section ref={(el) => (sectionRefs.current[4] = el)} id="work" className="section">
           <WorkSection t={t} />
         </section>
 
-        <section
-          ref={(el) => (sectionRefs.current[5] = el)}
-          id="contact"
-          className="section"
-        >
+        <section ref={(el) => (sectionRefs.current[5] = el)} id="contact" className="section">
           <ContactSection t={t} />
         </section>
       </main>
@@ -259,7 +266,16 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
         ►
       </button>
 
-      <Footer t={t} />
+      <Footer t={t} onManageCookies={() => setBannerOpen(true)} />
+
+      {isBannerOpen && (
+        <CookieConsent
+          t={t}
+          onAccept={() => decide(true)}
+          onReject={() => decide(false)}
+          onSave={(weatherAllowed) => decide(weatherAllowed)}
+        />
+      )}
     </div>
   )
 }

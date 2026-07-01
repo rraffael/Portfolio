@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" width="384" height="256" shape-rendering="crispEdges" role="img" aria-label="Pixel-art window onto a foggy night sky">
+  <!-- room: preserved from the current assets -->
+  <rect width="96" height="64" fill="#1b1f33"/>
+  <rect x="0" y="46" width="96" height="18" fill="#14182a"/>
+
+  <!-- window frame: preserved from the current assets -->
+  <rect x="3" y="4" width="90" height="40" fill="#3a4266"/>
+
+  <!-- ====== weather-controlled region: FOG (night) ====== -->
+  <g id="weather-window">
+    <clipPath id="clip-weather"><rect x="5" y="6" width="86" height="36"/></clipPath>
+    <g clip-path="url(#clip-weather)">
+      <rect x="5" y="5" width="86" height="10" fill="#2a3040"/>
+      <rect x="5" y="15" width="86" height="9" fill="#313849"/>
+      <rect x="5" y="24" width="86" height="10" fill="#3a4254"/>
+      <rect x="5" y="34" width="86" height="8" fill="#434c60"/>
+      <g id="weather-art">
+
+        <!-- barely-visible moon glow -->
+        <rect x="70" y="11" width="8" height="6" fill="#c2ccdd" opacity="0.4"/>
+        <rect x="72" y="9" width="4" height="10" fill="#c2ccdd" opacity="0.4"/>
+
+        <!-- distant horizon -->
+        <path d="M5 35 L13 32 L20 34 L28 30 L37 33 L46 31 L55 34 L64 31 L73 33 L91 29 L91 42 L5 42 Z" fill="#333b4a"/>
+        <path d="M5 38 L12 36 L22 37 L30 34 L40 37 L50 35 L62 38 L72 35 L83 37 L91 34 L91 42 L5 42 Z" fill="#2a313f"/>
+        <!-- tiny skyline -->
+        <rect x="9" y="32" width="3" height="10" fill="#333c4d"/>
+        <rect x="14" y="35" width="4" height="7" fill="#404a5f"/>
+        <rect x="22" y="31" width="4" height="11" fill="#333c4d"/>
+        <rect x="31" y="34" width="3" height="8" fill="#404a5f"/>
+        <rect x="38" y="30" width="4" height="12" fill="#333c4d"/>
+        <rect x="51" y="33" width="3" height="9" fill="#404a5f"/>
+        <rect x="57" y="29" width="5" height="13" fill="#333c4d"/>
+        <rect x="65" y="34" width="4" height="8" fill="#404a5f"/>
+        <rect x="74" y="31" width="3" height="11" fill="#333c4d"/>
+        <rect x="82" y="35" width="5" height="7" fill="#404a5f"/>
+        <!-- water/low land band -->
+        <rect x="5" y="39" width="86" height="3" fill="#364052"/>
+        <rect x="5" y="41" width="86" height="1" fill="#2a3140"/>
+
+        <!-- fog bands in front of horizon -->
+        <rect x="5" y="12" width="55" height="2" fill="#818aa0" opacity="0.40"/>
+        <rect x="19" y="18" width="72" height="2" fill="#767f95" opacity="0.50"/>
+        <rect x="5" y="24" width="66" height="2" fill="#8a93a8" opacity="0.55"/>
+        <rect x="29" y="31" width="62" height="2" fill="#727c92" opacity="0.50"/>
+        <rect x="5" y="36" width="86" height="3" fill="#868fa4" opacity="0.35"/>
+
+      </g>
+    </g>
+  </g>
+  <!-- ====== /weather-controlled region ====== -->
+
+  <!-- window mullions: preserved from the current assets -->
+  <rect x="25" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="47" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="69" y="6" width="2" height="36" fill="#3a4266"/>
+  <rect x="5" y="23" width="86" height="2" fill="#3a4266"/>
+
+  <!-- windowsill: preserved from the current assets -->
+  <rect x="1" y="42" width="92" height="1" fill="#5a6796"/>
+  <rect x="1" y="43" width="92" height="2" fill="#46507a"/>
+  <rect x="1" y="45" width="92" height="1" fill="#2b3150"/>
+</svg>

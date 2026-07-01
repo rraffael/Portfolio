@@ -1,17 +1,20 @@
 import { useState } from 'react'
 import HomeWeatherBadge from './HomeWeatherBadge'
 import useWeather from './useWeather'
-import { CONDITIONS, CONDITION_ICONS } from '../lib/weather'
+import { CONDITIONS, iconFor } from '../lib/weather'
 
 // The dev-only weather mock picker is rendered only outside production builds.
 // In the static export NODE_ENV is inlined as 'production', so the control (and
 // its markup) never ships to GitHub Pages.
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
-export default function SectionHome({ t }) {
-  const { weather, status } = useWeather()
-  // Local-only override so you can preview every window scene from `npm run dev`.
+export default function SectionHome({ t, weatherConsent = false }) {
+  // The weather round-trip only happens once the visitor has opted in via the
+  // cookie banner; until then the window shows the default avatar scene.
+  const { weather, status } = useWeather(weatherConsent)
+  // Local-only overrides so you can preview every window scene from `npm run dev`.
   const [mockCondition, setMockCondition] = useState(null)
+  const [mockNight, setMockNight] = useState(false)
   const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
   // Real condition from the API once it resolves (and in the static export's
@@ -21,16 +24,22 @@ export default function SectionHome({ t }) {
       ? weather.condition
       : null
 
+  // Day vs night: the API reports it (Open-Meteo `is_day`); a dev mock overrides
+  // it. Defaults to daytime when unknown.
+  const realIsDay = weather && typeof weather.isDay === 'boolean' ? weather.isDay : true
+  const isDay = mockCondition ? !mockNight : realIsDay
+
   // A dev mock wins over the live weather; otherwise show the real condition.
   const condition = mockCondition || realCondition
-  const windowSrc = condition ? `${base}/window/${condition}.svg` : `${base}/avatar.svg`
+  const suffix = isDay ? '' : '-night'
+  const windowSrc = condition ? `${base}/window/${condition}${suffix}.svg` : `${base}/avatar.svg`
 
   // Keep the badge in sync with whatever the window is showing. While mocking we
   // synthesize a weather object so the badge reflects the chosen condition too.
   const badgeWeather = mockCondition
     ? {
         condition: mockCondition,
-        icon: CONDITION_ICONS[mockCondition],
+        icon: iconFor(mockCondition, isDay),
         temperature: weather ? weather.temperature : 21,
         city: weather ? weather.city : ''
       }
@@ -62,6 +71,15 @@ export default function SectionHome({ t }) {
             >
               auto
             </button>
+            <button
+              type="button"
+              className={`weather-mock-btn${mockNight ? ' is-active' : ''}`}
+              onClick={() => setMockNight((night) => !night)}
+              title="Preview the night variant"
+            >
+              <span aria-hidden="true">{mockNight ? '🌙' : '☀️'}</span>
+              <span className="weather-mock-name">{mockNight ? 'night' : 'day'}</span>
+            </button>
             {CONDITIONS.map((c) => (
               <button
                 key={c}
@@ -70,7 +88,7 @@ export default function SectionHome({ t }) {
                 onClick={() => setMockCondition(c)}
                 title={t(`home.weather.${c}`)}
               >
-                <span aria-hidden="true">{CONDITION_ICONS[c]}</span>
+                <span aria-hidden="true">{iconFor(c, !mockNight)}</span>
                 <span className="weather-mock-name">{t(`home.weather.${c}`)}</span>
               </button>
             ))}

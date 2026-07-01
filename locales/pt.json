@@ -45,8 +45,16 @@
     "stat3Label": "Idiomas falados",
     "educationTitle": "Formação",
     "education": [
-      { "degree": "Mestrado em Multimédia", "school": "Universidade do Porto — FEUP", "period": "2019 — Atual" },
-      { "degree": "Bacharel em Sistemas para Internet", "school": "Universidade Tiradentes", "period": "2017 — 2019" }
+      {
+        "degree": "Mestrado em Multimédia",
+        "school": "Universidade do Porto — FEUP",
+        "period": "2019 — Atual"
+      },
+      {
+        "degree": "Bacharel em Sistemas para Internet",
+        "school": "Universidade Tiradentes",
+        "period": "2017 — 2019"
+      }
     ],
     "languagesTitle": "Idiomas",
     "languages": [
@@ -157,5 +165,30 @@
   "footer": {
     "text": "Raffael Castro Rodrigues — Engenheiro de Software",
     "rights": "Todos os direitos reservados."
+  },
+  "cookies": {
+    "title": "Cookies e privacidade",
+    "intro": "Este site guarda algumas coisas no seu navegador para lembrar as suas preferências e, apenas se você permitir, chama APIs de terceiros para mostrar o clima da sua região. Sem anúncios, sem rastreamento.",
+    "customize": "Personalizar",
+    "hide": "Ocultar detalhes",
+    "accept": "Aceitar tudo",
+    "reject": "Rejeitar não essenciais",
+    "save": "Salvar preferências",
+    "manage": "Cookies",
+    "always": "Sempre ativo",
+    "optional": "Opcional",
+    "necessary": {
+      "title": "Essenciais",
+      "desc": "Necessários para o site funcionar e lembrar as suas escolhas. Ficam apenas no seu navegador e nunca são enviados a lugar nenhum.",
+      "item1": "Preferência de idioma (portfolio-locale) — mantém o site no idioma que você escolheu.",
+      "item2": "Escolha de cookies (portfolio-consent) — guarda esta decisão para não perguntar de novo."
+    },
+    "weather": {
+      "title": "Clima e localização",
+      "desc": "Alimenta a cena de clima ao vivo na janela da home. Envia o seu endereço IP a serviços de terceiros para estimar a sua cidade aproximada e o clima atual. Se recusar, você vê apenas a cena padrão.",
+      "item1": "ipapi.co — transforma o seu IP numa localização aproximada (cidade, coordenadas).",
+      "item2": "open-meteo.com — retorna o clima atual para essas coordenadas.",
+      "item3": "wttr.in — clima + localização de reserva, caso o primeiro serviço esteja indisponível."
+    }
   }
 }

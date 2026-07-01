@@ -45,8 +45,16 @@
     "stat3Label": "Languages spoken",
     "educationTitle": "Education",
     "education": [
-      { "degree": "M.Sc. in Multimedia", "school": "University of Porto — FEUP", "period": "2019 — Present" },
-      { "degree": "B.Sc. in Internet Systems", "school": "Universidade Tiradentes", "period": "2017 — 2019" }
+      {
+        "degree": "M.Sc. in Multimedia",
+        "school": "University of Porto — FEUP",
+        "period": "2019 — Present"
+      },
+      {
+        "degree": "B.Sc. in Internet Systems",
+        "school": "Universidade Tiradentes",
+        "period": "2017 — 2019"
+      }
     ],
     "languagesTitle": "Languages",
     "languages": [
@@ -157,5 +165,30 @@
   "footer": {
     "text": "Raffael Castro Rodrigues — Software Engineer",
     "rights": "All rights reserved."
+  },
+  "cookies": {
+    "title": "Cookies & privacy",
+    "intro": "This site keeps a couple of things in your browser to remember your preferences and, only if you allow it, calls third-party APIs to show your local weather. No ads, no tracking.",
+    "customize": "Customize",
+    "hide": "Hide details",
+    "accept": "Accept all",
+    "reject": "Reject non-essential",
+    "save": "Save preferences",
+    "manage": "Cookies",
+    "always": "Always on",
+    "optional": "Optional",
+    "necessary": {
+      "title": "Essential",
+      "desc": "Needed for the site to work and to remember your choices. Stored only in your browser and never sent anywhere.",
+      "item1": "Language preference (portfolio-locale) — keeps the site in the language you picked.",
+      "item2": "Cookie choice (portfolio-consent) — remembers this decision so you are not asked again."
+    },
+    "weather": {
+      "title": "Weather & location",
+      "desc": "Powers the live weather scene in the home window. It sends your IP address to third-party services to estimate your approximate city and current weather. Decline and you simply get the default scene.",
+      "item1": "ipapi.co — turns your IP into an approximate location (city, coordinates).",
+      "item2": "open-meteo.com — returns the current weather for those coordinates.",
+      "item3": "wttr.in — backup weather + location if the first service is unavailable."
+    }
   }
 }
