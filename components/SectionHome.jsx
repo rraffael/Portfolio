@@ -15,6 +15,10 @@ export default function SectionHome({ t, weatherConsent = false }) {
   // Local-only overrides so you can preview every window scene from `npm run dev`.
   const [mockCondition, setMockCondition] = useState(null)
   const [mockNight, setMockNight] = useState(false)
+  // The src of the window image that has actually finished painting. Used to
+  // hold the shutter down until the resolved weather scene is on screen, so the
+  // reveal never flashes the fallback avatar underneath.
+  const [loadedSrc, setLoadedSrc] = useState(null)
   const base = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
   // Real condition from the API once it resolves (and in the static export's
@@ -46,17 +50,33 @@ export default function SectionHome({ t, weatherConsent = false }) {
     : weather
   const badgeStatus = mockCondition ? 'ready' : status
 
+  // Exterior rolling shutter (Portuguese "estore"): it stays down only while we
+  // are actively fetching the visitor's weather, then rolls up to reveal the
+  // scene once that scene has finished loading. Default is open so the content
+  // shows without JS and for visitors who never opted into the weather feature.
+  const sceneReady = loadedSrc === windowSrc
+  const shutterClosed =
+    weatherConsent &&
+    !mockCondition &&
+    (status === 'loading' || (status === 'ready' && !sceneReady))
+
   return (
     <div className="section-content home-wrap">
       <div className="home-card">
-        <div className="home-avatar-frame">
+        <div className="home-avatar-frame" data-shutter={shutterClosed ? 'closed' : 'open'}>
           <img
             className="home-avatar"
             src={windowSrc}
             alt={t('home.name')}
             width="384"
             height="256"
+            onLoad={() => setLoadedSrc(windowSrc)}
           />
+          <div className="home-window-inner" aria-hidden="true">
+            <div className="home-shutter">
+              <div className="home-shutter-slats" />
+            </div>
+          </div>
           <HomeWeatherBadge t={t} weather={badgeWeather} status={badgeStatus} />
         </div>
 

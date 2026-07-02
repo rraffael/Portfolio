@@ -394,6 +394,85 @@ a {
   background: var(--panel);
 }
 
+/* Exterior rolling shutter ("estore") that covers the window while the
+   visitor's weather loads, then rolls up to reveal the scene. The inner mask is
+   inset by the image border so it maps 1:1 onto the SVG's 96x64 content box. */
+.home-window-inner {
+  position: absolute;
+  inset: var(--border-w);
+  pointer-events: none;
+}
+
+/* Positioned over the glass opening only (SVG x5..91 / y6..42), so the wooden
+   frame and sill stay visible on top of the shutter. */
+.home-shutter {
+  position: absolute;
+  left: 5.208%;
+  top: 9.375%;
+  width: 89.584%;
+  height: 56.25%;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(10, 11, 20, 0.55);
+}
+
+/* Nine pixel slats. Hard colour stops keep the edges crisp when scaled. The
+   slats sit down (translateY 0) when closed and slide up out of view to reveal
+   the weather behind them. */
+.home-shutter-slats {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #dcc9a1 0,
+    #dcc9a1 12%,
+    #c3b088 12%,
+    #c3b088 78%,
+    #8f7d57 78%,
+    #8f7d57 100%
+  );
+  background-size: 100% 11.111%;
+  transform: translateY(-100%);
+  transition: transform 0.9s cubic-bezier(0.5, 0.15, 0.15, 1);
+  will-change: transform;
+}
+
+/* Bottom rail / closing bar with two finger slots. */
+.home-shutter-slats::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 11.111%;
+  background: linear-gradient(
+    90deg,
+    #7c6c4a 0,
+    #7c6c4a 40%,
+    #4f4430 40%,
+    #4f4430 46%,
+    #7c6c4a 46%,
+    #7c6c4a 54%,
+    #4f4430 54%,
+    #4f4430 60%,
+    #7c6c4a 60%,
+    #7c6c4a 100%
+  );
+  box-shadow: inset 0 2px 0 #6a5b3d;
+}
+
+/* Down: instant (no roll) so switching into the loading state doesn't animate;
+   only the reveal (returning to open) plays the roll-up. */
+.home-avatar-frame[data-shutter='closed'] .home-shutter-slats {
+  transform: translateY(0);
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-shutter-slats {
+    transition: none;
+  }
+}
+
 /* Live local-weather badge pinned to the avatar's top-right corner. */
 .home-weather {
   position: absolute;
