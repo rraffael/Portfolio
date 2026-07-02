@@ -50,20 +50,17 @@ export default function SectionHome({ t, weatherConsent = false }) {
     : weather
   const badgeStatus = mockCondition ? 'ready' : status
 
-  // Exterior rolling shutter (Portuguese "estore"): it stays down only while we
-  // are actively fetching the visitor's weather, then rolls up to reveal the
-  // scene once that scene has finished loading. Default is open so the content
-  // shows without JS and for visitors who never opted into the weather feature.
+  // Exterior rolling shutter (Portuguese "estore"): the window starts closed by
+  // default (including before the visitor accepts cookies) and only rolls up
+  // once the opted-in weather scene has finished loading — or on error, to
+  // reveal the avatar fallback. A dev mock opens it too.
   const sceneReady = loadedSrc === windowSrc
-  const shutterClosed =
-    weatherConsent &&
-    !mockCondition &&
-    (status === 'loading' || (status === 'ready' && !sceneReady))
+  const shutterOpen = !!mockCondition || status === 'error' || (status === 'ready' && sceneReady)
 
   return (
     <div className="section-content home-wrap">
       <div className="home-card">
-        <div className="home-avatar-frame" data-shutter={shutterClosed ? 'closed' : 'open'}>
+        <div className="home-avatar-frame" data-shutter={shutterOpen ? 'open' : 'closed'}>
           <img
             className="home-avatar"
             src={windowSrc}
