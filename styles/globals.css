@@ -69,6 +69,9 @@ a {
 
 .page {
   height: 100vh;
+  /* dvh tracks the *visible* viewport, so the fixed footer isn't hidden behind
+     the mobile browser's collapsing address bar (100vh overshoots there). */
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -229,6 +232,7 @@ a {
   position: relative;
   margin-top: var(--header-height);
   height: calc(100vh - var(--header-height));
+  height: calc(100dvh - var(--header-height));
   display: flex;
   flex-direction: row;
   overflow-x: auto;
@@ -250,6 +254,7 @@ a {
   display: flex;
   overflow-y: auto;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   padding: 48px 64px calc(40px + var(--footer-height));
 }
 
@@ -1145,7 +1150,7 @@ a {
     grid-template-columns: 1fr;
   }
   .section {
-    padding: 40px 56px calc(32px + var(--footer-height));
+    padding: 40px 48px calc(32px + var(--footer-height));
   }
   .deck-arrow {
     width: 44px;
@@ -1154,38 +1159,131 @@ a {
   }
 }
 
-@media (max-width: 560px) {
+/* ---------- Phones (mobile-first target) ---------- */
+@media (max-width: 640px) {
+  :root {
+    --header-height: 60px;
+    --footer-height: 44px;
+  }
+
   .header-inner {
     padding: 0 14px;
+    gap: 10px;
   }
-  .section {
-    padding: 32px 16px calc(28px + var(--footer-height));
+  .brand {
+    font-size: 0.66rem;
   }
+  .mobile-toggle {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+  .mobile-menu {
+    padding: 18px 16px;
+    max-height: calc(100dvh - var(--header-height));
+    overflow-y: auto;
+  }
+
+  /* On touch the deck is driven by swiping between slides; the edge arrows only
+     overlap the content, so hide them and let each slide use the full width. */
   .deck-arrow {
-    width: 38px;
-    height: 38px;
+    display: none;
   }
-  .deck-arrow--prev {
-    left: 8px;
+
+  .section {
+    padding: 24px 16px calc(20px + var(--footer-height));
   }
-  .deck-arrow--next {
-    right: 8px;
+  .section-head {
+    margin-bottom: 24px;
   }
-  .footer-inner {
-    font-size: 0.9rem;
+
+  /* Home: tighter rhythm and a smaller window so the whole intro fits the fold. */
+  .home-card {
+    gap: 8px;
   }
-  .about-stats {
-    grid-template-columns: 1fr;
+  .home-avatar {
+    width: clamp(200px, 64vw, 300px);
   }
-  .contact-links {
-    grid-template-columns: 1fr;
+  .home-greeting {
+    font-size: 1rem;
+  }
+  .home-headline {
+    font-size: 0.95rem;
+  }
+  .home-status {
+    text-align: center;
   }
   .home-cta {
     flex-direction: column;
     width: 100%;
+    gap: 10px;
   }
   .home-cta .pixel-btn {
     justify-content: center;
+  }
+
+  /* Cards and grids */
+  .panel {
+    padding: 18px;
+  }
+  .about-stats {
+    gap: 8px;
+  }
+  .contact-links {
+    grid-template-columns: 1fr;
+    margin: 20px 0;
+  }
+  .contact-link-value {
+    font-size: 1.05rem;
+  }
+
+  /* Footer status bar: pare it down to the two essential controls so it never
+     overflows the 44px strip. */
+  .footer-inner {
+    padding: 0 12px;
+    gap: 8px;
+  }
+  .footer-tea {
+    padding: 8px 6px;
+  }
+  .footer-tea-label {
+    display: none;
+  }
+  .footer-text {
+    display: none;
+  }
+  .footer-rights-full {
+    display: none;
+  }
+  .footer-rights {
+    font-size: 0.9rem;
+  }
+  .footer-cookies {
+    padding: 6px 2px;
+  }
+
+  /* Cookie banner spans the bottom edge */
+  .cookie-consent {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+  }
+  .cookie-actions-row .cookie-btn {
+    flex: 1 1 auto;
+  }
+  .cookie-btn--primary {
+    align-self: stretch;
+  }
+  .cookie-btn--link {
+    flex-basis: 100%;
+  }
+}
+
+/* Very narrow phones: stack the skill cards so long tags don't get cramped. */
+@media (max-width: 400px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1397,25 +1495,4 @@ a {
 
 .footer-cookies:hover {
   color: var(--accent);
-}
-
-@media (max-width: 600px) {
-  .footer-tea-label {
-    display: none;
-  }
-  .cookie-consent {
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-    width: auto;
-  }
-  .cookie-actions-row .cookie-btn {
-    flex: 1 1 auto;
-  }
-  .cookie-btn--primary {
-    align-self: stretch;
-  }
-  .cookie-btn--link {
-    flex-basis: 100%;
-  }
 }

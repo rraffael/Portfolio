@@ -72,7 +72,8 @@ export default function Footer({ t, onManageCookies }) {
 
         <p className="footer-text">{t('footer.text')}</p>
         <span className="footer-rights">
-          © {year} · {t('footer.rights')}
+          © {year}
+          <span className="footer-rights-full"> · {t('footer.rights')}</span>
           {onManageCookies && (
             <>
               {' · '}
