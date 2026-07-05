@@ -370,23 +370,23 @@ a {
 }
 
 .home-card {
-  width: min(880px, 100%);
+  width: min(960px, 100%);
   margin: 0 auto;
   text-align: center;
   display: grid;
   justify-items: center;
-  gap: 14px;
+  gap: 10px;
 }
 
 .home-avatar-frame {
   position: relative;
   display: inline-block;
   line-height: 0;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .home-avatar {
-  width: clamp(280px, 64vw, 460px);
+  width: clamp(260px, 56vw, 420px);
   height: auto;
   aspect-ratio: 3 / 2;
   border: var(--border-w) solid var(--line);
@@ -558,16 +558,16 @@ a {
 
 .home-greeting {
   font-family: var(--font-mono);
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   color: var(--accent-2);
   margin: 0;
 }
 
 .home-name {
   font-family: var(--font-pixel);
-  font-size: clamp(1.3rem, 4.5vw, 2.4rem);
+  font-size: clamp(1.3rem, 4.5vw, 2.2rem);
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.2;
   text-shadow: 4px 4px 0 var(--line);
 }
 
@@ -580,8 +580,8 @@ a {
 
 .home-headline {
   color: var(--muted);
-  max-width: 560px;
-  margin: 8px 0 0;
+  max-width: 760px;
+  margin: 4px 0 0;
 }
 
 .home-status {
@@ -616,11 +616,11 @@ a {
   gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 14px;
+  margin-top: 10px;
 }
 
 .scroll-indicator {
-  margin-top: 26px;
+  margin-top: 12px;
   font-family: var(--font-pixel);
   font-size: 0.6rem;
   color: var(--muted);
@@ -733,6 +733,15 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
+}
+
+.skill-group-note {
+  margin: 12px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--muted);
+  font-style: italic;
 }
 
 .skill-group-title {
@@ -974,10 +983,10 @@ a {
 }
 
 .footer-inner {
-  width: min(1200px, 96%);
+  width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -996,6 +1005,124 @@ a {
   font-family: var(--font-mono);
   font-size: 1rem;
   color: var(--muted);
+}
+
+/* ---------- Pay me a tea ---------- */
+.footer-support {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.footer-tea {
+  font-family: var(--font-pixel);
+  font-size: 0.56rem;
+  color: var(--accent);
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 4px 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+  text-decoration: none;
+  transition: opacity 0.12s ease;
+}
+
+.footer-tea:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-tea:active {
+  opacity: 0.7;
+}
+
+.footer-tea span[aria-hidden='true'] {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.tea-pop-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: transparent;
+  border: none;
+  cursor: default;
+}
+
+.tea-pop {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 12px);
+  z-index: 31;
+  width: 260px;
+  max-width: calc(100vw - 24px);
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.tea-pop-title {
+  font-family: var(--font-pixel);
+  font-size: 0.62rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+.tea-pop-wise {
+  justify-content: center;
+  width: 100%;
+}
+
+.tea-pop-pix {
+  display: grid;
+  gap: 6px;
+}
+
+.tea-pop-pix-label {
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tea-pop-pix-copy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  background: var(--bg);
+  border: var(--border-w) solid var(--line);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.12s ease;
+}
+
+.tea-pop-pix-copy:hover {
+  border-color: var(--accent);
+}
+
+.tea-pop-pix-copy code {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--ink);
+  word-break: break-all;
+}
+
+.tea-pop-pix-action {
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  color: var(--accent);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* ---------- Responsive ---------- */
@@ -1273,6 +1400,9 @@ a {
 }
 
 @media (max-width: 600px) {
+  .footer-tea-label {
+    display: none;
+  }
   .cookie-consent {
     left: 8px;
     right: 8px;

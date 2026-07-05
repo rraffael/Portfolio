@@ -92,8 +92,11 @@ stars, falling rain/snow, flashing lightning). Motion stays whole-pixel to keep
 icon + temperature and hides itself if both APIs fail.
 
 **The whole feature is opt-in:** `useWeather` makes no network call until the
-visitor grants weather consent (see below); until then the window shows the
-default `avatar.svg`.
+visitor grants weather consent (see below). The window starts **closed** behind a
+pure CSS/DOM exterior shutter ("estore") and stays that way until consent is
+granted; once the opted-in scene has loaded the shutter **rolls up** to reveal it
+(instant on `prefers-reduced-motion`). On API error it opens onto the default
+`avatar.svg` fallback instead.
 
 ### Cookie consent
 
@@ -109,8 +112,17 @@ the banner. Copy lives under the `cookies.*` i18n keys.
 
 `components/SectionContact.jsx` renders real links — `mailto:`, LinkedIn and
 GitHub — pulled from the `contact` keys in the locale files. (There is no live
-API call.) `.env.example` advertises `NEXT_PUBLIC_API_URL`, which is currently
-unused and reserved for a future contact form.
+API call.) Since a bare `mailto:` does nothing when the visitor has no default
+mail client, clicking the email also **copies the address to the clipboard**
+with a transient "copied" hint. `.env.example` advertises `NEXT_PUBLIC_API_URL`,
+which is currently unused and reserved for a future contact form.
+
+### Support ("Buy me a drink")
+
+The footer has a discreet left-corner **"Buy me a drink 🍹"** button that opens a
+small popover offering a **Wise** payment link and a **random Pix key**
+(click-to-copy, exposes no personal data). Both values are constants in
+`Footer.jsx`; the popover copy lives under the `support.*` i18n keys.
 
 ## Deployment
 
@@ -126,10 +138,11 @@ Full checklist in [`ROADMAP.md`](./ROADMAP.md).
 **Done:** pixel-art design system, horizontal deck navigation, EN/PT i18n with
 real content (persisted language), all six sections (Home, About, Skills,
 Projects, Work, Contact) + footer, animated day/night weather **window scenes**
-on the home avatar (Open-Meteo + wttr.in fallback, 14 SMIL-animated SVGs),
-cookie-consent banner gating the weather APIs, SEO `<head>` / Open Graph +
-favicon, tooling (ESLint, Prettier, TypeScript, i18n test), static export &
-GitHub Pages deploy.
+on the home avatar (Open-Meteo + wttr.in fallback, 14 SMIL-animated SVGs) with a
+**rolling-shutter reveal**, cookie-consent banner gating the weather APIs, a
+footer **"Buy me a drink"** popover (Wise + Pix) and an email copy-to-clipboard
+fallback, SEO `<head>` / Open Graph + favicon, tooling (ESLint, Prettier,
+TypeScript, i18n test), static export & GitHub Pages deploy.
 
 **Next:** accessibility pass (incl. `prefers-reduced-motion` for the animated
 scenes), a working contact form, theme toggle, deck progress indicator + hash

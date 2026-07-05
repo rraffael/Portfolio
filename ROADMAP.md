@@ -26,7 +26,9 @@ skills, projetos e experiências do Raffael) — não há mais placeholders.
   `localStorage` e com fallback para o idioma do navegador.
 - **Home window:** o avatar é uma **janela pixel** que reflete o clima ao vivo do
   visitante — 14 SVGs (`public/window/<condição>[-night].svg`, 7 condições ×
-  dia/noite) **animados via SMIL** (nuvens, chuva/neve, estrelas, relâmpago).
+  dia/noite) **animados via SMIL** (nuvens, chuva/neve, estrelas, relâmpago). A
+  janela nasce **fechada por um estore** e ele **sobe** revelando a cena quando o
+  clima carrega (opt-in).
 - **Privacidade:** banner de **consentimento de cookies** (`CookieConsent.jsx` +
   `lib/consent.ts`) que **bloqueia as APIs de clima até o opt-in** do visitante.
 - **Build/deploy:** `next build` com `output: 'export'` → pasta `out/`,
@@ -101,6 +103,21 @@ skills, projetos e experiências do Raffael) — não há mais placeholders.
 - [x] `PortfolioPage.jsx` lê o consentimento no mount, exibe o banner na 1ª visita e passa `weatherConsent` ao `SectionHome`; `useWeather(enabled)` **não faz nenhuma chamada** de rede até o opt-in
 - [x] Reabertura via botão "🍪 Cookies" no `Footer.jsx` (`onManageCookies`); textos em `cookies.*` (`locales/{en,pt}.json`) + estilos em `globals.css`
 
+### Fase 12 — Estore de revelação (janela fechada → sobe) ✅
+
+- [x] Estore exterior (persiana/"estore") **100% CSS/DOM** sobreposto ao `<img>` da janela (`.home-window-inner` / `.home-shutter` / `.home-shutter-slats` em `globals.css`), alinhado à região do vidro (96×64) para o caixilho e o parapeito ficarem visíveis por cima. Ripas pixel de bordas duras + barra de fecho com entalhes
+- [x] **Fechado por padrão** — inclusive no HTML estático e **antes de aceitar os cookies** (acaba o flash do avatar de céu aberto na 1ª visita). `SectionHome` só marca `data-shutter="open"` quando há cena a mostrar: mock de dev, `status === 'error'` (revela o `avatar.svg`), ou `status === 'ready'` **e** a cena resolvida já pintou (`loadedSrc === windowSrc`, via `<img onLoad>`)
+- [x] **Rola pra cima** (`translateY`) com transição de 0.9s só na abertura (fecho é instantâneo); respeita `prefers-reduced-motion` (abre sem animar)
+
+### Fase 13 — Refresh de conteúdo + apoio/contato (jul/2026) ✅
+
+- [x] **Conteúdo** (`locales/{en,pt}.json`): nome "Raffael de Castro Rodrigues", cargo **Lead Software Engineer / Engenheiro de Software líder**, headline reescrita (apps no ciclo completo + fluxos de trabalho + criar/gerir/orientar equipes), status "projetos curtos", brand do topo só "Raffael"
+- [x] **About**: bio focada na Kito Health (dev lead), formação **só a graduação na Unit** (mestrado FEUP trancado removido), inglês **C1**
+- [x] **Skills** enxugadas para a stack da Kito (JavaScript, React, HTML5, CSS, Node.js, Express, REST APIs, Git, AWS, MongoDB, Scrum/Kanban) + novo grupo **AI & LLMs** (ChatGPT, Claude, GitHub Copilot) com nota asteriscada por grupo (`group.note`, renderizada dentro do card)
+- [x] **Experiência** reconstruída a partir do LinkedIn (Kito Health 2021→atual, com progressão a líder; Humanize IT 2020–2021; Protech estágio 2019; Universo de Estudos 2015–2017)
+- [x] **Footer "Buy me a drink 🍹"**: popover com link **Wise** + **chave Pix aleatória** (copiar em 1 clique, sem expor dados pessoais); constantes em `Footer.jsx`, textos em `support.*`. Estilo dourado discreto (peso de texto, abaixo dos CTAs), ancorado no canto esquerdo
+- [x] **Fallback de e-mail no Contact**: clicar em "Envie-me um e-mail" copia o endereço para a área de transferência (o `mailto:` continua abrindo para quem tem cliente de e-mail configurado)
+
 ---
 
 ## Próximas features / melhorias 🚧
@@ -124,7 +141,11 @@ skills, projetos e experiências do Raffael) — não há mais placeholders.
 - [ ] Botão "baixar CV" (PDF)
 - [ ] Adicionar um terceiro idioma (ex.: ES) para validar a camada de i18n
 
-### Conteúdo
+### Conteúdo — 🟡 em evolução
 
+> A janela inicial (estore + cenas de clima) está **finalizada** e o **refresh de
+> conteúdo** já foi feito (ver Fase 13). Restam melhorias pontuais.
+
+- [x] Revisar/atualizar informações pessoais (home, about, skills, contato) nos `locales/{en,pt}.json`
 - [ ] Revisar/expandir descrições de projetos e adicionar novos trabalhos conforme surgirem
 - [ ] Métricas/resultados concretos nas experiências (impacto, números)

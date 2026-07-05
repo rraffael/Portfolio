@@ -11,13 +11,13 @@
     "next": "Next section"
   },
   "home": {
-    "brand": "RAFFAEL.DEV",
+    "brand": "Raffael",
     "greeting": "> Hello, world.",
-    "name": "Raffael Castro Rodrigues",
-    "role": "Software Engineer",
-    "headline": "I build reliable software across the full life-cycle — from architecture to pixel-perfect interfaces.",
+    "name": "Raffael de Castro Rodrigues",
+    "role": "Lead Software Engineer",
+    "headline": "I build applications across their whole life-cycle — from architecture to delivery —, design and optimize workflows, and create, manage and mentor software development teams.",
     "location": "Portugal",
-    "status": "Available for new projects",
+    "status": "Available for short-term projects",
     "ctaProjects": "View Projects",
     "ctaContact": "Get in Touch",
     "scroll": "scroll down",
@@ -34,9 +34,9 @@
   },
   "about": {
     "title": "About Me",
-    "lead": "Software engineer who owns the whole software life-cycle — idealization, architecture, development, debugging and optimization.",
-    "paragraph1": "I'm Raffael, a Brazilian software engineer based in Portugal. I enjoy turning ideas into reliable products and acting as the bridge between technical and business teams. Currently I'm a Software Engineer at Kito Health and IT Manager & Programmer at HumanizeIT.",
-    "paragraph2": "I hold a Bachelor's in Internet Systems and I'm pursuing a Master's in Multimedia at the University of Porto (FEUP). A lifelong gamer at heart, I bring that same curiosity and playfulness into crafting great software — and one day, games.",
+    "lead": "Lead software engineer across the whole software life-cycle — idealization, architecture, development, debugging and optimization.",
+    "paragraph1": "I'm Raffael, a Brazilian software engineer based in Portugal. I enjoy turning ideas into products and acting as the bridge between technical and business teams. I currently lead the software development team at Kito Health.",
+    "paragraph2": "I graduated in IT from Unit (Universidade Tiradentes) in 2019. A lifelong gamer at heart, I bring that same curiosity and playfulness into crafting great software.",
     "stat1Value": "8+",
     "stat1Label": "Years in tech",
     "stat2Value": "10+",
@@ -46,20 +46,15 @@
     "educationTitle": "Education",
     "education": [
       {
-        "degree": "M.Sc. in Multimedia",
-        "school": "University of Porto — FEUP",
-        "period": "2019 — Present"
-      },
-      {
         "degree": "B.Sc. in Internet Systems",
-        "school": "Universidade Tiradentes",
+        "school": "Unit — Universidade Tiradentes",
         "period": "2017 — 2019"
       }
     ],
     "languagesTitle": "Languages",
     "languages": [
       { "name": "Portuguese", "level": "Native" },
-      { "name": "English", "level": "B2" },
+      { "name": "English", "level": "C1" },
       { "name": "Spanish", "level": "A2" }
     ]
   },
@@ -67,15 +62,19 @@
     "title": "Skills",
     "lead": "The stack I use to design, build and ship.",
     "groups": [
-      { "title": "Languages", "items": ["JavaScript", "C#", "PHP", "Python", "SQL"] },
-      { "title": "Frontend", "items": ["React", "HTML5", "CSS", "Material-UI"] },
-      { "title": "Backend", "items": ["Laravel", "ASP.NET / MVC", "Flask", "REST APIs"] },
-      { "title": "Tools & Data", "items": ["Git", "AWS", "MySQL", "Scrum / Kanban"] }
+      { "title": "Frontend", "items": ["JavaScript", "React", "HTML5", "CSS"] },
+      { "title": "Backend", "items": ["Node.js", "Express", "REST APIs"] },
+      { "title": "Tools & Data", "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"] },
+      {
+        "title": "AI & LLMs *",
+        "items": ["ChatGPT", "Claude", "GitHub Copilot"],
+        "note": "*Used as an assistant tool in recent projects only"
+      }
     ]
   },
   "projects": {
     "title": "Projects",
-    "lead": "Things I've designed, built and shipped.",
+    "lead": "Personal projects I've designed, built and shipped.",
     "codeLabel": "Code",
     "demoLabel": "Demo",
     "items": [
@@ -118,32 +117,32 @@
     "lead": "Where I've worked and what I built there.",
     "items": [
       {
-        "role": "Software Engineer",
+        "role": "Software Team Lead",
         "company": "Kito Health",
         "period": "2021 — Present",
-        "location": "Lisbon, Portugal",
-        "desc": "Own the full software life-cycle: ideation, architecture, development, debugging and optimization. Act as the bridge between technical and business departments, turning cross-team needs into working solutions."
+        "location": "Portugal",
+        "desc": "Own the full software life-cycle. I build reusable front-end and back-end components, turn designs and wireframes into working code, and optimize performance across mobile and web. Started as a Software Engineer in 2021 and stepped up to lead the team in 2022. (JavaScript, Node.js, React, Express, MongoDB, AWS)"
       },
       {
         "role": "IT Manager & Programmer",
-        "company": "HumanizeIT",
-        "period": "2020 — Present",
-        "location": "Remote, Portugal",
-        "desc": "Set the engineering standards for the startup (Git, AWS, agile tooling) and built its first responsive product in React. Later delivered a custom e-commerce platform with PHP, Laravel and MySQL."
+        "company": "Humanize IT",
+        "period": "2020 — 2021",
+        "location": "Porto, Portugal",
+        "desc": "Set the engineering standards for the startup (Git, AWS, Trello, Slack) and built its first responsive product in React. Later delivered a custom e-commerce platform, migrating from WooCommerce/PrestaShop to an in-house build with PHP, Laravel and MySQL."
       },
       {
-        "role": "Software Developer",
+        "role": "Software Developer (Internship)",
         "company": "Protech Solutions",
         "period": "2019",
         "location": "Aracaju, Brazil",
         "desc": "Built features, fixed bugs and wrote unit tests for a major regional bank's software across front-end and back-end, working directly with the project's APIs in biweekly Scrum/Kanban sprints. (C#, ASP.NET, MVC)"
       },
       {
-        "role": "Director of Technology",
+        "role": "Technology Specialist",
         "company": "Universo de Estudos",
         "period": "2015 — 2017",
         "location": "Aracaju, Brazil",
-        "desc": "Produced and edited studio video content and built the company's blog and website, adopting new media technologies. (WordPress, Adobe Premiere)"
+        "desc": "Recorded and edited the studio's video content and researched new media tools to build the company's blog and website. (WordPress, Adobe Premiere)"
       }
     ]
   },
@@ -160,11 +159,21 @@
     "email": "raffaelcr.ti@gmail.com",
     "linkedin": "https://www.linkedin.com/in/raffael-castro-rodrigues-117463142/",
     "github": "https://github.com/rraffael",
-    "button": "Send me an email"
+    "button": "Send me an email",
+    "copied": "Email copied ✓ — paste it in your mail app"
   },
   "footer": {
-    "text": "Raffael Castro Rodrigues — Software Engineer",
+    "text": "Raffael de Castro Rodrigues — Lead Software Engineer",
     "rights": "All rights reserved."
+  },
+  "support": {
+    "button": "Buy me a drink",
+    "title": "Buy me a drink 🍹",
+    "wise": "Pay with Wise",
+    "pixLabel": "Pix key (random)",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "close": "Close"
   },
   "cookies": {
     "title": "Cookies & privacy",

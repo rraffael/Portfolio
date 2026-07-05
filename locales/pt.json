@@ -11,13 +11,13 @@
     "next": "Próxima seção"
   },
   "home": {
-    "brand": "RAFFAEL.DEV",
+    "brand": "Raffael",
     "greeting": "> Olá, mundo.",
-    "name": "Raffael Castro Rodrigues",
-    "role": "Engenheiro de Software",
-    "headline": "Construo software confiável em todo o ciclo de vida — da arquitetura à interface pixel-perfect.",
+    "name": "Raffael de Castro Rodrigues",
+    "role": "Engenheiro de Software líder",
+    "headline": "Faço a construção de aplicações em todo o ciclo de vida — da arquitetura à entrega —, a criação e otimização de fluxos de trabalho, e a criação, gestão e orientação de equipes de desenvolvimento de software.",
     "location": "Portugal",
-    "status": "Disponível para novos projetos",
+    "status": "Disponível para projetos curtos",
     "ctaProjects": "Ver Projetos",
     "ctaContact": "Entrar em Contato",
     "scroll": "role para baixo",
@@ -34,9 +34,9 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "lead": "Engenheiro de software que domina todo o ciclo de vida — idealização, arquitetura, desenvolvimento, depuração e otimização.",
-    "paragraph1": "Sou o Raffael, engenheiro de software brasileiro radicado em Portugal. Gosto de transformar ideias em produtos confiáveis e de atuar como ponte entre as equipes técnica e de negócio. Atualmente sou Engenheiro de Software na Kito Health e Gestor de TI & Programador na HumanizeIT.",
-    "paragraph2": "Sou bacharel em Sistemas para Internet e curso o Mestrado em Multimédia na Universidade do Porto (FEUP). Apaixonado por jogos desde sempre, levo essa mesma curiosidade e leveza para criar bons softwares — e, um dia, jogos.",
+    "lead": "Engenheiro de software líder, presente em todo o ciclo de vida — idealização, arquitetura, desenvolvimento, depuração e otimização.",
+    "paragraph1": "Sou Raffael, engenheiro de software brasileiro radicado em Portugal. Gosto de transformar ideias em produtos e de atuar como ponte entre as equipes técnica e de negócio. Atualmente sou líder da equipe de desenvolvimento de software na Kito Health.",
+    "paragraph2": "Sou formado na área de TI pela Unit (Universidade Tiradentes) em 2019. Apaixonado por jogos desde sempre, levo essa mesma curiosidade e leveza para criar bons softwares.",
     "stat1Value": "8+",
     "stat1Label": "Anos em tecnologia",
     "stat2Value": "10+",
@@ -46,20 +46,15 @@
     "educationTitle": "Formação",
     "education": [
       {
-        "degree": "Mestrado em Multimédia",
-        "school": "Universidade do Porto — FEUP",
-        "period": "2019 — Atual"
-      },
-      {
         "degree": "Bacharel em Sistemas para Internet",
-        "school": "Universidade Tiradentes",
+        "school": "Unit — Universidade Tiradentes",
         "period": "2017 — 2019"
       }
     ],
     "languagesTitle": "Idiomas",
     "languages": [
       { "name": "Português", "level": "Nativo" },
-      { "name": "Inglês", "level": "B2" },
+      { "name": "Inglês", "level": "C1" },
       { "name": "Espanhol", "level": "A2" }
     ]
   },
@@ -67,15 +62,19 @@
     "title": "Skills",
     "lead": "A stack que uso para desenhar, construir e entregar.",
     "groups": [
-      { "title": "Linguagens", "items": ["JavaScript", "C#", "PHP", "Python", "SQL"] },
-      { "title": "Frontend", "items": ["React", "HTML5", "CSS", "Material-UI"] },
-      { "title": "Backend", "items": ["Laravel", "ASP.NET / MVC", "Flask", "REST APIs"] },
-      { "title": "Ferramentas & Dados", "items": ["Git", "AWS", "MySQL", "Scrum / Kanban"] }
+      { "title": "Frontend", "items": ["JavaScript", "React", "HTML5", "CSS"] },
+      { "title": "Backend", "items": ["Node.js", "Express", "REST APIs"] },
+      { "title": "Ferramentas & Dados", "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"] },
+      {
+        "title": "IA & LLMs *",
+        "items": ["ChatGPT", "Claude", "GitHub Copilot"],
+        "note": "*Usado apenas como ferramenta de assistência em projetos recentes"
+      }
     ]
   },
   "projects": {
     "title": "Projetos",
-    "lead": "Coisas que desenhei, construí e entreguei.",
+    "lead": "Projetos pessoais que desenhei, construí e entreguei.",
     "codeLabel": "Código",
     "demoLabel": "Demo",
     "items": [
@@ -118,32 +117,32 @@
     "lead": "Onde trabalhei e o que construí.",
     "items": [
       {
-        "role": "Engenheiro de Software",
+        "role": "Líder de Equipe de Software",
         "company": "Kito Health",
         "period": "2021 — Atual",
-        "location": "Lisboa, Portugal",
-        "desc": "Responsável por todo o ciclo de vida do software: ideação, arquitetura, desenvolvimento, depuração e otimização. Atuo como ponte entre os departamentos técnico e de negócio, transformando necessidades em soluções."
+        "location": "Portugal",
+        "desc": "Responsável por todo o ciclo de vida do software. Construo componentes reutilizáveis de front-end e back-end, traduzo designs e wireframes em código e otimizo o desempenho em dispositivos móveis e navegadores. Comecei como Engenheiro de Software em 2021 e passei a liderar a equipe em 2022. (JavaScript, Node.js, React, Express, MongoDB, AWS)"
       },
       {
-        "role": "Gestor de TI & Programador",
-        "company": "HumanizeIT",
-        "period": "2020 — Atual",
-        "location": "Remoto, Portugal",
-        "desc": "Defini os padrões de engenharia da startup (Git, AWS, ferramentas ágeis) e construí seu primeiro produto responsivo em React. Depois entreguei um e-commerce próprio com PHP, Laravel e MySQL."
+        "role": "Gestor e Programador de TI",
+        "company": "Humanize IT",
+        "period": "2020 — 2021",
+        "location": "Porto, Portugal",
+        "desc": "Defini os padrões de engenharia da startup (Git, AWS, Trello, Slack) e construí seu primeiro produto responsivo em React. Depois entreguei um e-commerce próprio, migrando de WooCommerce/PrestaShop para uma solução interna com PHP, Laravel e MySQL."
       },
       {
-        "role": "Desenvolvedor de Software",
+        "role": "Desenvolvedor de Software (Estágio)",
         "company": "Protech Solutions",
         "period": "2019",
         "location": "Aracaju, Brasil",
         "desc": "Criei funcionalidades, corrigi bugs e escrevi testes unitários para o software de um grande banco regional, no front-end e back-end, lidando diretamente com as APIs do projeto em sprints quinzenais Scrum/Kanban. (C#, ASP.NET, MVC)"
       },
       {
-        "role": "Diretor de Tecnologia",
+        "role": "Especialista em Tecnologia",
         "company": "Universo de Estudos",
         "period": "2015 — 2017",
         "location": "Aracaju, Brasil",
-        "desc": "Produzi e editei o conteúdo em vídeo do estúdio e construí o blog e o site da empresa, adotando novas tecnologias de mídia. (WordPress, Adobe Premiere)"
+        "desc": "Produzi e editei o conteúdo em vídeo do estúdio e pesquisei novas tecnologias de mídia para construir o blog e o site da empresa. (WordPress, Adobe Premiere)"
       }
     ]
   },
@@ -160,11 +159,21 @@
     "email": "raffaelcr.ti@gmail.com",
     "linkedin": "https://www.linkedin.com/in/raffael-castro-rodrigues-117463142/",
     "github": "https://github.com/rraffael",
-    "button": "Envie-me um e-mail"
+    "button": "Envie-me um e-mail",
+    "copied": "E-mail copiado ✓ — cole no seu app de e-mail"
   },
   "footer": {
-    "text": "Raffael Castro Rodrigues — Engenheiro de Software",
+    "text": "Raffael de Castro Rodrigues — Engenheiro de Software líder",
     "rights": "Todos os direitos reservados."
+  },
+  "support": {
+    "button": "Me pague uma bebida",
+    "title": "Me pague uma bebida 🍹",
+    "wise": "Pagar com Wise",
+    "pixLabel": "Chave Pix (aleatória)",
+    "copy": "Copiar",
+    "copied": "Copiado!",
+    "close": "Fechar"
   },
   "cookies": {
     "title": "Cookies e privacidade",
