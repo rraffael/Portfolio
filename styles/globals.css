@@ -200,31 +200,127 @@ a {
   font-size: 1.1rem;
 }
 
+/* Off-canvas drawer sliding in from the right. Always mounted so the
+   transform can animate both ways; `.open` is toggled from React. */
+.mobile-menu-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  border: none;
+  background: rgba(8, 9, 16, 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.mobile-menu-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .mobile-menu {
-  position: absolute;
-  inset: var(--header-height) 0 auto;
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 41;
+  width: min(78vw, 320px);
+  flex-direction: column;
+  gap: 8px;
   background: var(--bg-alt);
+  border-left: var(--border-w) solid var(--line);
+  box-shadow: -8px 0 0 rgba(8, 9, 16, 0.25);
+  padding: 18px 20px calc(24px + var(--footer-height));
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+  overflow-y: auto;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.mobile-menu-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 8px;
   border-bottom: var(--border-w) solid var(--line);
-  padding: 22px;
+}
+
+.mobile-menu-title {
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-shadow: 2px 2px 0 var(--line);
+}
+
+.mobile-menu-close {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--panel);
+  border: var(--border-w) solid var(--line);
+  box-shadow: 3px 3px 0 var(--line);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease;
+}
+
+.mobile-menu-close:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--line);
 }
 
 .mobile-nav,
 .mobile-language {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+}
+
+.mobile-nav {
+  flex: 1 1 auto;
+}
+
+.mobile-link {
+  text-align: left;
+  border-left: 3px solid transparent;
+}
+
+.mobile-link.active {
+  color: var(--bg);
+  background: var(--accent);
+  border-left-color: var(--line);
+  box-shadow: 3px 3px 0 var(--line);
 }
 
 .mobile-language {
-  margin-top: 18px;
+  margin-top: 14px;
   border-top: var(--border-w) solid var(--line);
-  padding-top: 18px;
+  padding-top: 16px;
 }
 
 .mobile-language > span {
   font-family: var(--font-pixel);
   font-size: 0.58rem;
   color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu {
+    transition: none;
+  }
 }
 
 /* ---------- Deck (horizontal carousel) ---------- */
@@ -1140,6 +1236,12 @@ a {
     align-items: center;
     justify-content: center;
   }
+  .mobile-menu {
+    display: flex;
+  }
+  .mobile-menu-backdrop {
+    display: block;
+  }
   .about-grid {
     grid-template-columns: 1fr;
   }
@@ -1245,9 +1347,6 @@ a {
   }
   .footer-tea {
     padding: 8px 6px;
-  }
-  .footer-tea-label {
-    display: none;
   }
   .footer-text {
     display: none;

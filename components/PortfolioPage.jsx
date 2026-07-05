@@ -190,35 +190,57 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
           </button>
         </div>
 
-        {isMobileMenuOpen && (
-          <div className="mobile-menu">
-            <nav className="mobile-nav">
-              {sections.map((section, index) => (
-                <button
-                  key={section.id}
-                  className="mobile-link"
-                  type="button"
-                  onClick={() => goTo(index)}
-                >
-                  {section.label}
-                </button>
-              ))}
-            </nav>
-            <div className="mobile-language">
-              <span>{t('menu.language')}</span>
-              {languages.map((item) => (
-                <button
-                  key={item.code}
-                  className={`language-item ${item.code === locale ? 'selected' : ''}`}
-                  type="button"
-                  onClick={() => handleLocaleSelect(item.code)}
-                >
-                  {item.flag} {item.label}
-                </button>
-              ))}
-            </div>
+        <button
+          type="button"
+          className={`mobile-menu-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
+          aria-hidden={!isMobileMenuOpen}
+          tabIndex={-1}
+          onClick={() => setMobileMenuOpen(false)}
+        />
+        <aside
+          className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
+          aria-hidden={!isMobileMenuOpen}
+        >
+          <div className="mobile-menu-head">
+            <span className="mobile-menu-title">{t('home.brand')}</span>
+            <button
+              type="button"
+              className="mobile-menu-close"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label={t('menu.close')}
+            >
+              ✕
+            </button>
           </div>
-        )}
+          <nav className="mobile-nav">
+            {sections.map((section, index) => (
+              <button
+                key={section.id}
+                className={`mobile-link ${activeSection === index ? 'active' : ''}`}
+                type="button"
+                onClick={() => {
+                  goTo(index)
+                  setMobileMenuOpen(false)
+                }}
+              >
+                {section.label}
+              </button>
+            ))}
+          </nav>
+          <div className="mobile-language">
+            <span>{t('menu.language')}</span>
+            {languages.map((item) => (
+              <button
+                key={item.code}
+                className={`language-item ${item.code === locale ? 'selected' : ''}`}
+                type="button"
+                onClick={() => handleLocaleSelect(item.code)}
+              >
+                {item.flag} {item.label}
+              </button>
+            ))}
+          </div>
+        </aside>
       </header>
 
       <main className="scroll-area" ref={containerRef} onScroll={handleScroll}>
