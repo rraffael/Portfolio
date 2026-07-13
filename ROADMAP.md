@@ -149,3 +149,5 @@ skills, projetos e experiências do Raffael) — não há mais placeholders.
 - [x] Revisar/atualizar informações pessoais (home, about, skills, contato) nos `locales/{en,pt}.json`
 - [ ] Revisar/expandir descrições de projetos e adicionar novos trabalhos conforme surgirem
 - [ ] Métricas/resultados concretos nas experiências (impacto, números)
+- [ ] **Detalhar os últimos 6 anos de trabalho** (2020→2026) ano a ano nos `locales/{en,pt}.json` — hoje aparece só como "2020+"; especificar cada período/cargo/entrega
+- [ ] Reservar **dois espaços** para **lançamentos/postagens importantes de projetos públicos** lançados nesse período (título, data, link do release/post)
