@@ -33,6 +33,13 @@ export default function Home() {
     }
   }, [])
 
+  // Keep <html lang> in step with the active locale so assistive tech and
+  // search engines see the right language after a switch (the static export
+  // ships lang="en" from _document.jsx).
+  useEffect(() => {
+    document.documentElement.lang = locale
+  }, [locale])
+
   const handleLocaleChange = (code) => {
     setLocale(code)
     try {

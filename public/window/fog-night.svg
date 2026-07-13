@@ -1,4 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" width="384" height="256" shape-rendering="crispEdges" role="img" aria-label="Pixel-art window onto a foggy night sky">
+  <style>
+    /* Motion ported from SMIL to CSS so prefers-reduced-motion can freeze it.
+       Whole-pixel steps keep shape-rendering:crispEdges sharp. */
+    .drift    { animation: drift    var(--d,11s)  linear infinite; }
+    .drift-l  { animation: drift-l  var(--d,13s)  linear infinite; }
+    .twinkle  { animation: twinkle  var(--d,3s)   ease-in-out var(--b,0s) infinite; }
+    .rain     { animation: rain     var(--d,0.7s) linear var(--b,0s) infinite; }
+    .snow     { animation: snow     var(--d,3.6s) linear var(--b,0s) infinite; }
+    .flash    { animation: flash    var(--d,6s)   linear var(--b,0s) infinite; }
+    .flash-sky{ animation: flashsky var(--d,6s)   linear var(--b,0s) infinite; }
+    @keyframes drift    { 0%,20%{transform:translateX(0)} 20.01%,40%{transform:translateX(1px)} 40.01%,60%{transform:translateX(2px)} 60.01%,80%{transform:translateX(1px)} 80.01%,100%{transform:translateX(0)} }
+    @keyframes drift-l  { 0%,20%{transform:translateX(0)} 20.01%,40%{transform:translateX(-1px)} 40.01%,60%{transform:translateX(-2px)} 60.01%,80%{transform:translateX(-1px)} 80.01%,100%{transform:translateX(0)} }
+    @keyframes twinkle  { 0%,100%{opacity:1} 50%{opacity:.3} }
+    @keyframes rain     { from{transform:translateY(0)} to{transform:translateY(34px)} }
+    @keyframes snow     { 0%{transform:translate(0,0)} 25%{transform:translate(1px,8px)} 50%{transform:translate(0,17px)} 75%{transform:translate(-1px,25px)} 100%{transform:translate(0,34px)} }
+    @keyframes flash    { 0%,27%{opacity:0} 30%{opacity:1} 33%{opacity:.2} 36%{opacity:1} 39%,100%{opacity:0} }
+    @keyframes flashsky { 0%,27%{opacity:0} 30%{opacity:.2} 33%{opacity:.05} 36%{opacity:.18} 39%,100%{opacity:0} }
+    @media (prefers-reduced-motion: reduce) {
+      .drift,.drift-l,.twinkle,.rain,.snow,.flash,.flash-sky { animation: none; }
+    }
+  </style>
   <!-- room: preserved from the current assets -->
   <rect width="96" height="64" fill="#1b1f33"/>
   <rect x="0" y="46" width="96" height="18" fill="#14182a"/>
@@ -39,14 +60,12 @@
         <rect x="5" y="41" width="86" height="1" fill="#2a3140"/>
 
         <!-- fog bands in front of horizon -->
-        <g>
-          <animateTransform attributeName="transform" type="translate" values="0 0;1 0;2 0;3 0;4 0;3 0;2 0;1 0;0 0" dur="12s" calcMode="discrete" repeatCount="indefinite"/>
+        <g class="drift" style="--d:12s">
           <rect x="5" y="12" width="55" height="2" fill="#818aa0" opacity="0.40"/>
           <rect x="5" y="24" width="66" height="2" fill="#8a93a8" opacity="0.55"/>
           <rect x="5" y="36" width="86" height="3" fill="#868fa4" opacity="0.35"/>
         </g>
-        <g>
-          <animateTransform attributeName="transform" type="translate" values="0 0;-1 0;-2 0;-3 0;-4 0;-3 0;-2 0;-1 0;0 0" dur="15s" calcMode="discrete" repeatCount="indefinite"/>
+        <g class="drift-l" style="--d:15s">
           <rect x="19" y="18" width="72" height="2" fill="#767f95" opacity="0.50"/>
           <rect x="29" y="31" width="62" height="2" fill="#727c92" opacity="0.50"/>
         </g>

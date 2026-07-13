@@ -1,4 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" width="384" height="256" shape-rendering="crispEdges" role="img" aria-label="Pixel-art window onto a snowy sky">
+  <style>
+    /* Motion ported from SMIL to CSS so prefers-reduced-motion can freeze it.
+       Whole-pixel steps keep shape-rendering:crispEdges sharp. */
+    .drift    { animation: drift    var(--d,11s)  linear infinite; }
+    .drift-l  { animation: drift-l  var(--d,13s)  linear infinite; }
+    .twinkle  { animation: twinkle  var(--d,3s)   ease-in-out var(--b,0s) infinite; }
+    .rain     { animation: rain     var(--d,0.7s) linear var(--b,0s) infinite; }
+    .snow     { animation: snow     var(--d,3.6s) linear var(--b,0s) infinite; }
+    .flash    { animation: flash    var(--d,6s)   linear var(--b,0s) infinite; }
+    .flash-sky{ animation: flashsky var(--d,6s)   linear var(--b,0s) infinite; }
+    @keyframes drift    { 0%,20%{transform:translateX(0)} 20.01%,40%{transform:translateX(1px)} 40.01%,60%{transform:translateX(2px)} 60.01%,80%{transform:translateX(1px)} 80.01%,100%{transform:translateX(0)} }
+    @keyframes drift-l  { 0%,20%{transform:translateX(0)} 20.01%,40%{transform:translateX(-1px)} 40.01%,60%{transform:translateX(-2px)} 60.01%,80%{transform:translateX(-1px)} 80.01%,100%{transform:translateX(0)} }
+    @keyframes twinkle  { 0%,100%{opacity:1} 50%{opacity:.3} }
+    @keyframes rain     { from{transform:translateY(0)} to{transform:translateY(34px)} }
+    @keyframes snow     { 0%{transform:translate(0,0)} 25%{transform:translate(1px,8px)} 50%{transform:translate(0,17px)} 75%{transform:translate(-1px,25px)} 100%{transform:translate(0,34px)} }
+    @keyframes flash    { 0%,27%{opacity:0} 30%{opacity:1} 33%{opacity:.2} 36%{opacity:1} 39%,100%{opacity:0} }
+    @keyframes flashsky { 0%,27%{opacity:0} 30%{opacity:.2} 33%{opacity:.05} 36%{opacity:.18} 39%,100%{opacity:0} }
+    @media (prefers-reduced-motion: reduce) {
+      .drift,.drift-l,.twinkle,.rain,.snow,.flash,.flash-sky { animation: none; }
+    }
+  </style>
   <!-- room: preserved from the current assets -->
   <rect width="96" height="64" fill="#1b1f33"/>
   <rect x="0" y="46" width="96" height="18" fill="#14182a"/>
@@ -16,23 +37,21 @@
       <rect x="5" y="34" width="86" height="8" fill="#e1edf8"/>
       <g id="weather-art">
 
-        <g>
-          <animateTransform attributeName="transform" type="translate" values="0 0;1 0;2 0;1 0;0 0" dur="13s" calcMode="discrete" repeatCount="indefinite"/>
+        <g class="drift" style="--d:13s">
           <rect x="12" y="10" width="16" height="1" fill="#ffffff"/>
           <rect x="10" y="11" width="20" height="1" fill="#edf7ff"/>
           <rect x="9" y="12" width="22" height="1" fill="#cfe8ff"/>
           <rect x="11" y="13" width="18" height="1" fill="#9dcced"/>
         </g>
 
-        <g>
-          <animateTransform attributeName="transform" type="translate" values="0 0;-1 0;-2 0;-1 0;0 0" dur="10s" calcMode="discrete" repeatCount="indefinite"/>
+        <g class="drift-l" style="--d:10s">
           <rect x="50" y="9" width="24" height="1" fill="#ffffff"/>
           <rect x="47" y="10" width="30" height="1" fill="#ffffff"/>
           <rect x="45" y="11" width="34" height="1" fill="#edf7ff"/>
           <rect x="46" y="12" width="32" height="1" fill="#cfe8ff"/>
           <rect x="49" y="13" width="26" height="1" fill="#9dcced"/>
         </g>
-    
+
         <!-- distant horizon -->
         <path d="M5 35 L13 32 L20 34 L28 30 L37 33 L46 31 L55 34 L64 31 L73 33 L91 29 L91 42 L5 42 Z" fill="#d5e3f0"/>
         <path d="M5 38 L12 36 L22 37 L30 34 L40 37 L50 35 L62 38 L72 35 L83 37 L91 34 L91 42 L5 42 Z" fill="#b6cce0"/>
@@ -71,33 +90,15 @@
         <rect x="72" y="29" width="1" height="3" fill="#ffffff" opacity="0.95"/>
         <rect x="71" y="30" width="3" height="1" fill="#ffffff" opacity="0.95"/>
         <rect x="84" y="34" width="1" height="1" fill="#ffffff" opacity="0.95"/>
-        
-        <!-- animated falling snow -->
+
+        <!-- animated falling snow (CSS-driven) -->
         <g fill="#ffffff">
-          <rect x="20" y="7" width="1" height="1">
-            <animate attributeName="y" values="6;40" dur="3.4s" begin="0s" repeatCount="indefinite"/>
-            <animate attributeName="x" values="20;21;20;19;20" dur="2.3s" repeatCount="indefinite"/>
-          </rect>
-          <rect x="38" y="7" width="1" height="1">
-            <animate attributeName="y" values="6;40" dur="4s" begin="-1.2s" repeatCount="indefinite"/>
-            <animate attributeName="x" values="38;37;38;39;38" dur="2.7s" repeatCount="indefinite"/>
-          </rect>
-          <rect x="55" y="7" width="1" height="1">
-            <animate attributeName="y" values="6;40" dur="3.1s" begin="-2s" repeatCount="indefinite"/>
-            <animate attributeName="x" values="55;56;55;54;55" dur="2.1s" repeatCount="indefinite"/>
-          </rect>
-          <rect x="68" y="7" width="1" height="1">
-            <animate attributeName="y" values="6;40" dur="3.8s" begin="-0.7s" repeatCount="indefinite"/>
-            <animate attributeName="x" values="68;67;68;69;68" dur="2.9s" repeatCount="indefinite"/>
-          </rect>
-          <rect x="82" y="7" width="1" height="1">
-            <animate attributeName="y" values="6;40" dur="3.5s" begin="-2.6s" repeatCount="indefinite"/>
-            <animate attributeName="x" values="82;83;82;81;82" dur="2.4s" repeatCount="indefinite"/>
-          </rect>
-          <rect x="30" y="7" width="1" height="1">
-            <animate attributeName="y" values="6;40" dur="4.3s" begin="-3.1s" repeatCount="indefinite"/>
-            <animate attributeName="x" values="30;29;30;31;30" dur="2.6s" repeatCount="indefinite"/>
-          </rect>
+          <rect class="snow" style="--d:3.4s"       x="20" y="7" width="1" height="1"/>
+          <rect class="snow" style="--d:4s;--b:-1.2s"   x="38" y="7" width="1" height="1"/>
+          <rect class="snow" style="--d:3.1s;--b:-2s"   x="55" y="7" width="1" height="1"/>
+          <rect class="snow" style="--d:3.8s;--b:-0.7s" x="68" y="7" width="1" height="1"/>
+          <rect class="snow" style="--d:3.5s;--b:-2.6s" x="82" y="7" width="1" height="1"/>
+          <rect class="snow" style="--d:4.3s;--b:-3.1s" x="30" y="7" width="1" height="1"/>
         </g>
 
         <!-- snow resting on horizon and low ledge inside the view -->

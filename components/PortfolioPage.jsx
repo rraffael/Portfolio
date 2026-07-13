@@ -64,13 +64,22 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
     setActiveSection(index)
   }, [])
 
-  // Move the deck to a slide on the horizontal axis.
+  // Move the deck to a slide on the horizontal axis. Honors the visitor's
+  // "reduce motion" preference by jumping instantly instead of smooth-scrolling
+  // (CSS scroll-behavior doesn't apply to programmatic scrollTo).
   const goTo = useCallback(
     (index) => {
       const container = containerRef.current
       if (!container) return
       const clamped = Math.max(0, Math.min(index, sectionRefs.current.length - 1))
-      container.scrollTo({ left: clamped * container.clientWidth, behavior: 'smooth' })
+      const reduceMotion =
+        typeof window !== 'undefined' &&
+        window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      container.scrollTo({
+        left: clamped * container.clientWidth,
+        behavior: reduceMotion ? 'auto' : 'smooth'
+      })
       setActive(clamped)
     },
     [setActive]
@@ -149,6 +158,7 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
                 key={section.id}
                 className={`nav-link ${activeSection === index ? 'active' : ''}`}
                 type="button"
+                aria-current={activeSection === index ? 'true' : undefined}
                 onClick={() => goTo(index)}
               >
                 {section.label}
@@ -159,6 +169,8 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
               <button
                 className="language-button"
                 type="button"
+                aria-haspopup="menu"
+                aria-expanded={isLanguageOpen}
                 onClick={() => setLanguageOpen((open) => !open)}
               >
                 {selectedLanguage.flag} {selectedLanguage.label}
@@ -185,6 +197,9 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
             aria-label="Open mobile menu"
+            aria-haspopup="menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             ☰
           </button>
@@ -198,6 +213,7 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
           onClick={() => setMobileMenuOpen(false)}
         />
         <aside
+          id="mobile-menu"
           className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
           aria-hidden={!isMobileMenuOpen}
         >
@@ -218,6 +234,7 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
                 key={section.id}
                 className={`mobile-link ${activeSection === index ? 'active' : ''}`}
                 type="button"
+                aria-current={activeSection === index ? 'true' : undefined}
                 onClick={() => {
                   goTo(index)
                   setMobileMenuOpen(false)

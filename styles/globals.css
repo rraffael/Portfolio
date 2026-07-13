@@ -67,6 +67,23 @@ a {
   color: inherit;
 }
 
+/* ---------- Keyboard focus ----------
+   A single high-contrast focus ring for keyboard users across every
+   interactive element. `outline` is used (not box-shadow) so it never affects
+   layout and stays visible even inside the overflow-clipped deck slides.
+   Mouse/touch focus stays clean because we target :focus-visible only. */
+:focus-visible {
+  outline: 3px solid var(--accent-4);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* Belt-and-suspenders: kill the legacy outline only when the browser decides
+   the focus isn't keyboard-driven, so nothing double-rings. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .page {
   height: 100vh;
   /* dvh tracks the *visible* viewport, so the fixed footer isn't hidden behind
@@ -1594,4 +1611,20 @@ a {
 
 .footer-cookies:hover {
   color: var(--accent);
+}
+
+/* ---------- Reduced motion ----------
+   Respect the visitor's OS "reduce motion" setting: neutralize the app's CSS
+   animations (blink, bob, cookie-in), hover transforms and the shutter roll,
+   and disable smooth scrolling. Note: the animated window SVGs use inline SMIL,
+   which CSS can't reach through <img> — those are gated inside each SVG. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
