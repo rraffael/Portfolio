@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Claude Code profile
+
+<!-- claude-profile: Raffael (Projetos Pessoais) -->
+
+Este projeto usa o perfil **Raffael (Projetos Pessoais)** (definido em `~/.claude/CLAUDE.md`). Ao abrir este projeto, use esse perfil diretamente — não pergunte qual perfil usar.
+
 ## Commands
 
 - `npm run dev` — start the Next.js dev server at http://localhost:3000
