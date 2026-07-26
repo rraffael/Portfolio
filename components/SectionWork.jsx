@@ -21,7 +21,9 @@ export default function WorkSection({ t }) {
                 <h3 className="work-role">{job.role}</h3>
                 <span className="work-company">@ {job.company}</span>
               </div>
-              <div className="work-meta">{job.period} · {job.location}</div>
+              <div className="work-meta">
+                {job.period} · {job.location}
+              </div>
               <p className="work-desc">{job.desc}</p>
             </div>
           </div>

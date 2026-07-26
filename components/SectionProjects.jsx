@@ -20,7 +20,9 @@ export default function ProjectsSection({ t }) {
 
             <div className="project-stack">
               {project.stack.map((tech) => (
-                <span className="stack-chip" key={tech}>{tech}</span>
+                <span className="stack-chip" key={tech}>
+                  {tech}
+                </span>
               ))}
             </div>
 
@@ -32,16 +34,12 @@ export default function ProjectsSection({ t }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {'</> '}{t('projects.codeLabel')}
+                  {'</> '}
+                  {t('projects.codeLabel')}
                 </a>
               )}
               {project.demo && (
-                <a
-                  className="project-link"
-                  href={project.demo}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a className="project-link" href={project.demo} target="_blank" rel="noreferrer">
                   ▶ {t('projects.demoLabel')}
                 </a>
               )}

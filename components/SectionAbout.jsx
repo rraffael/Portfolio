@@ -37,7 +37,9 @@ export default function AboutSection({ t }) {
             {education.map((item) => (
               <li className="about-list-item" key={item.degree}>
                 <div className="ali-main">{item.degree}</div>
-                <div className="ali-sub">{item.school} · {item.period}</div>
+                <div className="ali-sub">
+                  {item.school} · {item.period}
+                </div>
               </li>
             ))}
           </ul>
