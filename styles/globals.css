@@ -1040,6 +1040,32 @@ a {
   margin: 0;
 }
 
+.work-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.work-link {
+  font-family: var(--font-pixel);
+  font-size: 0.48rem;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 2px solid var(--line);
+  padding: 7px 10px;
+  box-shadow: 3px 3px 0 var(--line);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease;
+}
+
+.work-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--line);
+}
+
 /* ---------- Contact ---------- */
 .contact-content {
   width: min(720px, 100%);

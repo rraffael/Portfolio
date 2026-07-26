@@ -25,6 +25,22 @@ export default function WorkSection({ t }) {
                 {job.period} · {job.location}
               </div>
               <p className="work-desc">{job.desc}</p>
+
+              {job.links?.length > 0 && (
+                <div className="work-links">
+                  {job.links.map((link) => (
+                    <a
+                      className="work-link"
+                      href={link.url}
+                      key={link.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      ↗ {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         ))}

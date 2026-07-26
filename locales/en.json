@@ -122,7 +122,15 @@
         "company": "Kito Health",
         "period": "2021 — Present",
         "location": "Portugal",
-        "desc": "Own the full software life-cycle. I build reusable front-end and back-end components, turn designs and wireframes into working code, and optimize performance across mobile and web. Started as a Software Engineer in 2021 and stepped up to lead the team in 2022. (JavaScript, Node.js, React, Express, MongoDB, AWS)"
+        "desc": "Own the full software life-cycle as both a manager and a developer: depending on the phase, I code alongside the team or run management and pull request reviews — architecture, the technical definition of the products and every release are always mine. Joined as a Software Engineer in 2021, took over the team in 2022 with 5 people, and since 2025 I lead a team of 8. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
+        "links": [
+          { "label": "Website", "url": "https://kitohealth.org/" },
+          { "label": "App (PWA)", "url": "https://app.kitohealth.org/" },
+          {
+            "label": "Play Store",
+            "url": "https://play.google.com/store/apps/details?id=org.kito.app"
+          }
+        ]
       },
       {
         "role": "IT Manager & Programmer",
