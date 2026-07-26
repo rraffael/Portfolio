@@ -1,4 +1,17 @@
 {
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"const p=process.env.CLAUDE_PROJECT_DIR||process.cwd();if(!require('fs').existsSync(require('path').join(p,'node_modules'))){require('child_process').execSync('npm ci',{cwd:p,stdio:'inherit'})}\""
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "deny": [
       "Bash(git push --force:*)",
