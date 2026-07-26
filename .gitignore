@@ -6,6 +6,9 @@ output/
 .env
 .DS_Store
 
+# Claude Code (personal, per-machine)
+.claude/settings.local.json
+
 # TypeScript (generated)
 next-env.d.ts
 *.tsbuildinfo

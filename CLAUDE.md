@@ -6,7 +6,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 <!-- claude-profile: Raffael (Projetos Pessoais) -->
 
-Este projeto usa o perfil **Raffael (Projetos Pessoais)** (definido em `~/.claude/CLAUDE.md`). Ao abrir este projeto, use esse perfil diretamente — não pergunte qual perfil usar.
+Este projeto usa o perfil **Raffael (Projetos Pessoais)**. Ao abrir este projeto, use esse perfil diretamente — não pergunte qual perfil usar.
+
+As regras estão repetidas abaixo de propósito: no terminal elas vêm de `~/.claude/CLAUDE.md`, mas em sessões na nuvem (claude.ai/code, incluindo o app mobile) esse arquivo não existe — só o que está commitado no repo é carregado.
+
+1. **Git — só o mínimo para entregar.** No terminal, não rode `git` por conta própria: sugira o comando exato para eu rodar. Em sessão na nuvem o branch e o PR _são_ a entrega, então `add`/`commit`/`push` no branch da sessão são permitidos. Nunca: `push --force`, `reset --hard`, `rebase`, `merge`, apagar branch, ou tocar em `main`.
+2. **npm/npx — só validação.** Nada de `npm install`, `npm ci`, `npx`, servidor de dev (`npm run dev`) ou `npm start` por conta própria.
+3. **Validação sempre.** Antes de concluir qualquer mudança, rode os gates do projeto (`npm run build`, `npm run lint`, `npm run typecheck`, `npm test`), salvo se eu disser explicitamente para não rodar. Se algo falhar, me diga com a saída — não conclua como se tivesse passado.
+4. **Estilo consistente.** Mantenha o estilo do código igual ao do restante do projeto.
+5. **Sem assinatura.** Não adicione `Co-Authored-By` nem marcadores de que a mudança foi feita por IA.
 
 ## Commands
 
