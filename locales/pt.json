@@ -122,7 +122,15 @@
         "company": "Kito Health",
         "period": "2021 — Atual",
         "location": "Portugal",
-        "desc": "Responsável por todo o ciclo de vida do software. Construo componentes reutilizáveis de front-end e back-end, traduzo designs e wireframes em código e otimizo o desempenho em dispositivos móveis e navegadores. Comecei como Engenheiro de Software em 2021 e passei a liderar a equipe em 2022. (JavaScript, Node.js, React, Express, MongoDB, AWS)"
+        "desc": "Responsável por todo o ciclo de vida do software, acumulando gestão e desenvolvimento: dependendo da fase do projeto, codo junto com a equipe ou atuo na gestão e na revisão dos pull requests — a arquitetura, a definição técnica dos produtos e as releases são sempre minhas. Entrei como Engenheiro de Software em 2021, assumi a liderança da equipe em 2022, com 5 pessoas, e desde 2025 conduzo uma equipe de 8. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
+        "links": [
+          { "label": "Site", "url": "https://kitohealth.org/" },
+          { "label": "App (PWA)", "url": "https://app.kitohealth.org/" },
+          {
+            "label": "Play Store",
+            "url": "https://play.google.com/store/apps/details?id=org.kito.app"
+          }
+        ]
       },
       {
         "role": "Gestor e Programador de TI",
