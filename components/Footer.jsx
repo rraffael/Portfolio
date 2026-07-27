@@ -3,7 +3,7 @@ import { useState } from 'react'
 // Not translatable, not sensitive: a random Pix key (exposes no name/CPF/phone)
 // and a public Wise payment link. Kept here so the locale files stay copy-only.
 const WISE_URL = 'https://wise.com/pay/me/raffaeld4'
-const PIX_KEY = '31c0efa1-5a33-43e7-8f46-6ff436dca0ff'
+const PIX_KEY = 'bb0669bb-53ea-486f-8516-8ed0066002b8'
 
 export default function Footer({ t, onManageCookies }) {
   const year = new Date().getFullYear()
