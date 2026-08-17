@@ -24,7 +24,8 @@
     "status": "Available for short-term projects",
     "ctaProjects": "View Projects",
     "ctaContact": "Get in Touch",
-    "ctaCv": "Download CV",
+    "ctaCvEn": "Download CV (EN)",
+    "ctaCvPt": "Download CV (PT)",
     "scroll": "scroll down",
     "scrollHint": "navigate",
     "weather": {
@@ -177,14 +178,16 @@
     "title": "Certifications",
     "lead": "Credentials that back the way I work.",
     "credentialLabel": "Credential ID",
-    "verifyLabel": "Verify credential",
+    "verifyLabel": "Verify Credential",
+    "certificateLabel": "View Certificate",
     "items": [
       {
-        "name": "EXAMPLE NAME",
-        "issuer": "Example Issuer",
-        "year": "XXXX",
+        "name": "Professional Scrum Master I",
+        "issuer": "Scrum.org",
+        "year": "PSM I · Issued Dec 2025",
         "credentialId": "",
-        "link": ""
+        "link": "https://scrum.org/certificates/1275097",
+        "certificateLink": "/certificate-psm1.pdf"
       }
     ]
   },

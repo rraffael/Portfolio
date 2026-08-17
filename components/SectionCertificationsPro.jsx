@@ -1,3 +1,12 @@
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
+// certificateLink points at a local file (e.g. "/certificate-psm1.pdf"), so it
+// needs the base path prefix; link (verify) is always an external URL and is
+// used as-is.
+function resolveLink(href) {
+  return href && href.startsWith('/') ? `${basePath}${href}` : href
+}
+
 // Badge icon is inline here (single use) rather than in SocialIcons.jsx, which
 // is scoped to social/contact links.
 function IconBadge() {
@@ -34,24 +43,41 @@ export default function SectionCertificationsPro({ t }) {
               <IconBadge />
             </div>
             <div className="pro-cert-body">
-              <h3>{item.name}</h3>
-              <p className="pro-cert-issuer">
-                {item.issuer} · {item.year}
-              </p>
+              {/* "name — issuer" as the heading, "year" as the line below —
+                  matches the two-line format the client asked for (the year
+                  field carries the full "PSM I · Issued Dec 2025" string). */}
+              <h3>
+                {item.name} — {item.issuer}
+              </h3>
+              <p className="pro-cert-issuer">{item.year}</p>
               {item.credentialId && (
                 <p className="pro-cert-id">
                   {t('certifications.credentialLabel')}: {item.credentialId}
                 </p>
               )}
-              {item.link && (
-                <a
-                  className="pro-btn pro-btn--ghost pro-cert-link"
-                  href={item.link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t('certifications.verifyLabel')}
-                </a>
+              {(item.link || item.certificateLink) && (
+                <div className="pro-cert-actions">
+                  {item.link && (
+                    <a
+                      className="pro-btn pro-btn--ghost pro-cert-link"
+                      href={item.link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {t('certifications.verifyLabel')} <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                  {item.certificateLink && (
+                    <a
+                      className="pro-btn pro-btn--ghost pro-cert-link"
+                      href={resolveLink(item.certificateLink)}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {t('certifications.certificateLabel')}
+                    </a>
+                  )}
+                </div>
               )}
             </div>
           </article>

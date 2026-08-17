@@ -24,7 +24,8 @@
     "status": "Disponível para projetos curtos",
     "ctaProjects": "Ver Projetos",
     "ctaContact": "Entrar em Contato",
-    "ctaCv": "Baixar CV",
+    "ctaCvEn": "Baixar CV (EN)",
+    "ctaCvPt": "Baixar CV (PT)",
     "scroll": "role para baixo",
     "scrollHint": "navegue",
     "weather": {
@@ -178,13 +179,15 @@
     "lead": "Credenciais que sustentam a forma como trabalho.",
     "credentialLabel": "ID da credencial",
     "verifyLabel": "Verificar credencial",
+    "certificateLabel": "Ver certificado",
     "items": [
       {
-        "name": "NOME EXEMPLO",
-        "issuer": "Emissor Exemplo",
-        "year": "XXXX",
+        "name": "Professional Scrum Master I",
+        "issuer": "Scrum.org",
+        "year": "PSM I · Emitido em dez/2025",
         "credentialId": "",
-        "link": ""
+        "link": "https://scrum.org/certificates/1275097",
+        "certificateLink": "/certificate-psm1.pdf"
       }
     ]
   },

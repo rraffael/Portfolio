@@ -2,23 +2,10 @@ import { IconGithub, IconLinkedin, IconMail } from './SocialIcons'
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
-// First + last word initials (e.g. "Raffael de Castro Rodrigues" -> "RR").
-// Same source string in both locales, so this never mismatches EN/PT.
-function getInitials(name) {
-  const parts = name.trim().split(/\s+/)
-  const first = parts[0]?.[0] || ''
-  const last = parts[parts.length - 1]?.[0] || ''
-  return (first + last).toUpperCase()
-}
-
 export default function SectionHeroPro({ t, onNavigate }) {
   return (
     <div className="pro-section-inner pro-section-inner--wide pro-hero">
-      {/* Placeholder until a real portrait is available — swap this div for an
-          <img src={`${basePath}/portrait.jpg`}> once the file lands in public/. */}
-      <div className="pro-hero-avatar" aria-hidden="true">
-        {getInitials(t('home.name'))}
-      </div>
+      <img className="pro-hero-avatar" src={`${basePath}/portrait.jpg`} alt={t('home.name')} />
 
       <span className="pro-chip">{t('home.greeting')}</span>
       <h1>{t('home.name')}</h1>
@@ -45,8 +32,11 @@ export default function SectionHeroPro({ t, onNavigate }) {
         >
           {t('home.ctaContact')}
         </button>
-        <a className="pro-btn pro-btn--ghost" href={`${basePath}/cv.pdf`} download>
-          {t('home.ctaCv')}
+        <a className="pro-btn pro-btn--ghost" href={`${basePath}/cv-en.pdf`} download>
+          {t('home.ctaCvEn')}
+        </a>
+        <a className="pro-btn pro-btn--ghost" href={`${basePath}/cv-pt.pdf`} download>
+          {t('home.ctaCvPt')}
         </a>
       </div>
 
