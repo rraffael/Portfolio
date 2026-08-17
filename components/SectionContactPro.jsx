@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { IconGithub, IconLinkedin, IconMail } from './SocialIcons'
+import { IconGithub, IconLinkedin, IconLocation, IconMail } from './SocialIcons'
 
 export default function SectionContactPro({ t }) {
   const email = t('contact.email')
@@ -67,6 +67,9 @@ export default function SectionContactPro({ t }) {
         </a>
 
         <div className="pro-panel pro-contact-link pro-contact-link--static">
+          <span className="pro-contact-icon">
+            <IconLocation />
+          </span>
           <span className="pro-contact-text">
             <span className="pro-contact-label">{t('contact.locationLabel')}</span>
             <span className="pro-contact-value">{t('contact.location')}</span>

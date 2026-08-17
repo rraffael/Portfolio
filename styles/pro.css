@@ -205,14 +205,38 @@
   justify-items: start;
 }
 
+/* Photo + greeting/name/role sit side by side on wide screens; stack with the
+   photo on top once the row gets too tight to read comfortably. */
+[data-world='pro'] .pro-hero-top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+[data-world='pro'] .pro-hero-intro {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+}
+
 [data-world='pro'] .pro-hero-avatar {
-  width: 96px;
-  height: 96px;
+  width: 112px;
+  height: 112px;
+  flex: none;
   border-radius: var(--radius-lg);
   background: var(--bg-alt);
-  border: 1px solid var(--border);
+  border: 3px solid var(--panel);
+  outline: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
   object-fit: cover;
-  margin-bottom: var(--space-2);
+}
+
+@media (max-width: 640px) {
+  [data-world='pro'] .pro-hero-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
 }
 
 [data-world='pro'] .pro-hero-role {

@@ -5,11 +5,15 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 export default function SectionHeroPro({ t, onNavigate }) {
   return (
     <div className="pro-section-inner pro-section-inner--wide pro-hero">
-      <img className="pro-hero-avatar" src={`${basePath}/portrait.jpg`} alt={t('home.name')} />
+      <div className="pro-hero-top">
+        <img className="pro-hero-avatar" src={`${basePath}/portrait.jpg`} alt={t('home.name')} />
+        <div className="pro-hero-intro">
+          <span className="pro-chip">{t('home.greeting')}</span>
+          <h1>{t('home.name')}</h1>
+          <p className="pro-hero-role">{t('home.role')}</p>
+        </div>
+      </div>
 
-      <span className="pro-chip">{t('home.greeting')}</span>
-      <h1>{t('home.name')}</h1>
-      <p className="pro-hero-role">{t('home.role')}</p>
       <p className="pro-placeholder-lead">{t('home.headline')}</p>
 
       <span className="pro-hero-status">
