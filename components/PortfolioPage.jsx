@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import HomeSection from './SectionHome'
 import AboutSection from './SectionAbout'
 import SkillsSection from './SectionSkills'
@@ -190,6 +191,10 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
                 </div>
               )}
             </div>
+
+            <Link className="pixel-btn pixel-btn--ghost exit-to-pro" href="/">
+              {t('world.exitToPro')}
+            </Link>
           </nav>
 
           <button
@@ -257,6 +262,14 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
               </button>
             ))}
           </div>
+
+          <Link
+            className="pixel-btn pixel-btn--ghost exit-to-pro"
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('world.exitToPro')}
+          </Link>
         </aside>
       </header>
 

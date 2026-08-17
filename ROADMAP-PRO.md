@@ -59,12 +59,14 @@ Certifications, e o cross-linking entre os dois mundos.
 Do `ROADMAP.md` atual, a maioria dos pendentes é opcional/independente. Só
 **dois** valem a pena fechar antes (ou junto), porque viram **infra compartilhada**:
 
-- [ ] **Acessibilidade base + `prefers-reduced-motion`** (item já pendente no pixel):
+- [x] **Acessibilidade base + `prefers-reduced-motion`** (item já pendente no pixel):
       foco visível, `aria-current` no item de menu ativo, navegação por teclado nos
       cards, e reduzir/pausar animações sob `prefers-reduced-motion`. A v2 vai
       querer exatamente as mesmas primitivas — fazer uma vez, usar nos dois mundos.
 - [ ] **Imagem OG em PNG/JPG** (hoje aponta para `avatar.svg`): a v2 precisa de
-      cards sociais decentes de qualquer jeito; resolver junto.
+      cards sociais decentes de qualquer jeito; resolver junto. **Pendente**: os
+      dois mundos já referenciam `public/og-image.png` (1200×630), mas o arquivo
+      ainda não existe — precisa ser adicionado.
 
 O resto do `ROADMAP.md` (toggle de tema, dots do deck, thumbnails de projeto,
 3º idioma, métricas de experiência, form de contato, botão "baixar CV") **não
@@ -73,121 +75,142 @@ bloqueia** a v2 — pode seguir em paralelo ou depois. Exceção útil: o **"bai
 
 ---
 
-## Fase 1 — Fundação compartilhada (refactor pré-requisito) ⬜
+## Fase 1 — Fundação compartilhada (refactor pré-requisito) ✅
 
 Sem isto, as duas versões brigam por CSS global e duplicam a lógica de idioma.
 
-- [ ] **Extrair a lógica de idioma** de `pages/index.jsx` para um hook reusável
+- [x] **Extrair a lógica de idioma** de `pages/index.jsx` para um hook reusável
       `lib/useLocale.ts` (ou `components/useLocale.js`): `readClientLocale`,
       `localStorage('portfolio-locale')` e `onLocaleChange`. As duas rotas passam
       a consumir o mesmo hook, garantindo idioma preservado ao trocar de mundo.
-- [ ] **Criar as rotas:** `pages/pixel.jsx` renderiza o `PortfolioPage` atual;
+- [x] **Criar as rotas:** `pages/pixel.jsx` renderiza o `PortfolioPage` atual;
       `pages/index.jsx` passa a renderizar a nova `ProfessionalPage`. Confirmar que
       `output: 'export'` gera `/pixel/index.html` (trailing slash já ligado).
-- [ ] **Isolar o CSS por mundo.** Como Next só permite CSS global no `_app`,
+- [x] **Isolar o CSS por mundo.** Como Next só permite CSS global no `_app`,
       importar em `_app.jsx`: `styles/base.css` (reset/variáveis comuns) +
       `styles/pixel.css` (regras atuais, **prefixadas/escopadas** sob
       `[data-world="pixel"]`) + `styles/pro.css` (novo, sob `[data-world="pro"]`).
       Cada página seta `data-world` no wrapper raiz. Meta: entrar em `/pixel` não
-      vaza scanlines/fontes pixel para `/` e vice-versa.
-- [ ] **Mover os assets pixel-only** (window SVGs, avatar pixel) mantendo os paths
-      via `NEXT_PUBLIC_BASE_PATH`; nada quebra no pixelworld.
+      vaza scanlines/fontes pixel para `/` e vice-versa. Implementado via
+      `_document.jsx` (`data-world` no HTML exportado por rota, sem flash) +
+      `lib/useWorld.ts` (sincroniza no cliente para navegação `next/link`).
+- [x] **Mover os assets pixel-only** (window SVGs, avatar pixel) mantendo os paths
+      via `NEXT_PUBLIC_BASE_PATH`; nada quebra no pixelworld. (Paths já eram
+      absolutos via base path, não precisaram mudar.)
 
-## Fase 2 — Design system profissional ⬜
+## Fase 2 — Design system profissional ✅
 
 A identidade visual da v2, sem nenhum traço pixel.
 
-- [ ] **Tipografia:** manter `Inter` (corpo) e escolher uma display/heading sóbria
+- [x] **Tipografia:** manter `Inter` (corpo) e escolher uma display/heading sóbria
       (ex.: Inter tight/`Space Grotesk`/serif leve). **Sem** `Press Start 2P`/`VT323`.
-- [ ] **Paleta** em `styles/pro.css` (`:root[data-world="pro"]`): neutra e moderna,
+- [x] **Paleta** em `styles/pro.css` (`:root[data-world="pro"]`): neutra e moderna,
       com suporte a **dark/light** (`prefers-color-scheme` + toggle opcional). Sem
-      sombras hard nem scanlines.
-- [ ] **Primitivos:** botões, cards, "chips" de skill, painéis, escala de espaçamento,
+      sombras hard nem scanlines. (Gancho `[data-theme]` pronto para um toggle
+      manual futuro; nenhum botão de toggle construído ainda.)
+- [x] **Primitivos:** botões, cards, "chips" de skill, painéis, escala de espaçamento,
       raios de borda suaves, transições discretas. Documentar como utilitários/classes.
-- [ ] **Ícones sociais** (LinkedIn, GitHub, e-mail, e o que houver) em SVG inline nítido.
+- [x] **Ícones sociais** (LinkedIn, GitHub, e-mail, e o que houver) em SVG inline nítido.
 
-## Fase 3 — Layout e navegação profissional ⬜
+## Fase 3 — Layout e navegação profissional ✅
 
 Scroll vertical âncora — o oposto do deck horizontal do pixel.
 
-- [ ] `components/ProfessionalPage.jsx`: header **sticky** + `main` com scroll
+- [x] `components/ProfessionalPage.jsx`: header **sticky** + `main` com scroll
       vertical suave; seções empilhadas com `id` para deep-link por hash (`#projects`).
-- [ ] **Nav com seção ativa** via `IntersectionObserver` (destaca o item corrente,
+- [x] **Nav com seção ativa** via `IntersectionObserver` (destaca o item corrente,
       `aria-current`), scroll suave ao clicar, e menu mobile (hambúrguer) reusando
       o padrão atual mas com estilo pro.
-- [ ] **Language switcher** reusado (mesmo componente/estado do hook da Fase 1).
-- [ ] **Botão "Enter the pixelworld"** no header (desktop) e no menu mobile →
+- [x] **Language switcher** reusado (mesmo componente/estado do hook da Fase 1).
+- [x] **Botão "Enter the pixelworld"** no header (desktop) e no menu mobile →
       `next/link` para `/pixel`. Copy nas chaves i18n (`world.enterPixel`).
-- [ ] **"Back to top"** no footer (como na referência).
+- [x] **"Back to top"** no footer (como na referência).
 
-## Fase 4 — Hero profissional ⬜
+## Fase 4 — Hero profissional ✅
 
-- [ ] Adicionar **foto/retrato profissional** em `public/` (resolve via base path).
-- [ ] `SectionHeroPro.jsx`: saudação, nome (**Raffael de Castro Rodrigues**),
+- [ ] Adicionar **foto/retrato profissional** em `public/`. **Pendente**: hero usa
+      um avatar placeholder com iniciais (`SectionHeroPro.jsx`); trocar por
+      `<img src={`${basePath}/portrait.jpg`}>` quando a foto estiver disponível.
+- [x] `SectionHeroPro.jsx`: saudação, nome (**Raffael de Castro Rodrigues**),
       cargo (**Lead Software Engineer**), headline, status "disponível para projetos
       curtos", CTAs (ver projetos / contato / **baixar CV**) e linha de ícones sociais.
-- [ ] Reusar as chaves `home.*` existentes; adicionar só o que a versão pro pedir
-      de novo (mantendo paridade EN/PT).
+- [x] Reusar as chaves `home.*` existentes; adicionar só o que a versão pro pedir
+      de novo (mantendo paridade EN/PT). **Pendente**: botão "baixar CV" aponta pra
+      `public/cv.pdf`, arquivo ainda não existe.
 
-## Fase 5 — Seções de conteúdo (reusando o i18n) ⬜
+## Fase 5 — Seções de conteúdo (reusando o i18n) ✅
 
 Componentes novos, com o **mesmo conteúdo** dos locales — só o visual muda.
 
-- [ ] `SectionAboutPro.jsx` — bio + stats + formação + idiomas (chaves `about.*`).
-- [ ] `SectionSkillsPro.jsx` — grupos de skills como chips modernos (chaves `skills.*`,
+- [x] `SectionAboutPro.jsx` — bio + stats + formação + idiomas (chaves `about.*`).
+- [x] `SectionSkillsPro.jsx` — grupos de skills como chips modernos (chaves `skills.*`,
       incluindo o grupo AI & LLMs com a `note`).
-- [ ] `SectionProjectsPro.jsx` — cards de projeto (nome/ano/descrição/stack/links),
+- [x] `SectionProjectsPro.jsx` — cards de projeto (nome/ano/descrição/stack/links),
       layout em grid limpo (chaves `projects.*`).
-- [ ] `SectionExperiencePro.jsx` — timeline profissional (chaves `work.*`).
-- [ ] **Lembrete de conteúdo:** detalhar os **últimos 6 anos de trabalho** (2020→2026)
+- [x] `SectionExperiencePro.jsx` — timeline profissional (chaves `work.*`).
+- [x] **Lembrete de conteúdo:** detalhar os **últimos 6 anos de trabalho** (2020→2026)
       ano a ano — hoje aparece só como "2020+"; especificar cada período/cargo/entrega
-      em vez de um bloco genérico.
+      em vez de um bloco genérico. (Kito Health quebrada em 3 entradas: Software
+      Engineer 2021–2022, Team Lead/5 2022–2025, Team Lead/8 2025–presente. Afeta
+      os dois mundos, já que o conteúdo é compartilhado.)
 - [ ] _(Opcional, como na referência)_ seção **Open Source / Articles**:
       reservar **dois espaços** para **lançamentos/postagens importantes de projetos
       públicos** lançados nesse período (título, data, link do release/post). Deixar
-      os dois slots preparados mesmo que o conteúdo entre depois.
+      os dois slots preparados mesmo que o conteúdo entre depois. **Adiada** —
+      sem conteúdo definido ainda.
 
-## Fase 6 — Certifications (nova seção) ⬜
+## Fase 6 — Certifications (nova seção) ✅
 
 Seção nova de primeira classe — é aqui que a **certificação Scrum Master** entra
 (próxima tarefa). Ver a referência (PSM I) como modelo.
 
-- [ ] Novas chaves `certifications.*` em `locales/{en,pt}.json` (paridade mantida):
+- [x] Novas chaves `certifications.*` em `locales/{en,pt}.json` (paridade mantida):
       título da seção + array de itens (nome, emissor, ano, id/credential, link).
-- [ ] `SectionCertificationsPro.jsx`: cards com selo/logo, nome da certificação,
+      **Pendente**: item ainda é placeholder ("EXAMPLE NAME"/"NOME EXEMPLO", "XXXX")
+      — falta o nome/emissor/ano reais da certificação.
+- [x] `SectionCertificationsPro.jsx`: cards com selo/logo, nome da certificação,
       emissor, data e ação (ver credencial / verificar / baixar).
-- [ ] **Decidir a hospedagem do documento** (a definir na próxima tarefa):
-      link de verificação oficial vs. PDF em `public/` vs. imagem do certificado.
-      Deixar o card preparado para qualquer uma das opções.
+- [x] **Decidir a hospedagem do documento**: adiado — card já lida com `link`
+      vazio (não mostra botão de ação até haver link).
 
-## Fase 7 — Contact + Footer profissionais ⬜
+## Fase 7 — Contact + Footer profissionais ✅
 
-- [ ] `SectionContactPro.jsx` — reusa `contact.*` (mailto + copy-to-clipboard já
+- [x] `SectionContactPro.jsx` — reusa `contact.*` (mailto + copy-to-clipboard já
       existente na lógica, LinkedIn, GitHub, localização), com visual pro.
-- [ ] `FooterPro.jsx` — nome + ano dinâmico + direitos, **ícones sociais**,
+- [x] `FooterPro.jsx` — nome + ano dinâmico + direitos, **ícones sociais**,
       "back to top", botão **"🍪 Cookies"** (reabrir consentimento) e, se fizer
-      sentido, o "Buy me a drink 🍹" reusado.
+      sentido, o "Buy me a drink 🍹" reusado. (Banner de cookies reusa o componente
+      `CookieConsent.jsx` original — só ganhou CSS pro; não abre sozinho na
+      primeira visita do mundo pro, já que não há feature de clima por lá.)
 
-## Fase 8 — Ligação entre os dois mundos ⬜
+## Fase 8 — Ligação entre os dois mundos ✅
 
-- [ ] **"Enter the pixelworld"** (pro → `/pixel`) e **"Exit to professional"**
+- [x] **"Enter the pixelworld"** (pro → `/pixel`) e **"Exit to professional"**
       (pixel → `/`) — adicionar o link de volta no `PortfolioPage.jsx`/header pixel.
-- [ ] Garantir que **idioma e consentimento persistem** na troca (já resolvido pela
+- [x] Garantir que **idioma e consentimento persistem** na troca (já resolvido pela
       Fase 1 + `lib/consent.ts`); testar indo e voltando.
-- [ ] _(Opcional)_ transição/animação leve ao trocar de mundo (respeitando
+- [x] _(Opcional)_ transição/animação leve ao trocar de mundo (respeitando
       `prefers-reduced-motion`).
 
-## Fase 9 — SEO, acessibilidade, build e deploy ⬜
+## Fase 9 — SEO, acessibilidade, build e deploy ✅
 
-- [ ] **Meta por rota:** mover os defaults de `_app.jsx` para permitir `<Head>`
-      específico em `/` e `/pixel` (títulos/descrições distintas). OG image PNG.
-- [ ] **Acessibilidade:** foco visível, `aria-current`, navegação por teclado,
-      contraste AA no tema pro, `prefers-reduced-motion` respeitado.
-- [ ] **Gates:** `npm run build` (confirmar que exporta `/` **e** `/pixel/`),
+- [x] **Meta por rota:** mover os defaults de `_app.jsx` para permitir `<Head>`
+      específico em `/` e `/pixel` (títulos/descrições distintas). **Pendente**:
+      `og-image.png` (1200×630) referenciado mas ainda não existe em `public/`.
+- [x] **Acessibilidade:** foco visível, `aria-current`, navegação por teclado,
+      contraste AA no tema pro (conferido por cálculo de contraste — combinações
+      usadas ficam entre ~5.5:1 e ~7:1, acima do mínimo AA de 4.5:1),
+      `prefers-reduced-motion` respeitado (regra geral em `pro.css`, mesmo padrão
+      do `pixel.css`).
+- [x] **Gates:** `npm run build` (confirmar que exporta `/` **e** `/pixel/`),
       `npm run lint`, `npm run typecheck`, `npm test` (paridade i18n) — todos verdes.
-- [ ] **Deploy:** GitHub Pages sob `/Portfolio` continua; confirmar que a home agora
-      é a versão pro e `/Portfolio/pixel/` serve o pixelworld. Atualizar canonical/OG.
-- [ ] _(Opcional)_ Lighthouse/pass de performance no tema pro.
+- [x] **Deploy:** GitHub Pages sob `/Portfolio` continua; confirmado com
+      `NEXT_PUBLIC_BASE_PATH=/Portfolio npm run build` que a home é a versão pro e
+      `/Portfolio/pixel/` serve o pixelworld, com assets resolvendo certo. Canonical/OG
+      atualizados por rota. `.github/workflows/deploy.yml` não precisou mudar (só
+      publica `out/`, que já contém as duas rotas).
+- [ ] _(Opcional)_ Lighthouse/pass de performance no tema pro. **Não feito** — sem
+      navegador disponível nesta sessão para rodar.
 
 ---
 

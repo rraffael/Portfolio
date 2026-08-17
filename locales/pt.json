@@ -9,7 +9,10 @@
     "language": "Idioma",
     "previous": "Seção anterior",
     "next": "Próxima seção",
-    "close": "Fechar menu"
+    "close": "Fechar menu",
+    "openMenu": "Abrir menu",
+    "backToTop": "Voltar ao topo",
+    "certifications": "Certificações"
   },
   "home": {
     "brand": "Raffael",
@@ -21,6 +24,7 @@
     "status": "Disponível para projetos curtos",
     "ctaProjects": "Ver Projetos",
     "ctaContact": "Entrar em Contato",
+    "ctaCv": "Baixar CV",
     "scroll": "role para baixo",
     "scrollHint": "navegue",
     "weather": {
@@ -118,11 +122,11 @@
     "lead": "Onde trabalhei e o que construí.",
     "items": [
       {
-        "role": "Líder de Equipe de Software",
+        "role": "Líder de Equipe de Software (equipe de 8)",
         "company": "Kito Health",
-        "period": "2021 — Atual",
+        "period": "2025 — Atual",
         "location": "Portugal",
-        "desc": "Responsável por todo o ciclo de vida do software, acumulando gestão e desenvolvimento: dependendo da fase do projeto, codo junto com a equipe ou atuo na gestão e na revisão dos pull requests — a arquitetura, a definição técnica dos produtos e as releases são sempre minhas. Entrei como Engenheiro de Software em 2021, assumi a liderança da equipe em 2022, com 5 pessoas, e desde 2025 conduzo uma equipe de 8. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
+        "desc": "Hoje conduzo uma equipe de 8, ainda responsável por todo o ciclo de vida do software, acumulando gestão e desenvolvimento conforme a fase — a arquitetura, a definição técnica dos produtos e as releases são sempre minhas. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
         "links": [
           { "label": "Site", "url": "https://kitohealth.org/" },
           { "label": "App (PWA)", "url": "https://app.kitohealth.org/" },
@@ -131,6 +135,20 @@
             "url": "https://play.google.com/store/apps/details?id=org.kito.app"
           }
         ]
+      },
+      {
+        "role": "Líder de Equipe de Software (equipe de 5)",
+        "company": "Kito Health",
+        "period": "2022 — 2025",
+        "location": "Portugal",
+        "desc": "Assumi a liderança da equipe: dividindo o tempo entre codar e gerir, conduzindo a revisão dos pull requests — a arquitetura, a definição técnica dos produtos e as releases continuaram sempre minhas."
+      },
+      {
+        "role": "Engenheiro de Software",
+        "company": "Kito Health",
+        "period": "2021 — 2022",
+        "location": "Portugal",
+        "desc": "Entrei como desenvolvedor, atuando em todo o ciclo de vida do software desde o início."
       },
       {
         "role": "Gestor e Programador de TI",
@@ -152,6 +170,21 @@
         "period": "2015 — 2017",
         "location": "Aracaju, Brasil",
         "desc": "Produzi e editei o conteúdo em vídeo do estúdio e pesquisei novas tecnologias de mídia para construir o blog e o site da empresa. (WordPress, Adobe Premiere)"
+      }
+    ]
+  },
+  "certifications": {
+    "title": "Certificações",
+    "lead": "Credenciais que sustentam a forma como trabalho.",
+    "credentialLabel": "ID da credencial",
+    "verifyLabel": "Verificar credencial",
+    "items": [
+      {
+        "name": "NOME EXEMPLO",
+        "issuer": "Emissor Exemplo",
+        "year": "XXXX",
+        "credentialId": "",
+        "link": ""
       }
     ]
   },
@@ -208,5 +241,9 @@
       "item2": "open-meteo.com — retorna o clima atual para essas coordenadas.",
       "item3": "wttr.in — clima + localização de reserva, caso o primeiro serviço esteja indisponível."
     }
+  },
+  "world": {
+    "enterPixel": "Entrar no pixelworld",
+    "exitToPro": "Sair para o profissional"
   }
 }

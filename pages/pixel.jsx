@@ -1,18 +1,18 @@
 import Head from 'next/head'
-import ProfessionalPage from '../components/ProfessionalPage'
+import PortfolioPage from '../components/PortfolioPage'
 import { useLocale } from '../lib/useLocale'
 import { useWorld } from '../lib/useWorld'
 
-const siteUrl = 'https://rraffael.github.io/Portfolio/'
-const title = 'Raffael Castro Rodrigues — Software Engineer'
+const siteUrl = 'https://rraffael.github.io/Portfolio/pixel/'
+const title = 'Raffael Castro Rodrigues — Pixel Portfolio'
 const description =
-  'Portfolio of Raffael Castro Rodrigues, a Lead Software Engineer who builds reliable software across the full life-cycle — from architecture to delivery.'
+  "The retro pixel-art edition of Raffael Castro Rodrigues' portfolio — a Lead Software Engineer's projects, skills and experience, presented as a nostalgic 8-bit world."
 // Doesn't exist yet — add public/og-image.png (1200×630) to light this up;
 // social crawlers need a raster image (PNG/JPG), not the SVG avatar.
-const ogImage = `${siteUrl}og-image.png`
+const ogImage = 'https://rraffael.github.io/Portfolio/og-image.png'
 
-export default function Home() {
-  useWorld('pro')
+export default function Pixel() {
+  useWorld('pixel')
   const { locale, onLocaleChange } = useLocale()
 
   return (
@@ -20,7 +20,7 @@ export default function Home() {
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#11131f" />
         <link rel="canonical" href={siteUrl} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -30,7 +30,7 @@ export default function Home() {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage} />
       </Head>
-      <ProfessionalPage locale={locale} onLocaleChange={onLocaleChange} />
+      <PortfolioPage locale={locale} onLocaleChange={onLocaleChange} />
     </>
   )
 }

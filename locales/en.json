@@ -9,7 +9,10 @@
     "language": "Language",
     "previous": "Previous section",
     "next": "Next section",
-    "close": "Close menu"
+    "close": "Close menu",
+    "openMenu": "Open menu",
+    "backToTop": "Back to top",
+    "certifications": "Certifications"
   },
   "home": {
     "brand": "Raffael",
@@ -21,6 +24,7 @@
     "status": "Available for short-term projects",
     "ctaProjects": "View Projects",
     "ctaContact": "Get in Touch",
+    "ctaCv": "Download CV",
     "scroll": "scroll down",
     "scrollHint": "navigate",
     "weather": {
@@ -118,11 +122,11 @@
     "lead": "Where I've worked and what I built there.",
     "items": [
       {
-        "role": "Software Team Lead",
+        "role": "Software Team Lead (team of 8)",
         "company": "Kito Health",
-        "period": "2021 — Present",
+        "period": "2025 — Present",
         "location": "Portugal",
-        "desc": "Own the full software life-cycle as both a manager and a developer: depending on the phase, I code alongside the team or run management and pull request reviews — architecture, the technical definition of the products and every release are always mine. Joined as a Software Engineer in 2021, took over the team in 2022 with 5 people, and since 2025 I lead a team of 8. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
+        "desc": "Now leading a team of 8, still owning the full software life-cycle as both a manager and a developer depending on the phase — architecture, the technical definition of the products and every release are always mine. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
         "links": [
           { "label": "Website", "url": "https://kitohealth.org/" },
           { "label": "App (PWA)", "url": "https://app.kitohealth.org/" },
@@ -131,6 +135,20 @@
             "url": "https://play.google.com/store/apps/details?id=org.kito.app"
           }
         ]
+      },
+      {
+        "role": "Software Team Lead (team of 5)",
+        "company": "Kito Health",
+        "period": "2022 — 2025",
+        "location": "Portugal",
+        "desc": "Took over the team: split time between coding and management, running pull request reviews — architecture, the technical direction of the products and every release stayed mine."
+      },
+      {
+        "role": "Software Engineer",
+        "company": "Kito Health",
+        "period": "2021 — 2022",
+        "location": "Portugal",
+        "desc": "Joined as a developer, working across the full software life-cycle from day one."
       },
       {
         "role": "IT Manager & Programmer",
@@ -152,6 +170,21 @@
         "period": "2015 — 2017",
         "location": "Aracaju, Brazil",
         "desc": "Recorded and edited the studio's video content and researched new media tools to build the company's blog and website. (WordPress, Adobe Premiere)"
+      }
+    ]
+  },
+  "certifications": {
+    "title": "Certifications",
+    "lead": "Credentials that back the way I work.",
+    "credentialLabel": "Credential ID",
+    "verifyLabel": "Verify credential",
+    "items": [
+      {
+        "name": "EXAMPLE NAME",
+        "issuer": "Example Issuer",
+        "year": "XXXX",
+        "credentialId": "",
+        "link": ""
       }
     ]
   },
@@ -208,5 +241,9 @@
       "item2": "open-meteo.com — returns the current weather for those coordinates.",
       "item3": "wttr.in — backup weather + location if the first service is unavailable."
     }
+  },
+  "world": {
+    "enterPixel": "Enter the pixelworld",
+    "exitToPro": "Exit to professional"
   }
 }
