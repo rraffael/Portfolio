@@ -3,6 +3,7 @@ import { IconGithub, IconLinkedin, IconLocation, IconMail } from './SocialIcons'
 
 export default function SectionContactPro({ t }) {
   const email = t('contact.email')
+  const [emailUser, emailDomain] = email.split('@')
   const [copied, setCopied] = useState(false)
 
   // mailto: only does something when the visitor has a default mail client set;
@@ -32,7 +33,13 @@ export default function SectionContactPro({ t }) {
           </span>
           <span className="pro-contact-text">
             <span className="pro-contact-label">{t('contact.emailLabel')}</span>
-            <span className="pro-contact-value">{email}</span>
+            {/* <wbr> after "@" so a wrap (if needed) happens at the natural
+                email break point instead of overflow-wrap picking an
+                arbitrary spot mid-word. */}
+            <span className="pro-contact-value">
+              {emailUser}@<wbr />
+              {emailDomain}
+            </span>
           </span>
         </a>
 
