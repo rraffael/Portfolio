@@ -15,7 +15,7 @@ const languages = [
   { code: 'pt', label: 'PT', flag: '🇵🇹' }
 ]
 
-const sectionIds = ['home', 'about', 'skills', 'projects', 'work', 'certifications', 'contact']
+const sectionIds = ['home', 'about', 'skills', 'work', 'projects', 'certifications', 'contact']
 
 function prefersReducedMotion() {
   return (
@@ -262,6 +262,12 @@ export default function ProfessionalPage({ locale, onLocaleChange, onManageCooki
           </div>
         </section>
 
+        <section id="work" ref={(el) => (sectionRefs.current.work = el)} className="pro-section">
+          <div className="pro-section-inner pro-section-inner--wide">
+            <SectionExperiencePro t={t} />
+          </div>
+        </section>
+
         <section
           id="projects"
           ref={(el) => (sectionRefs.current.projects = el)}
@@ -269,12 +275,6 @@ export default function ProfessionalPage({ locale, onLocaleChange, onManageCooki
         >
           <div className="pro-section-inner pro-section-inner--wide">
             <SectionProjectsPro t={t} />
-          </div>
-        </section>
-
-        <section id="work" ref={(el) => (sectionRefs.current.work = el)} className="pro-section">
-          <div className="pro-section-inner pro-section-inner--wide">
-            <SectionExperiencePro t={t} />
           </div>
         </section>
 
