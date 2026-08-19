@@ -744,9 +744,12 @@
 }
 
 /* ---------- Projects ---------- */
+/* Fixed 2 columns (2x2 for the current 4 projects) instead of auto-fit, which
+   let 3 fit per row on wide screens and stranded the 4th card alone on its
+   own row. */
 [data-world='pro'] .pro-projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
 }
 
@@ -754,6 +757,14 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+}
+
+[data-world='pro'] .pro-project-thumb {
+  width: calc(100% + 2 * var(--space-5));
+  margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) 0;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 [data-world='pro'] .pro-project-head {
@@ -918,6 +929,9 @@
     gap: var(--space-2);
   }
   [data-world='pro'] .pro-skills-grid {
+    grid-template-columns: 1fr;
+  }
+  [data-world='pro'] .pro-projects-grid {
     grid-template-columns: 1fr;
   }
 }

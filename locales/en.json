@@ -85,7 +85,7 @@
   },
   "projects": {
     "title": "Projects",
-    "lead": "Personal projects I've designed, built and shipped.",
+    "lead": "Selected projects I designed, built and delivered throughout my journey.",
     "codeLabel": "Code",
     "demoLabel": "Demo",
     "items": [
@@ -95,7 +95,8 @@
         "desc": "Responsive multimedia website I built individually within a group project for the Multimedia Lab at the University of Porto.",
         "stack": ["React", "JavaScript", "HTML5", "Material-UI"],
         "code": "https://github.com/rraffael/MM-7-Seconds",
-        "demo": "https://rraffael.github.io/MM-7-Seconds/"
+        "demo": "https://rraffael.github.io/MM-7-Seconds/",
+        "image": "/projects/7seconds_projeto.png"
       },
       {
         "name": "Through My Eyes",
@@ -103,7 +104,8 @@
         "desc": "Another responsive multimedia site crafted solo within a group project for the Master in Multimedia at the University of Porto.",
         "stack": ["React", "JavaScript", "HTML5", "Material-UI"],
         "code": "https://github.com/rraffael/MM-Through-My-Eyes",
-        "demo": "https://rraffael.github.io/MM-Through-My-Eyes/"
+        "demo": "https://rraffael.github.io/MM-Through-My-Eyes/",
+        "image": "/projects/ThrougMyEyes_projeto.png"
       },
       {
         "name": "Evasion Predict",

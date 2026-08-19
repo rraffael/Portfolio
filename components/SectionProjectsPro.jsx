@@ -1,5 +1,7 @@
 import { IconGithub } from './SocialIcons'
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 export default function SectionProjectsPro({ t }) {
   const items = t('projects.items') || []
 
@@ -11,6 +13,14 @@ export default function SectionProjectsPro({ t }) {
       <div className="pro-projects-grid">
         {items.map((project) => (
           <article className="pro-panel pro-project-card" key={project.name}>
+            {project.image && (
+              <img
+                className="pro-project-thumb"
+                src={`${basePath}${project.image}`}
+                alt=""
+                loading="lazy"
+              />
+            )}
             <div className="pro-project-head">
               <h3>{project.name}</h3>
               <span className="pro-project-year">{project.year}</span>
