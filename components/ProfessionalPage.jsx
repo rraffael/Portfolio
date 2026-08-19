@@ -35,48 +35,55 @@ export default function ProfessionalPage({ locale, onLocaleChange, onManageCooki
   const sections = sectionIds.map((id) => ({ id, label: t(`menu.${id}`) }))
   const selectedLanguage = languages.find((item) => item.code === locale) || languages[0]
 
-  // Scrollspy: highlight the nav item for whichever section currently sits in
-  // the vertical center band of the viewport (offset below the sticky header).
+  // Scrollspy: highlight the nav item for the section whose top has crossed
+  // above a reference line near the vertical center of the viewport (45%
+  // down, mirroring the sticky header offset). Recomputed from actual
+  // element positions on every scroll frame rather than relying on
+  // IntersectionObserver's change-only callbacks — a short section (e.g.
+  // "home" at the top, "contact" at the bottom, but potentially any of them)
+  // can otherwise be scrolled past entirely within a single frame during a
+  // fast scroll, without ever firing an enter/exit event, leaving the
+  // previous nav item stuck as "active".
   useEffect(() => {
     const elements = sectionIds.map((id) => sectionRefs.current[id]).filter(Boolean)
     if (!elements.length) return
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((entry) => entry.isIntersecting)
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id)
+    let ticking = false
+
+    const computeActive = () => {
+      ticking = false
+      const referenceY = window.innerHeight * 0.45
+
+      // The section whose top is highest above the reference line while
+      // still being the closest one to it "wins" — i.e. the last id in
+      // page order whose top has already crossed the line. This holds at
+      // both edges too: at scroll top only "home"'s top qualifies, and at
+      // max scroll every section above "contact" already qualifies, so
+      // "contact" (the last one checked) naturally wins.
+      let current = sectionIds[0]
+      elements.forEach((el, index) => {
+        if (el.getBoundingClientRect().top <= referenceY) {
+          current = sectionIds[index]
         }
-      },
-      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
-    )
+      })
+      setActiveSection(current)
+    }
 
-    elements.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [locale])
-
-  // The scrollspy band above never reaches the last section: "contact" is
-  // short and followed by the footer, so once the page hits max scroll the
-  // band falls over the footer and neither "certifications" nor "contact"
-  // cross it — leaving the previous section stuck as "active". Force the
-  // last section active whenever the page is scrolled to (or clamped at) the
-  // bottom, which also covers clicking "Contact" in the nav since scrolling
-  // that short last section into view clamps to the same max scroll position.
-  useEffect(() => {
-    const lastSectionId = sectionIds[sectionIds.length - 1]
-
-    const handleScroll = () => {
-      const atBottom =
-        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
-      if (atBottom) {
-        setActiveSection(lastSectionId)
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        window.requestAnimationFrame(computeActive)
       }
     }
 
-    handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    computeActive()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [locale])
 
   const scrollToSection = useCallback((id) => {
     const el = sectionRefs.current[id]
