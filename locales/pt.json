@@ -49,7 +49,7 @@
     "stat2Value": "10+",
     "stat2Label": "Projetos entregues",
     "stat3Value": "3",
-    "stat3Label": "Idiomas falados",
+    "stat3Label": "Idiomas",
     "educationTitle": "Formação",
     "education": [
       {
@@ -71,7 +71,20 @@
     "groups": [
       { "title": "Frontend", "items": ["JavaScript", "React", "HTML5", "CSS"] },
       { "title": "Backend", "items": ["Node.js", "Express", "REST APIs"] },
-      { "title": "Ferramentas & Dados", "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"] },
+      {
+        "title": "Cloud, Dados & Ferramentas",
+        "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"]
+      },
+      {
+        "title": "Liderança",
+        "items": [
+          "Liderança de Equipe",
+          "Revisão de Código",
+          "Arquitetura",
+          "Gestão de Releases",
+          "Agile"
+        ]
+      },
       {
         "title": "IA & LLMs *",
         "items": ["ChatGPT", "Claude", "GitHub Copilot"],

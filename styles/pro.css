@@ -615,6 +615,9 @@
   [data-world='pro'] .pro-mobile-menu {
     display: flex;
   }
+  [data-world='pro'] .pro-skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ---------- Sections ---------- */
@@ -636,11 +639,14 @@
 }
 
 /* ---------- About ---------- */
+/* Equal-width columns, stretched to the same height, so the bio/stats card
+   and the education/languages card carry the same visual weight even though
+   the latter has noticeably less content. */
 [data-world='pro'] .pro-about-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-5);
-  align-items: start;
+  align-items: stretch;
 }
 
 [data-world='pro'] .pro-about-bio {
@@ -715,9 +721,12 @@
 }
 
 /* ---------- Skills ---------- */
+/* Fixed 3 columns (3x2 for the current 5 groups) instead of auto-fit, so the
+   grid doesn't stretch to a single wide row on large screens. Narrower
+   viewports fall back to 2, then 1 column below. */
 [data-world='pro'] .pro-skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
 }
 
@@ -907,6 +916,9 @@
   [data-world='pro'] .pro-stats {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-2);
+  }
+  [data-world='pro'] .pro-skills-grid {
+    grid-template-columns: 1fr;
   }
 }
 
