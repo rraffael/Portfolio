@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import PortfolioPage from '../components/PortfolioPage'
-import { useLocale } from '../lib/useLocale'
 import { useWorld } from '../lib/useWorld'
 
 const siteUrl = 'https://rraffael.github.io/Portfolio/pixel/'
@@ -11,9 +10,8 @@ const description =
 // social crawlers need a raster image (PNG/JPG), not the SVG avatar.
 const ogImage = 'https://rraffael.github.io/Portfolio/og-image.png'
 
-export default function Pixel() {
+export default function Pixel({ locale, onLocaleChange, weatherConsent, onManageCookies }) {
   useWorld('pixel')
-  const { locale, onLocaleChange } = useLocale()
 
   return (
     <>
@@ -30,7 +28,12 @@ export default function Pixel() {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage} />
       </Head>
-      <PortfolioPage locale={locale} onLocaleChange={onLocaleChange} />
+      <PortfolioPage
+        locale={locale}
+        onLocaleChange={onLocaleChange}
+        weatherConsent={weatherConsent}
+        onManageCookies={onManageCookies}
+      />
     </>
   )
 }

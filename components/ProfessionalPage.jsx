@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { getMessage } from '../lib/locales'
-import { saveConsent } from '../lib/consent'
 import SectionHeroPro from './SectionHeroPro'
 import SectionAboutPro from './SectionAboutPro'
 import SectionSkillsPro from './SectionSkillsPro'
@@ -10,7 +9,6 @@ import SectionExperiencePro from './SectionExperiencePro'
 import SectionCertificationsPro from './SectionCertificationsPro'
 import SectionContactPro from './SectionContactPro'
 import FooterPro from './FooterPro'
-import CookieConsent from './CookieConsent'
 
 const languages = [
   { code: 'en', label: 'EN', flag: '🇺🇸' },
@@ -27,15 +25,11 @@ function prefersReducedMotion() {
   )
 }
 
-export default function ProfessionalPage({ locale, onLocaleChange }) {
+export default function ProfessionalPage({ locale, onLocaleChange, onManageCookies }) {
   const t = (path) => getMessage(locale, path)
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isLanguageOpen, setLanguageOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
-  // No weather feature exists in the pro world yet, so unlike PortfolioPage
-  // (pixel) this never auto-opens on first visit — only the footer's "Manage
-  // cookies" button opens it, on demand.
-  const [isCookieBannerOpen, setCookieBannerOpen] = useState(false)
   const sectionRefs = useRef({})
 
   const sections = sectionIds.map((id) => ({ id, label: t(`menu.${id}`) }))
@@ -77,11 +71,6 @@ export default function ProfessionalPage({ locale, onLocaleChange }) {
     setLanguageOpen(false)
     setMobileMenuOpen(false)
   }
-
-  const decideConsent = useCallback((weatherAllowed) => {
-    saveConsent(weatherAllowed)
-    setCookieBannerOpen(false)
-  }, [])
 
   return (
     <div className="pro-page">
@@ -280,20 +269,7 @@ export default function ProfessionalPage({ locale, onLocaleChange }) {
         </section>
       </main>
 
-      <FooterPro
-        t={t}
-        onScrollTop={scrollToTop}
-        onManageCookies={() => setCookieBannerOpen(true)}
-      />
-
-      {isCookieBannerOpen && (
-        <CookieConsent
-          t={t}
-          onAccept={() => decideConsent(true)}
-          onReject={() => decideConsent(false)}
-          onSave={(weatherAllowed) => decideConsent(weatherAllowed)}
-        />
-      )}
+      <FooterPro t={t} onScrollTop={scrollToTop} onManageCookies={onManageCookies} />
     </div>
   )
 }

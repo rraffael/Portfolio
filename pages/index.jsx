@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import ProfessionalPage from '../components/ProfessionalPage'
-import { useLocale } from '../lib/useLocale'
 import { useWorld } from '../lib/useWorld'
 
 const siteUrl = 'https://rraffael.github.io/Portfolio/'
@@ -11,9 +10,8 @@ const description =
 // social crawlers need a raster image (PNG/JPG), not the SVG avatar.
 const ogImage = `${siteUrl}og-image.png`
 
-export default function Home() {
+export default function Home({ locale, onLocaleChange, onManageCookies }) {
   useWorld('pro')
-  const { locale, onLocaleChange } = useLocale()
 
   return (
     <>
@@ -30,7 +28,11 @@ export default function Home() {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage} />
       </Head>
-      <ProfessionalPage locale={locale} onLocaleChange={onLocaleChange} />
+      <ProfessionalPage
+        locale={locale}
+        onLocaleChange={onLocaleChange}
+        onManageCookies={onManageCookies}
+      />
     </>
   )
 }
