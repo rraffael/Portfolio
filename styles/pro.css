@@ -324,6 +324,19 @@
   color: var(--accent);
 }
 
+/* CV download dropdown (hero): reuses the language switcher's menu/item
+   styling (.pro-language-menu / .pro-language-item) but opens from the left,
+   since its trigger sits inline with the hero's other CTA buttons rather
+   than the header's top-right corner. */
+[data-world='pro'] .pro-cv-selector {
+  position: relative;
+}
+
+[data-world='pro'] .pro-cv-menu {
+  left: 0;
+  right: auto;
+}
+
 [data-world='pro'] .pro-mobile-lang {
   display: flex;
   flex-direction: column;

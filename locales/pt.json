@@ -24,8 +24,9 @@
     "status": "Disponível para projetos curtos",
     "ctaProjects": "Ver Projetos",
     "ctaContact": "Entrar em Contato",
-    "ctaCvEn": "Baixar CV (EN)",
-    "ctaCvPt": "Baixar CV (PT)",
+    "ctaCv": "Baixar CV",
+    "cvOptionEn": "Inglês",
+    "cvOptionPt": "Português",
     "scroll": "role para baixo",
     "scrollHint": "navegue",
     "weather": {

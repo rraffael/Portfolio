@@ -24,8 +24,9 @@
     "status": "Available for short-term projects",
     "ctaProjects": "View Projects",
     "ctaContact": "Get in Touch",
-    "ctaCvEn": "Download CV (EN)",
-    "ctaCvPt": "Download CV (PT)",
+    "ctaCv": "Download CV",
+    "cvOptionEn": "English",
+    "cvOptionPt": "Portuguese",
     "scroll": "scroll down",
     "scrollHint": "navigate",
     "weather": {

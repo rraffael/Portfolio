@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import { IconGithub, IconLinkedin, IconMail } from './SocialIcons'
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
 
 export default function SectionHeroPro({ t, onNavigate }) {
+  const [isCvMenuOpen, setCvMenuOpen] = useState(false)
+
   return (
     <div className="pro-section-inner pro-section-inner--wide pro-hero">
       <div className="pro-hero-top">
@@ -36,12 +39,39 @@ export default function SectionHeroPro({ t, onNavigate }) {
         >
           {t('home.ctaContact')}
         </button>
-        <a className="pro-btn pro-btn--ghost" href={`${basePath}/cv-en.pdf`} download>
-          {t('home.ctaCvEn')}
-        </a>
-        <a className="pro-btn pro-btn--ghost" href={`${basePath}/cv-pt.pdf`} download>
-          {t('home.ctaCvPt')}
-        </a>
+        <div className="pro-cv-selector">
+          <button
+            type="button"
+            className="pro-btn pro-btn--ghost"
+            aria-haspopup="menu"
+            aria-expanded={isCvMenuOpen}
+            onClick={() => setCvMenuOpen((open) => !open)}
+          >
+            {t('home.ctaCv')}
+          </button>
+          {isCvMenuOpen && (
+            <div className="pro-language-menu pro-cv-menu" role="menu">
+              <a
+                className="pro-language-item"
+                role="menuitem"
+                href={`${basePath}/cv-pt.pdf`}
+                download
+                onClick={() => setCvMenuOpen(false)}
+              >
+                🇵🇹 {t('home.cvOptionPt')}
+              </a>
+              <a
+                className="pro-language-item"
+                role="menuitem"
+                href={`${basePath}/cv-en.pdf`}
+                download
+                onClick={() => setCvMenuOpen(false)}
+              >
+                🇺🇸 {t('home.cvOptionEn')}
+              </a>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="pro-social">
