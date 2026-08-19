@@ -128,9 +128,8 @@ Scroll vertical âncora — o oposto do deck horizontal do pixel.
 
 ## Fase 4 — Hero profissional ✅
 
-- [ ] Adicionar **foto/retrato profissional** em `public/`. **Pendente**: hero usa
-      um avatar placeholder com iniciais (`SectionHeroPro.jsx`); trocar por
-      `<img src={`${basePath}/portrait.jpg`}>` quando a foto estiver disponível.
+- [x] Adicionar **foto/retrato profissional** em `public/` (`portrait.jpeg`),
+      usada no hero via `<img src={`${basePath}/portrait.jpeg`}>` (`SectionHeroPro.jsx`).
 - [x] `SectionHeroPro.jsx`: saudação, nome (**Raffael de Castro Rodrigues**),
       cargo (**Lead Software Engineer**), headline, status "disponível para projetos
       curtos", CTAs (ver projetos / contato / **baixar CV**) e linha de ícones sociais.

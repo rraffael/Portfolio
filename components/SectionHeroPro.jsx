@@ -6,7 +6,7 @@ export default function SectionHeroPro({ t, onNavigate }) {
   return (
     <div className="pro-section-inner pro-section-inner--wide pro-hero">
       <div className="pro-hero-top">
-        <img className="pro-hero-avatar" src={`${basePath}/portrait.jpg`} alt={t('home.name')} />
+        <img className="pro-hero-avatar" src={`${basePath}/portrait.jpeg`} alt={t('home.name')} />
         <div className="pro-hero-intro">
           <span className="pro-chip">{t('home.greeting')}</span>
           <h1>{t('home.name')}</h1>
