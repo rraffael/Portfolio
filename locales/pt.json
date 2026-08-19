@@ -143,7 +143,8 @@
         "company": "Kito Health",
         "period": "2025 — Atual",
         "location": "Portugal",
-        "desc": "Hoje conduzo uma equipe de 8, ainda responsável por todo o ciclo de vida do software, acumulando gestão e desenvolvimento conforme a fase — a arquitetura, a definição técnica dos produtos e as releases são sempre minhas. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
+        "desc": "Fiz a equipe crescer de 5 para 8 integrantes, mantendo total propriedade da arquitetura, da direção técnica e de cada release, enquanto oriento os engenheiros e equilibro desenvolvimento prático com liderança conforme o time cresce.",
+        "stack": ["JavaScript", "Node.js", "React", "Express", "MongoDB", "AWS"],
         "links": [
           { "label": "Site", "url": "https://kitohealth.org/" },
           { "label": "App (PWA)", "url": "https://app.kitohealth.org/" },

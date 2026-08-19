@@ -134,7 +134,8 @@
         "company": "Kito Health",
         "period": "2025 — Present",
         "location": "Portugal",
-        "desc": "Now leading a team of 8, still owning the full software life-cycle as both a manager and a developer depending on the phase — architecture, the technical definition of the products and every release are always mine. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
+        "desc": "Scaled the engineering team from 5 to 8, taking full ownership of architecture, technical direction and every release while mentoring engineers and balancing hands-on development with leadership as the team grew.",
+        "stack": ["JavaScript", "Node.js", "React", "Express", "MongoDB", "AWS"],
         "links": [
           { "label": "Website", "url": "https://kitohealth.org/" },
           { "label": "App (PWA)", "url": "https://app.kitohealth.org/" },

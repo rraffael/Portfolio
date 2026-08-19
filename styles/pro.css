@@ -783,10 +783,15 @@
   flex: 1;
 }
 
-[data-world='pro'] .pro-project-stack {
+[data-world='pro'] .pro-project-stack,
+[data-world='pro'] .pro-timeline-stack {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+
+[data-world='pro'] .pro-timeline-stack {
+  margin-top: var(--space-2);
 }
 
 [data-world='pro'] .pro-project-links {
