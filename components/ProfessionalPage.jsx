@@ -55,6 +55,29 @@ export default function ProfessionalPage({ locale, onLocaleChange, onManageCooki
     return () => observer.disconnect()
   }, [locale])
 
+  // The scrollspy band above never reaches the last section: "contact" is
+  // short and followed by the footer, so once the page hits max scroll the
+  // band falls over the footer and neither "certifications" nor "contact"
+  // cross it — leaving the previous section stuck as "active". Force the
+  // last section active whenever the page is scrolled to (or clamped at) the
+  // bottom, which also covers clicking "Contact" in the nav since scrolling
+  // that short last section into view clamps to the same max scroll position.
+  useEffect(() => {
+    const lastSectionId = sectionIds[sectionIds.length - 1]
+
+    const handleScroll = () => {
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
+      if (atBottom) {
+        setActiveSection(lastSectionId)
+      }
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const scrollToSection = useCallback((id) => {
     const el = sectionRefs.current[id]
     if (!el) return
