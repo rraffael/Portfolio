@@ -27,7 +27,11 @@ export default function SectionContactPro({ t }) {
       <p className="pro-placeholder-lead">{t('contact.lead')}</p>
 
       <div className="pro-contact-grid">
-        <a className="pro-panel pro-contact-link" href={`mailto:${email}`} onClick={copyEmail}>
+        <a
+          className="pro-panel pro-contact-link pro-contact-link--email"
+          href={`mailto:${email}`}
+          onClick={copyEmail}
+        >
           <span className="pro-contact-icon">
             <IconMail />
           </span>
