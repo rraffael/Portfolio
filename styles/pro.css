@@ -969,7 +969,10 @@
 /* ---------- Contact ---------- */
 [data-world='pro'] .pro-contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  /* 320px keeps the longest value (the email address) on one line at the
+     grid's narrowest column width, so every card can share the same track
+     size instead of the email needing a special wider/spanning card. */
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: var(--space-3);
 }
 
@@ -1016,6 +1019,14 @@
   color: var(--ink);
   font-weight: 600;
   overflow-wrap: break-word;
+}
+
+/* Belt-and-braces: keep the email on one line even if a viewport/zoom edge
+   case leaves less room than the 320px column was sized for. */
+@media (min-width: 641px) {
+  [data-world='pro'] .pro-contact-link--email .pro-contact-value {
+    white-space: nowrap;
+  }
 }
 
 /* ---------- Footer ---------- */
