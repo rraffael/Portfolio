@@ -41,7 +41,7 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "lead": "Engenheiro de software líder, presente em todo o ciclo de vida — idealização, arquitetura, desenvolvimento, depuração e otimização.",
+    "lead": "Engenheiro de Software líder, presente em todo o ciclo de vida — idealização, arquitetura, desenvolvimento, depuração e otimização.",
     "paragraph1": "Sou Raffael, engenheiro de software brasileiro radicado em Portugal. Gosto de transformar ideias em produtos e de atuar como ponte entre as equipes técnica e de negócio. Atualmente sou líder da equipe de desenvolvimento de software na Kito Health.",
     "paragraph2": "Sou formado na área de TI pela Unit (Universidade Tiradentes) em 2019. Apaixonado por jogos desde sempre, levo essa mesma curiosidade e leveza para criar bons softwares.",
     "stat1Value": "8+",
@@ -229,8 +229,8 @@
     "rights": "Todos os direitos reservados."
   },
   "support": {
-    "button": "Me pague uma bebida",
-    "title": "Me pague uma bebida 🍹",
+    "button": "Me pague um café",
+    "title": "Me pague um café ☕",
     "wise": "Pagar com Wise",
     "pixLabel": "Chave Pix (aleatória)",
     "copy": "Copiar",

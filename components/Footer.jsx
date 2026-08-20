@@ -32,7 +32,7 @@ export default function Footer({ t, onManageCookies }) {
             aria-expanded={teaOpen}
             aria-haspopup="dialog"
           >
-            <span aria-hidden="true">🍹</span>
+            <span aria-hidden="true">☕</span>
             <span className="footer-tea-label">{t('support.button')}</span>
           </button>
 

@@ -41,7 +41,7 @@
   },
   "about": {
     "title": "About Me",
-    "lead": "Lead software engineer across the whole software life-cycle — idealization, architecture, development, debugging and optimization.",
+    "lead": "Lead Software Engineer across the whole software life-cycle — idealization, architecture, development, debugging and optimization.",
     "paragraph1": "I'm Raffael, a Brazilian software engineer based in Portugal. I enjoy turning ideas into products and acting as the bridge between technical and business teams. I currently lead the software development team at Kito Health.",
     "paragraph2": "I graduated in IT from Unit (Universidade Tiradentes) in 2019. A lifelong gamer at heart, I bring that same curiosity and playfulness into crafting great software.",
     "stat1Value": "8+",
@@ -220,8 +220,8 @@
     "rights": "All rights reserved."
   },
   "support": {
-    "button": "Buy me a drink",
-    "title": "Buy me a drink 🍹",
+    "button": "Buy me a coffee",
+    "title": "Buy me a coffee ☕",
     "wise": "Pay with Wise",
     "pixLabel": "Pix key (random)",
     "copy": "Copy",
