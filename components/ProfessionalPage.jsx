@@ -52,14 +52,28 @@ export default function ProfessionalPage({ locale, onLocaleChange, onManageCooki
 
     const computeActive = () => {
       ticking = false
+
+      // The reference-line scan below assumes the edge sections ("home",
+      // "contact") are tall enough to contain the line. When they're
+      // shorter than that, the scroll range is clamped before the line
+      // ever crosses their top, leaving the neighboring section ("about",
+      // "certifications") stuck as active at the very top/bottom of the
+      // page. Handle those clamped extremes explicitly instead.
+      const doc = document.documentElement
+      if (window.scrollY <= 0) {
+        setActiveSection(sectionIds[0])
+        return
+      }
+      if (window.innerHeight + window.scrollY >= doc.scrollHeight - 1) {
+        setActiveSection(sectionIds[sectionIds.length - 1])
+        return
+      }
+
       const referenceY = window.innerHeight * 0.45
 
       // The section whose top is highest above the reference line while
       // still being the closest one to it "wins" — i.e. the last id in
-      // page order whose top has already crossed the line. This holds at
-      // both edges too: at scroll top only "home"'s top qualifies, and at
-      // max scroll every section above "contact" already qualifies, so
-      // "contact" (the last one checked) naturally wins.
+      // page order whose top has already crossed the line.
       let current = sectionIds[0]
       elements.forEach((el, index) => {
         if (el.getBoundingClientRect().top <= referenceY) {
