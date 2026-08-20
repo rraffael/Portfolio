@@ -885,6 +885,14 @@
   align-items: flex-start;
 }
 
+/* A single certification would otherwise stretch to fill the whole 1fr
+   track (auto-fit collapses the other empty tracks), reading as an
+   oversized card. Cap it once it's the only item; from two certifications
+   on, the grid's own auto-fit columns take over and this no longer matches. */
+[data-world='pro'] .pro-cert-card:only-child {
+  max-width: 65%;
+}
+
 [data-world='pro'] .pro-cert-badge {
   flex: none;
   width: 44px;
@@ -926,6 +934,9 @@
 }
 
 @media (max-width: 640px) {
+  [data-world='pro'] .pro-cert-card:only-child {
+    max-width: 100%;
+  }
   [data-world='pro'] .pro-about-grid {
     grid-template-columns: 1fr;
   }

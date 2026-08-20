@@ -187,7 +187,7 @@
     "lead": "Credentials that back the way I work.",
     "credentialLabel": "Credential ID",
     "verifyLabel": "Verify Credential",
-    "certificateLabel": "View Certificate",
+    "certificateLabel": "Open Certificate",
     "items": [
       {
         "name": "Professional Scrum Master I",

@@ -196,7 +196,7 @@
     "lead": "Credenciais que sustentam a forma como trabalho.",
     "credentialLabel": "ID da credencial",
     "verifyLabel": "Verificar credencial",
-    "certificateLabel": "Ver certificado",
+    "certificateLabel": "Abrir certificado",
     "items": [
       {
         "name": "Professional Scrum Master I",
