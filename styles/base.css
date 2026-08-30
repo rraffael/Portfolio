@@ -1,0 +1,126 @@
+/* Shared reset + primitives used by both worlds (pixel and pro). World-specific
+   visuals (palette, fonts, scanlines, image rendering) live in pixel.css / pro.css,
+   scoped under the [data-world] attribute set on <html> (see lib/useWorld.ts and
+   lib/useLocale.ts, wired up per-page in pages/index.jsx and pages/pixel.jsx).
+   The font @import must be the first rule of the combined stylesheet (CSS spec),
+   which is why it lives here in base.css (imported first in _app.jsx) rather
+   than in pixel.css, even though only the pixel world uses the pixel fonts. */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-body: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.65;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------- Keyboard focus ----------
+   A single high-contrast focus ring for keyboard users across every
+   interactive element, shared by both worlds. `outline` is used (not
+   box-shadow) so it never affects layout. Mouse/touch focus stays clean
+   because we target :focus-visible only. */
+:focus-visible {
+  outline: 3px solid #5aa9ff;
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* Belt-and-suspenders: kill the legacy outline only when the browser decides
+   the focus isn't keyboard-driven, so nothing double-rings. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Light entrance transition when switching between the pro and pixel worlds
+   (Phase 8). Since /pixel and / are distinct page components, React always
+   unmounts one and mounts the other on navigation — so applying this to each
+   world's root wrapper ([data-world="pixel"] .page / .pro-page) is enough to
+   replay it on every world switch, with no router-event bookkeeping needed. */
+@keyframes world-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- World transition (portal effect) ----------
+   Full-screen pixel-block overlay rendered from _app.jsx (see
+   components/WorldTransition.jsx) while switching between / and /pixel.
+   Not scoped under [data-world] — it sits on top of both worlds equally. */
+.world-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.world-transition-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+}
+
+.world-transition-cell {
+  transform: scale(0);
+}
+
+.world-transition--covering .world-transition-cell {
+  animation: world-transition-in 0.22s steps(2, end) forwards;
+  animation-delay: var(--d);
+}
+
+.world-transition--revealing .world-transition-cell {
+  animation: world-transition-out 0.22s steps(2, end) forwards;
+  animation-delay: var(--d);
+}
+
+@keyframes world-transition-in {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes world-transition-out {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .world-transition {
+    display: none;
+  }
+}

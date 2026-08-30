@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 export default function ContactSection({ t }) {
   const email = t('contact.email')
+  const [emailUser, emailDomain] = email.split('@')
   const [copied, setCopied] = useState(false)
 
   // mailto: only does something when the visitor has a default mail client set;
@@ -30,7 +31,13 @@ export default function ContactSection({ t }) {
       <div className="contact-links">
         <a className="panel contact-link" href={`mailto:${email}`} onClick={copyEmail}>
           <span className="contact-link-label">✉ {t('contact.emailLabel')}</span>
-          <span className="contact-link-value">{email}</span>
+          {/* <wbr> after "@" so a wrap (if needed) happens at the natural
+              email break point instead of word-break picking an arbitrary
+              spot mid-word. */}
+          <span className="contact-link-value">
+            {emailUser}@<wbr />
+            {emailDomain}
+          </span>
         </a>
 
         <a

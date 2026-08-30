@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import HomeSection from './SectionHome'
 import AboutSection from './SectionAbout'
 import SkillsSection from './SectionSkills'
@@ -6,48 +7,22 @@ import ContactSection from './SectionContact'
 import ProjectsSection from './SectionProjects'
 import WorkSection from './SectionWork'
 import Footer from './Footer'
-import CookieConsent from './CookieConsent'
 import { getMessage } from '../lib/locales'
-import { loadConsent, saveConsent } from '../lib/consent'
 
 const languages = [
   { code: 'en', label: 'EN', flag: '🇺🇸' },
   { code: 'pt', label: 'PT', flag: '🇵🇹' }
 ]
 
-export default function PortfolioPage({ locale, onLocaleChange }) {
+export default function PortfolioPage({ locale, onLocaleChange, weatherConsent, onManageCookies }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isLanguageOpen, setLanguageOpen] = useState(false)
   const [activeSection, setActiveSection] = useState(0)
-  // Cookie consent: `consent` is null until the mount effect reads localStorage,
-  // and the banner is shown only when no prior decision exists. Kept out of the
-  // static-export initial render so server and first client render match.
-  const [consent, setConsent] = useState(null)
-  const [isBannerOpen, setBannerOpen] = useState(false)
   const containerRef = useRef(null)
   const sectionRefs = useRef([])
   const activeRef = useRef(0)
 
   const t = (path) => getMessage(locale, path)
-
-  useEffect(() => {
-    // One-time read of the persisted decision after hydration (localStorage is
-    // client-only), mirroring how the locale is restored in pages/index.jsx.
-    const stored = loadConsent()
-    if (stored) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setConsent(stored)
-    } else {
-      setBannerOpen(true)
-    }
-  }, [])
-
-  const decide = useCallback((weatherAllowed) => {
-    setConsent(saveConsent(weatherAllowed))
-    setBannerOpen(false)
-  }, [])
-
-  const weatherConsent = consent ? consent.weather : false
 
   const sections = [
     { id: 'home', label: t('menu.home') },
@@ -190,6 +165,10 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
                 </div>
               )}
             </div>
+
+            <Link className="pixel-btn pixel-btn--ghost exit-to-pro" href="/">
+              {t('world.exitToPro')}
+            </Link>
           </nav>
 
           <button
@@ -257,6 +236,14 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
               </button>
             ))}
           </div>
+
+          <Link
+            className="pixel-btn pixel-btn--ghost exit-to-pro"
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t('world.exitToPro')}
+          </Link>
         </aside>
       </header>
 
@@ -305,16 +292,7 @@ export default function PortfolioPage({ locale, onLocaleChange }) {
         ►
       </button>
 
-      <Footer t={t} onManageCookies={() => setBannerOpen(true)} />
-
-      {isBannerOpen && (
-        <CookieConsent
-          t={t}
-          onAccept={() => decide(true)}
-          onReject={() => decide(false)}
-          onSave={(weatherAllowed) => decide(weatherAllowed)}
-        />
-      )}
+      <Footer t={t} onManageCookies={onManageCookies} />
     </div>
   )
 }
