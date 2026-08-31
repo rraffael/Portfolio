@@ -142,7 +142,7 @@
         "role": "Líder de Equipe de Software (equipe de 8)",
         "company": "Kito Health",
         "period": "2025 — Atual",
-        "location": "Portugal",
+        "location": "Portugal · Remoto",
         "desc": "Fiz a equipe crescer de 5 para 8 integrantes, mantendo total propriedade da arquitetura, da direção técnica e de cada release, enquanto oriento os engenheiros e equilibro desenvolvimento prático com liderança conforme o time cresce.",
         "stack": ["JavaScript", "Node.js", "React", "Express", "MongoDB", "AWS"],
         "links": [
@@ -158,14 +158,14 @@
         "role": "Líder de Equipe de Software (equipe de 5)",
         "company": "Kito Health",
         "period": "2022 — 2025",
-        "location": "Portugal",
+        "location": "Portugal · Remoto",
         "desc": "Assumi a liderança da equipe: dividindo o tempo entre codar e gerir, conduzindo a revisão dos pull requests — a arquitetura, a definição técnica dos produtos e as releases continuaram sempre minhas."
       },
       {
         "role": "Engenheiro de Software",
         "company": "Kito Health",
         "period": "2021 — 2022",
-        "location": "Portugal",
+        "location": "Portugal · Remoto",
         "desc": "Entrei como desenvolvedor, atuando em todo o ciclo de vida do software desde o início."
       },
       {
@@ -217,7 +217,7 @@
     "githubLabel": "GitHub",
     "githubHandle": "@rraffael",
     "locationLabel": "Localização",
-    "location": "Portugal · Remoto",
+    "location": "Portugal",
     "email": "raffaelcr.ti@gmail.com",
     "linkedin": "https://www.linkedin.com/in/raffael-castro-rodrigues-117463142/",
     "github": "https://github.com/rraffael",
