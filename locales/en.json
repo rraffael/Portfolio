@@ -84,7 +84,7 @@
         ]
       },
       {
-        "title": "AI & LLMs *",
+        "title": "AI Assistants *",
         "items": ["ChatGPT", "Claude", "GitHub Copilot"],
         "note": "*Used as an assistant tool in recent projects only"
       }
