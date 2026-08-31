@@ -837,7 +837,7 @@ html[data-world='pixel'] {
 /* ---------- Skills ---------- */
 [data-world='pixel'] .skills-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
@@ -1088,23 +1088,33 @@ html[data-world='pixel'] {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
-  background: var(--panel-2);
-  border: 2px solid var(--line);
+  color: var(--accent);
 }
 
 [data-world='pixel'] .cert-name {
   font-family: var(--font-pixel);
   font-size: 0.72rem;
-  color: var(--ink);
+  color: var(--accent);
   margin: 0;
 }
 
 [data-world='pixel'] .cert-issuer {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   font-family: var(--font-mono);
   font-size: 1.05rem;
   color: var(--muted);
   margin: 6px 0 0;
+}
+
+/* Small "active credential" indicator, matching the status-dot on Home. */
+[data-world='pixel'] .cert-dot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  background: var(--accent-2);
+  box-shadow: 0 0 0 2px var(--line);
 }
 
 [data-world='pixel'] .cert-id {
