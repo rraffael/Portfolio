@@ -26,6 +26,16 @@ export default function WorkSection({ t }) {
               </div>
               <p className="work-desc">{job.desc}</p>
 
+              {job.stack?.length > 0 && (
+                <div className="work-stack">
+                  {job.stack.map((tech) => (
+                    <span className="stack-chip" key={tech}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+
               {job.links?.length > 0 && (
                 <div className="work-links">
                   {job.links.map((link) => (

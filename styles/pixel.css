@@ -1012,6 +1012,13 @@ html[data-world='pixel'] {
   margin: 0;
 }
 
+[data-world='pixel'] .work-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
 [data-world='pixel'] .work-links {
   display: flex;
   flex-wrap: wrap;
