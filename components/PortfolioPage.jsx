@@ -190,48 +190,54 @@ export default function PortfolioPage({ locale, onLocaleChange, weatherConsent, 
             ☰
           </button>
         </div>
+      </header>
 
-        <button
-          type="button"
-          className={`mobile-menu-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
-          aria-hidden={!isMobileMenuOpen}
-          tabIndex={-1}
-          onClick={() => setMobileMenuOpen(false)}
-        />
-        <aside
-          id="mobile-menu"
-          className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
-          aria-hidden={!isMobileMenuOpen}
-        >
-          <div className="mobile-menu-head">
-            <span className="mobile-menu-title">{t('home.brand')}</span>
+      {/* Rendered outside <header> on purpose: the header's backdrop-filter
+          establishes a CSS containing block for position:fixed descendants,
+          which would anchor this drawer's top/bottom to the header's own
+          height instead of the viewport, collapsing it to a sliver. */}
+      <button
+        type="button"
+        className={`mobile-menu-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
+        aria-hidden={!isMobileMenuOpen}
+        tabIndex={-1}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+      <aside
+        id="mobile-menu"
+        className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
+        aria-hidden={!isMobileMenuOpen}
+      >
+        <div className="mobile-menu-head">
+          <span className="mobile-menu-title">{t('home.brand')}</span>
+          <button
+            type="button"
+            className="mobile-menu-close"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label={t('menu.close')}
+          >
+            ✕
+          </button>
+        </div>
+        <nav className="mobile-nav">
+          {sections.map((section, index) => (
             <button
+              key={section.id}
+              className={`mobile-link ${activeSection === index ? 'active' : ''}`}
               type="button"
-              className="mobile-menu-close"
-              onClick={() => setMobileMenuOpen(false)}
-              aria-label={t('menu.close')}
+              aria-current={activeSection === index ? 'true' : undefined}
+              onClick={() => {
+                goTo(index)
+                setMobileMenuOpen(false)
+              }}
             >
-              ✕
+              {section.label}
             </button>
-          </div>
-          <nav className="mobile-nav">
-            {sections.map((section, index) => (
-              <button
-                key={section.id}
-                className={`mobile-link ${activeSection === index ? 'active' : ''}`}
-                type="button"
-                aria-current={activeSection === index ? 'true' : undefined}
-                onClick={() => {
-                  goTo(index)
-                  setMobileMenuOpen(false)
-                }}
-              >
-                {section.label}
-              </button>
-            ))}
-          </nav>
-          <div className="mobile-language">
-            <span>{t('menu.language')}</span>
+          ))}
+        </nav>
+        <div className="mobile-language">
+          <span>{t('menu.language')}</span>
+          <div className="mobile-language-options">
             {languages.map((item) => (
               <button
                 key={item.code}
@@ -243,16 +249,16 @@ export default function PortfolioPage({ locale, onLocaleChange, weatherConsent, 
               </button>
             ))}
           </div>
+        </div>
 
-          <Link
-            className="pixel-btn pixel-btn--ghost exit-to-pro"
-            href="/"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            {t('world.exitToPro')}
-          </Link>
-        </aside>
-      </header>
+        <Link
+          className="pixel-btn pixel-btn--ghost exit-to-pro"
+          href="/"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          {t('world.exitToPro')}
+        </Link>
+      </aside>
 
       <main className="scroll-area" ref={containerRef} onScroll={handleScroll}>
         <section ref={(el) => (sectionRefs.current[0] = el)} id="home" className="section">
