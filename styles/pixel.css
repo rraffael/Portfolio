@@ -217,11 +217,11 @@ html[data-world='pixel'] {
   z-index: 41;
   width: min(78vw, 320px);
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   background: var(--bg-alt);
   border-left: var(--border-w) solid var(--line);
   box-shadow: -8px 0 0 rgba(8, 9, 16, 0.25);
-  padding: 18px 20px calc(24px + var(--footer-height));
+  padding: 20px 20px calc(20px + var(--footer-height));
   transform: translateX(100%);
   transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
   overflow-y: auto;
@@ -237,7 +237,7 @@ html[data-world='pixel'] {
   justify-content: space-between;
   gap: 12px;
   padding-bottom: 14px;
-  margin-bottom: 8px;
+  margin-bottom: 0;
   border-bottom: var(--border-w) solid var(--line);
 }
 
@@ -275,11 +275,15 @@ html[data-world='pixel'] {
 [data-world='pixel'] .mobile-language {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
+/* Grows to absorb the drawer's leftover height, then centers the (naturally
+   sized) links within it — otherwise they'd all bunch up right under the
+   head with a big dead gap before the language/exit block at the bottom. */
 [data-world='pixel'] .mobile-nav {
   flex: 1 1 auto;
+  justify-content: center;
 }
 
 [data-world='pixel'] .mobile-link {
@@ -295,7 +299,7 @@ html[data-world='pixel'] {
 }
 
 [data-world='pixel'] .mobile-language {
-  margin-top: 14px;
+  margin-top: 0;
   border-top: var(--border-w) solid var(--line);
   padding-top: 16px;
 }
@@ -304,6 +308,18 @@ html[data-world='pixel'] {
   font-family: var(--font-pixel);
   font-size: 0.58rem;
   color: var(--muted);
+}
+
+/* Side-by-side instead of stacked so the two language options don't cost an
+   extra row of height in a drawer that must fit without scrolling. */
+[data-world='pixel'] .mobile-language-options {
+  display: flex;
+  gap: 8px;
+}
+
+[data-world='pixel'] .mobile-language-options .language-item {
+  flex: 1;
+  justify-content: center;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1332,7 +1348,12 @@ html[data-world='pixel'] {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
+/* The pixel display font runs wider than the pro sans-serif, and the nav grew
+   a "Certifications" entry, so the nav needs to drop to the hamburger sooner
+   than the pro world's own breakpoint (860px) — otherwise the desktop nav row
+   overflows the header before this triggers. Kept separate from the 900px
+   tablet breakpoint below since that one only reflows content grids. */
+@media (max-width: 1080px) {
   [data-world='pixel'] .desktop-nav {
     display: none;
   }
@@ -1347,6 +1368,9 @@ html[data-world='pixel'] {
   [data-world='pixel'] .mobile-menu-backdrop {
     display: block;
   }
+}
+
+@media (max-width: 900px) {
   [data-world='pixel'] .about-grid {
     grid-template-columns: 1fr;
   }
@@ -1386,7 +1410,7 @@ html[data-world='pixel'] {
     font-size: 1rem;
   }
   [data-world='pixel'] .mobile-menu {
-    padding: 18px 16px;
+    padding: 18px 16px calc(16px + var(--footer-height));
     max-height: calc(100dvh - var(--header-height));
     overflow-y: auto;
   }
