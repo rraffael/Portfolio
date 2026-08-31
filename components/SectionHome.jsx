@@ -8,7 +8,7 @@ import { CONDITIONS, iconFor } from '../lib/weather'
 // its markup) never ships to GitHub Pages.
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
-export default function SectionHome({ t, weatherConsent = false }) {
+export default function SectionHome({ t, weatherConsent = false, onNavigate }) {
   // The weather round-trip only happens once the visitor has opted in via the
   // cookie banner; until then the window shows the default avatar scene.
   const { weather, status } = useWeather(weatherConsent)
@@ -123,12 +123,16 @@ export default function SectionHome({ t, weatherConsent = false }) {
         </span>
 
         <div className="home-cta">
-          <a className="pixel-btn" href="#projects">
+          <button type="button" className="pixel-btn" onClick={() => onNavigate('projects')}>
             {t('home.ctaProjects')}
-          </a>
-          <a className="pixel-btn pixel-btn--ghost" href="#contact">
+          </button>
+          <button
+            type="button"
+            className="pixel-btn pixel-btn--ghost"
+            onClick={() => onNavigate('contact')}
+          >
             {t('home.ctaContact')}
-          </a>
+          </button>
         </div>
 
         <div className="scroll-indicator" aria-hidden="true">

@@ -62,6 +62,11 @@ export default function PortfolioPage({ locale, onLocaleChange, weatherConsent, 
     [setActive]
   )
 
+  const goToId = (id) => {
+    const index = sections.findIndex((section) => section.id === id)
+    if (index !== -1) goTo(index)
+  }
+
   const handleScroll = () => {
     const container = containerRef.current
     if (!container || !container.clientWidth) return
@@ -251,7 +256,7 @@ export default function PortfolioPage({ locale, onLocaleChange, weatherConsent, 
 
       <main className="scroll-area" ref={containerRef} onScroll={handleScroll}>
         <section ref={(el) => (sectionRefs.current[0] = el)} id="home" className="section">
-          <HomeSection t={t} weatherConsent={weatherConsent} />
+          <HomeSection t={t} weatherConsent={weatherConsent} onNavigate={goToId} />
         </section>
 
         <section ref={(el) => (sectionRefs.current[1] = el)} id="about" className="section">
