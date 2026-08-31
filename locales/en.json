@@ -71,10 +71,17 @@
     "groups": [
       { "title": "Frontend", "items": ["JavaScript", "React", "HTML5", "CSS"] },
       { "title": "Backend", "items": ["Node.js", "Express", "REST APIs"] },
-      { "title": "Cloud, Data & Tools", "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"] },
+      { "title": "Cloud, Data & Tools", "items": ["Git", "AWS", "MongoDB"] },
       {
         "title": "Leadership",
-        "items": ["Team Leadership", "Code Review", "Architecture", "Release Management", "Agile"]
+        "items": [
+          "Technical Leadership",
+          "Team Leadership",
+          "Code Review",
+          "Software Architecture",
+          "Release Management",
+          "Agile Practices (Scrum / Kanban)"
+        ]
       },
       {
         "title": "AI & LLMs *",

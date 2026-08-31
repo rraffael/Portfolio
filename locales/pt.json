@@ -73,16 +73,17 @@
       { "title": "Backend", "items": ["Node.js", "Express", "REST APIs"] },
       {
         "title": "Cloud, Dados & Ferramentas",
-        "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"]
+        "items": ["Git", "AWS", "MongoDB"]
       },
       {
         "title": "Liderança",
         "items": [
+          "Liderança Técnica",
           "Liderança de Equipe",
           "Revisão de Código",
-          "Arquitetura",
+          "Arquitetura de Software",
           "Gestão de Releases",
-          "Agile"
+          "Práticas Ágeis (Scrum / Kanban)"
         ]
       },
       {
