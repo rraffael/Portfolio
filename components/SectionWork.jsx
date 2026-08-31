@@ -4,7 +4,7 @@ export default function WorkSection({ t }) {
   return (
     <div className="section-content">
       <div className="section-head">
-        <span className="section-kicker">[ 04 ]</span>
+        <span className="section-kicker">[ 03 ]</span>
         <h2 className="section-title">{t('work.title')}</h2>
         <p className="section-lead">{t('work.lead')}</p>
       </div>

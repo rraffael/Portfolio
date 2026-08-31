@@ -1038,6 +1038,89 @@ html[data-world='pixel'] {
   box-shadow: 1px 1px 0 var(--line);
 }
 
+/* ---------- Certifications ---------- */
+[data-world='pixel'] .cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 20px;
+}
+
+[data-world='pixel'] .cert-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* A single certification would otherwise stretch across the whole 1fr
+   track (auto-fit collapses the other empty tracks). Cap it once it's the
+   only item, mirroring the same fix on the pro side. */
+[data-world='pixel'] .cert-card:only-child {
+  max-width: 65%;
+}
+
+[data-world='pixel'] .cert-badge {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  background: var(--panel-2);
+  border: 2px solid var(--line);
+}
+
+[data-world='pixel'] .cert-name {
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+[data-world='pixel'] .cert-issuer {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin: 6px 0 0;
+}
+
+[data-world='pixel'] .cert-id {
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
+[data-world='pixel'] .cert-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+[data-world='pixel'] .cert-link {
+  font-family: var(--font-pixel);
+  font-size: 0.48rem;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 2px solid var(--line);
+  padding: 7px 10px;
+  box-shadow: 3px 3px 0 var(--line);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease;
+}
+
+[data-world='pixel'] .cert-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--line);
+}
+
+@media (max-width: 640px) {
+  [data-world='pixel'] .cert-card:only-child {
+    max-width: 100%;
+  }
+}
+
 /* ---------- Contact ---------- */
 [data-world='pixel'] .contact-content {
   width: min(720px, 100%);

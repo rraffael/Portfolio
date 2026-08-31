@@ -6,6 +6,7 @@ import SkillsSection from './SectionSkills'
 import ContactSection from './SectionContact'
 import ProjectsSection from './SectionProjects'
 import WorkSection from './SectionWork'
+import CertificationsSection from './SectionCertifications'
 import Footer from './Footer'
 import { getMessage } from '../lib/locales'
 
@@ -28,8 +29,9 @@ export default function PortfolioPage({ locale, onLocaleChange, weatherConsent, 
     { id: 'home', label: t('menu.home') },
     { id: 'about', label: t('menu.about') },
     { id: 'skills', label: t('menu.skills') },
-    { id: 'projects', label: t('menu.projects') },
     { id: 'work', label: t('menu.work') },
+    { id: 'projects', label: t('menu.projects') },
+    { id: 'certifications', label: t('menu.certifications') },
     { id: 'contact', label: t('menu.contact') }
   ]
   const sectionCount = sections.length
@@ -260,15 +262,23 @@ export default function PortfolioPage({ locale, onLocaleChange, weatherConsent, 
           <SkillsSection t={t} />
         </section>
 
-        <section ref={(el) => (sectionRefs.current[3] = el)} id="projects" className="section">
-          <ProjectsSection t={t} />
-        </section>
-
-        <section ref={(el) => (sectionRefs.current[4] = el)} id="work" className="section">
+        <section ref={(el) => (sectionRefs.current[3] = el)} id="work" className="section">
           <WorkSection t={t} />
         </section>
 
-        <section ref={(el) => (sectionRefs.current[5] = el)} id="contact" className="section">
+        <section ref={(el) => (sectionRefs.current[4] = el)} id="projects" className="section">
+          <ProjectsSection t={t} />
+        </section>
+
+        <section
+          ref={(el) => (sectionRefs.current[5] = el)}
+          id="certifications"
+          className="section"
+        >
+          <CertificationsSection t={t} />
+        </section>
+
+        <section ref={(el) => (sectionRefs.current[6] = el)} id="contact" className="section">
           <ContactSection t={t} />
         </section>
       </main>
