@@ -15,7 +15,7 @@ const languages = [
   { code: 'pt', label: 'PT', flag: '🇵🇹' }
 ]
 
-const sectionIds = ['home', 'about', 'skills', 'projects', 'work', 'certifications', 'contact']
+const sectionIds = ['home', 'about', 'skills', 'work', 'projects', 'certifications', 'contact']
 
 function prefersReducedMotion() {
   return (
@@ -187,13 +187,6 @@ export default function ProfessionalPage({ locale, onLocaleChange, onManageCooki
           </div>
         </div>
 
-        <button
-          type="button"
-          className={`pro-mobile-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
-          aria-hidden={!isMobileMenuOpen}
-          tabIndex={-1}
-          onClick={() => setMobileMenuOpen(false)}
-        />
         <aside
           id="pro-mobile-menu"
           className={`pro-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
@@ -255,6 +248,19 @@ export default function ProfessionalPage({ locale, onLocaleChange, onManageCooki
         </aside>
       </header>
 
+      {/* Rendered outside <header> on purpose: the header's backdrop-filter
+          establishes a CSS containing block for position:fixed descendants,
+          which would collapse this dismiss overlay to zero height instead of
+          covering the viewport (the menu panel itself stays inside — its
+          position:absolute is intentionally anchored to the header). */}
+      <button
+        type="button"
+        className={`pro-mobile-backdrop ${isMobileMenuOpen ? 'open' : ''}`}
+        aria-hidden={!isMobileMenuOpen}
+        tabIndex={-1}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
       <main>
         <section id="home" ref={(el) => (sectionRefs.current.home = el)} className="pro-section">
           <SectionHeroPro t={t} onNavigate={scrollToSection} />
@@ -276,6 +282,12 @@ export default function ProfessionalPage({ locale, onLocaleChange, onManageCooki
           </div>
         </section>
 
+        <section id="work" ref={(el) => (sectionRefs.current.work = el)} className="pro-section">
+          <div className="pro-section-inner pro-section-inner--wide">
+            <SectionExperiencePro t={t} />
+          </div>
+        </section>
+
         <section
           id="projects"
           ref={(el) => (sectionRefs.current.projects = el)}
@@ -283,12 +295,6 @@ export default function ProfessionalPage({ locale, onLocaleChange, onManageCooki
         >
           <div className="pro-section-inner pro-section-inner--wide">
             <SectionProjectsPro t={t} />
-          </div>
-        </section>
-
-        <section id="work" ref={(el) => (sectionRefs.current.work = el)} className="pro-section">
-          <div className="pro-section-inner pro-section-inner--wide">
-            <SectionExperiencePro t={t} />
           </div>
         </section>
 

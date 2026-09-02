@@ -24,8 +24,9 @@
     "status": "Disponível para projetos curtos",
     "ctaProjects": "Ver Projetos",
     "ctaContact": "Entrar em Contato",
-    "ctaCvEn": "Baixar CV (EN)",
-    "ctaCvPt": "Baixar CV (PT)",
+    "ctaCv": "Baixar CV",
+    "cvOptionEn": "Inglês",
+    "cvOptionPt": "Português",
     "scroll": "role para baixo",
     "scrollHint": "navegue",
     "weather": {
@@ -40,7 +41,7 @@
   },
   "about": {
     "title": "Sobre Mim",
-    "lead": "Engenheiro de software líder, presente em todo o ciclo de vida — idealização, arquitetura, desenvolvimento, depuração e otimização.",
+    "lead": "Engenheiro de Software líder, presente em todo o ciclo de vida — idealização, arquitetura, desenvolvimento, depuração e otimização.",
     "paragraph1": "Sou Raffael, engenheiro de software brasileiro radicado em Portugal. Gosto de transformar ideias em produtos e de atuar como ponte entre as equipes técnica e de negócio. Atualmente sou líder da equipe de desenvolvimento de software na Kito Health.",
     "paragraph2": "Sou formado na área de TI pela Unit (Universidade Tiradentes) em 2019. Apaixonado por jogos desde sempre, levo essa mesma curiosidade e leveza para criar bons softwares.",
     "stat1Value": "8+",
@@ -48,7 +49,7 @@
     "stat2Value": "10+",
     "stat2Label": "Projetos entregues",
     "stat3Value": "3",
-    "stat3Label": "Idiomas falados",
+    "stat3Label": "Idiomas",
     "educationTitle": "Formação",
     "education": [
       {
@@ -70,9 +71,23 @@
     "groups": [
       { "title": "Frontend", "items": ["JavaScript", "React", "HTML5", "CSS"] },
       { "title": "Backend", "items": ["Node.js", "Express", "REST APIs"] },
-      { "title": "Ferramentas & Dados", "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"] },
       {
-        "title": "IA & LLMs *",
+        "title": "Cloud, Dados & Ferramentas",
+        "items": ["Git", "AWS", "MongoDB"]
+      },
+      {
+        "title": "Liderança",
+        "items": [
+          "Liderança Técnica",
+          "Liderança de Equipe",
+          "Revisão de Código",
+          "Arquitetura de Software",
+          "Gestão de Releases",
+          "Práticas Ágeis (Scrum / Kanban)"
+        ]
+      },
+      {
+        "title": "Assistentes de IA *",
         "items": ["ChatGPT", "Claude", "GitHub Copilot"],
         "note": "*Usado apenas como ferramenta de assistência em projetos recentes"
       }
@@ -80,7 +95,7 @@
   },
   "projects": {
     "title": "Projetos",
-    "lead": "Projetos pessoais que desenhei, construí e entreguei.",
+    "lead": "Projetos selecionados que desenhei, construí e entreguei ao longo da minha trajetória.",
     "codeLabel": "Código",
     "demoLabel": "Demo",
     "items": [
@@ -90,7 +105,8 @@
         "desc": "Site multimédia responsivo que desenvolvi individualmente dentro de um projeto em grupo do Laboratório de Multimédia da Universidade do Porto.",
         "stack": ["React", "JavaScript", "HTML5", "Material-UI"],
         "code": "https://github.com/rraffael/MM-7-Seconds",
-        "demo": "https://rraffael.github.io/MM-7-Seconds/"
+        "demo": "https://rraffael.github.io/MM-7-Seconds/",
+        "image": "/projects/7seconds_projeto.png"
       },
       {
         "name": "Through My Eyes",
@@ -98,7 +114,8 @@
         "desc": "Outro site multimédia responsivo feito por mim dentro de um projeto em grupo do Mestrado em Multimédia da Universidade do Porto.",
         "stack": ["React", "JavaScript", "HTML5", "Material-UI"],
         "code": "https://github.com/rraffael/MM-Through-My-Eyes",
-        "demo": "https://rraffael.github.io/MM-Through-My-Eyes/"
+        "demo": "https://rraffael.github.io/MM-Through-My-Eyes/",
+        "image": "/projects/ThrougMyEyes_projeto.png"
       },
       {
         "name": "Evasion Predict",
@@ -126,8 +143,9 @@
         "role": "Líder de Equipe de Software (equipe de 8)",
         "company": "Kito Health",
         "period": "2025 — Atual",
-        "location": "Portugal",
-        "desc": "Hoje conduzo uma equipe de 8, ainda responsável por todo o ciclo de vida do software, acumulando gestão e desenvolvimento conforme a fase — a arquitetura, a definição técnica dos produtos e as releases são sempre minhas. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
+        "location": "Portugal · Remoto",
+        "desc": "Fiz a equipe crescer de 5 para 8 integrantes, mantendo total propriedade da arquitetura, da direção técnica e de cada release, enquanto oriento os engenheiros e equilibro desenvolvimento prático com liderança conforme o time cresce.",
+        "stack": ["JavaScript", "Node.js", "React", "Express", "MongoDB", "AWS"],
         "links": [
           { "label": "Site", "url": "https://kitohealth.org/" },
           { "label": "App (PWA)", "url": "https://app.kitohealth.org/" },
@@ -141,14 +159,14 @@
         "role": "Líder de Equipe de Software (equipe de 5)",
         "company": "Kito Health",
         "period": "2022 — 2025",
-        "location": "Portugal",
+        "location": "Portugal · Remoto",
         "desc": "Assumi a liderança da equipe: dividindo o tempo entre codar e gerir, conduzindo a revisão dos pull requests — a arquitetura, a definição técnica dos produtos e as releases continuaram sempre minhas."
       },
       {
         "role": "Engenheiro de Software",
         "company": "Kito Health",
         "period": "2021 — 2022",
-        "location": "Portugal",
+        "location": "Portugal · Remoto",
         "desc": "Entrei como desenvolvedor, atuando em todo o ciclo de vida do software desde o início."
       },
       {
@@ -179,7 +197,7 @@
     "lead": "Credenciais que sustentam a forma como trabalho.",
     "credentialLabel": "ID da credencial",
     "verifyLabel": "Verificar credencial",
-    "certificateLabel": "Ver certificado",
+    "certificateLabel": "Abrir certificado",
     "items": [
       {
         "name": "Professional Scrum Master I",
@@ -187,7 +205,8 @@
         "year": "PSM I · Emitido em dez/2025",
         "credentialId": "",
         "link": "https://scrum.org/certificates/1275097",
-        "certificateLink": "/certificate-psm1.pdf"
+        "certificateLink": "/certificate-psm1.pdf",
+        "badge": "/badge-psm1.png"
       }
     ]
   },
@@ -212,8 +231,8 @@
     "rights": "Todos os direitos reservados."
   },
   "support": {
-    "button": "Me pague uma bebida",
-    "title": "Me pague uma bebida 🍹",
+    "button": "Me pague um café",
+    "title": "Me pague um café ☕",
     "wise": "Pagar com Wise",
     "pixLabel": "Chave Pix (aleatória)",
     "copy": "Copiar",

@@ -324,6 +324,19 @@
   color: var(--accent);
 }
 
+/* CV download dropdown (hero): reuses the language switcher's menu/item
+   styling (.pro-language-menu / .pro-language-item) but opens from the left,
+   since its trigger sits inline with the hero's other CTA buttons rather
+   than the header's top-right corner. */
+[data-world='pro'] .pro-cv-selector {
+  position: relative;
+}
+
+[data-world='pro'] .pro-cv-menu {
+  left: 0;
+  right: auto;
+}
+
 [data-world='pro'] .pro-mobile-lang {
   display: flex;
   flex-direction: column;
@@ -602,6 +615,9 @@
   [data-world='pro'] .pro-mobile-menu {
     display: flex;
   }
+  [data-world='pro'] .pro-skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ---------- Sections ---------- */
@@ -623,11 +639,14 @@
 }
 
 /* ---------- About ---------- */
+/* Equal-width columns, stretched to the same height, so the bio/stats card
+   and the education/languages card carry the same visual weight even though
+   the latter has noticeably less content. */
 [data-world='pro'] .pro-about-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-5);
-  align-items: start;
+  align-items: stretch;
 }
 
 [data-world='pro'] .pro-about-bio {
@@ -702,9 +721,12 @@
 }
 
 /* ---------- Skills ---------- */
+/* Fixed 3 columns (3x2 for the current 5 groups) instead of auto-fit, so the
+   grid doesn't stretch to a single wide row on large screens. Narrower
+   viewports fall back to 2, then 1 column below. */
 [data-world='pro'] .pro-skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
 }
 
@@ -722,9 +744,12 @@
 }
 
 /* ---------- Projects ---------- */
+/* Fixed 2 columns (2x2 for the current 4 projects) instead of auto-fit, which
+   let 3 fit per row on wide screens and stranded the 4th card alone on its
+   own row. */
 [data-world='pro'] .pro-projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
 }
 
@@ -732,6 +757,14 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+}
+
+[data-world='pro'] .pro-project-thumb {
+  width: calc(100% + 2 * var(--space-5));
+  margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5)) 0;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 [data-world='pro'] .pro-project-head {
@@ -750,10 +783,15 @@
   flex: 1;
 }
 
-[data-world='pro'] .pro-project-stack {
+[data-world='pro'] .pro-project-stack,
+[data-world='pro'] .pro-timeline-stack {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+
+[data-world='pro'] .pro-timeline-stack {
+  margin-top: var(--space-2);
 }
 
 [data-world='pro'] .pro-project-links {
@@ -847,16 +885,30 @@
   align-items: flex-start;
 }
 
+/* A single certification would otherwise stretch to fill the whole 1fr
+   track (auto-fit collapses the other empty tracks), reading as an
+   oversized card. Cap it once it's the only item; from two certifications
+   on, the grid's own auto-fit columns take over and this no longer matches. */
+[data-world='pro'] .pro-cert-card:only-child {
+  max-width: 65%;
+}
+
 [data-world='pro'] .pro-cert-badge {
   flex: none;
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: var(--bg-alt);
   color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+[data-world='pro'] .pro-cert-badge-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 [data-world='pro'] .pro-cert-body h3 {
@@ -888,12 +940,21 @@
 }
 
 @media (max-width: 640px) {
+  [data-world='pro'] .pro-cert-card:only-child {
+    max-width: 100%;
+  }
   [data-world='pro'] .pro-about-grid {
     grid-template-columns: 1fr;
   }
   [data-world='pro'] .pro-stats {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-2);
+  }
+  [data-world='pro'] .pro-skills-grid {
+    grid-template-columns: 1fr;
+  }
+  [data-world='pro'] .pro-projects-grid {
+    grid-template-columns: 1fr;
   }
 }
 

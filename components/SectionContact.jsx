@@ -23,7 +23,7 @@ export default function ContactSection({ t }) {
   return (
     <div className="section-content contact-content">
       <div className="section-head">
-        <span className="section-kicker">[ 05 ]</span>
+        <span className="section-kicker">[ 06 ]</span>
         <h2 className="section-title">{t('contact.title')}</h2>
         <p className="section-lead">{t('contact.lead')}</p>
       </div>

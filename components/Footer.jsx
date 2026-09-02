@@ -22,28 +22,35 @@ export default function Footer({ t, onManageCookies }) {
   }
 
   return (
-    <footer className="site-footer">
-      <div className="footer-inner">
-        <div className="footer-support">
-          <button
-            type="button"
-            className="footer-tea"
-            onClick={() => setTeaOpen((open) => !open)}
-            aria-expanded={teaOpen}
-            aria-haspopup="dialog"
-          >
-            <span aria-hidden="true">🍹</span>
-            <span className="footer-tea-label">{t('support.button')}</span>
-          </button>
+    <>
+      {/* Rendered outside <footer> on purpose: the footer's backdrop-filter
+          establishes a CSS containing block for position:fixed descendants,
+          which would shrink this click-outside-to-dismiss overlay down to
+          just the footer bar instead of covering the viewport. */}
+      {teaOpen && (
+        <button
+          type="button"
+          className="tea-pop-backdrop"
+          aria-label={t('support.close')}
+          onClick={() => setTeaOpen(false)}
+        />
+      )}
 
-          {teaOpen && (
-            <>
-              <button
-                type="button"
-                className="tea-pop-backdrop"
-                aria-label={t('support.close')}
-                onClick={() => setTeaOpen(false)}
-              />
+      <footer className="site-footer">
+        <div className="footer-inner">
+          <div className="footer-support">
+            <button
+              type="button"
+              className="footer-tea"
+              onClick={() => setTeaOpen((open) => !open)}
+              aria-expanded={teaOpen}
+              aria-haspopup="dialog"
+            >
+              <span aria-hidden="true">☕</span>
+              <span className="footer-tea-label">{t('support.button')}</span>
+            </button>
+
+            {teaOpen && (
               <div className="tea-pop panel" role="dialog" aria-label={t('support.title')}>
                 <p className="tea-pop-title">{t('support.title')}</p>
 
@@ -66,24 +73,24 @@ export default function Footer({ t, onManageCookies }) {
                   </button>
                 </div>
               </div>
-            </>
-          )}
-        </div>
+            )}
+          </div>
 
-        <p className="footer-text">{t('footer.text')}</p>
-        <span className="footer-rights">
-          © {year}
-          <span className="footer-rights-full"> · {t('footer.rights')}</span>
-          {onManageCookies && (
-            <>
-              {' · '}
-              <button type="button" className="footer-cookies" onClick={onManageCookies}>
-                🍪 {t('cookies.manage')}
-              </button>
-            </>
-          )}
-        </span>
-      </div>
-    </footer>
+          <p className="footer-text">{t('footer.text')}</p>
+          <span className="footer-rights">
+            © {year}
+            <span className="footer-rights-full"> · {t('footer.rights')}</span>
+            {onManageCookies && (
+              <>
+                {' · '}
+                <button type="button" className="footer-cookies" onClick={onManageCookies}>
+                  🍪 {t('cookies.manage')}
+                </button>
+              </>
+            )}
+          </span>
+        </div>
+      </footer>
+    </>
   )
 }

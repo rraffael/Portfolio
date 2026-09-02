@@ -70,7 +70,7 @@ export default function FooterPro({ t, onScrollTop, onManageCookies }) {
               aria-expanded={teaOpen}
               aria-haspopup="dialog"
             >
-              <span aria-hidden="true">🍹</span> {t('support.button')}
+              <span aria-hidden="true">☕</span> {t('support.button')}
             </button>
 
             {teaOpen && (

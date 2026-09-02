@@ -23,6 +23,16 @@ export default function SectionExperiencePro({ t }) {
               </div>
               <p className="pro-placeholder-lead">{job.desc}</p>
 
+              {job.stack?.length > 0 && (
+                <div className="pro-timeline-stack">
+                  {job.stack.map((tech) => (
+                    <span className="pro-chip" key={tech}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+
               {job.links?.length > 0 && (
                 <div className="pro-timeline-links">
                   {job.links.map((link) => (

@@ -217,11 +217,11 @@ html[data-world='pixel'] {
   z-index: 41;
   width: min(78vw, 320px);
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   background: var(--bg-alt);
   border-left: var(--border-w) solid var(--line);
   box-shadow: -8px 0 0 rgba(8, 9, 16, 0.25);
-  padding: 18px 20px calc(24px + var(--footer-height));
+  padding: 20px 20px calc(20px + var(--footer-height));
   transform: translateX(100%);
   transition: transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
   overflow-y: auto;
@@ -237,7 +237,7 @@ html[data-world='pixel'] {
   justify-content: space-between;
   gap: 12px;
   padding-bottom: 14px;
-  margin-bottom: 8px;
+  margin-bottom: 0;
   border-bottom: var(--border-w) solid var(--line);
 }
 
@@ -275,11 +275,15 @@ html[data-world='pixel'] {
 [data-world='pixel'] .mobile-language {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
+/* Grows to absorb the drawer's leftover height, then centers the (naturally
+   sized) links within it — otherwise they'd all bunch up right under the
+   head with a big dead gap before the language/exit block at the bottom. */
 [data-world='pixel'] .mobile-nav {
   flex: 1 1 auto;
+  justify-content: center;
 }
 
 [data-world='pixel'] .mobile-link {
@@ -295,7 +299,7 @@ html[data-world='pixel'] {
 }
 
 [data-world='pixel'] .mobile-language {
-  margin-top: 14px;
+  margin-top: 0;
   border-top: var(--border-w) solid var(--line);
   padding-top: 16px;
 }
@@ -304,6 +308,18 @@ html[data-world='pixel'] {
   font-family: var(--font-pixel);
   font-size: 0.58rem;
   color: var(--muted);
+}
+
+/* Side-by-side instead of stacked so the two language options don't cost an
+   extra row of height in a drawer that must fit without scrolling. */
+[data-world='pixel'] .mobile-language-options {
+  display: flex;
+  gap: 8px;
+}
+
+[data-world='pixel'] .mobile-language-options .language-item {
+  flex: 1;
+  justify-content: center;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -821,7 +837,7 @@ html[data-world='pixel'] {
 /* ---------- Skills ---------- */
 [data-world='pixel'] .skills-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
@@ -1012,6 +1028,13 @@ html[data-world='pixel'] {
   margin: 0;
 }
 
+[data-world='pixel'] .work-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
 [data-world='pixel'] .work-links {
   display: flex;
   flex-wrap: wrap;
@@ -1036,6 +1059,105 @@ html[data-world='pixel'] {
 [data-world='pixel'] .work-link:hover {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0 var(--line);
+}
+
+/* ---------- Certifications ---------- */
+[data-world='pixel'] .cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 20px;
+}
+
+[data-world='pixel'] .cert-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* A single certification would otherwise stretch across the whole 1fr
+   track (auto-fit collapses the other empty tracks). Cap it once it's the
+   only item, mirroring the same fix on the pro side. */
+[data-world='pixel'] .cert-card:only-child {
+  max-width: 65%;
+}
+
+[data-world='pixel'] .cert-badge {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+[data-world='pixel'] .cert-badge-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+[data-world='pixel'] .cert-name {
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  color: var(--accent);
+  margin: 0;
+}
+
+[data-world='pixel'] .cert-issuer {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin: 6px 0 0;
+}
+
+/* Small "active credential" indicator, matching the status-dot on Home. */
+[data-world='pixel'] .cert-dot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  background: var(--accent-2);
+  box-shadow: 0 0 0 2px var(--line);
+}
+
+[data-world='pixel'] .cert-id {
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
+[data-world='pixel'] .cert-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+[data-world='pixel'] .cert-link {
+  font-family: var(--font-pixel);
+  font-size: 0.48rem;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--panel-2);
+  border: 2px solid var(--line);
+  padding: 7px 10px;
+  box-shadow: 3px 3px 0 var(--line);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease;
+}
+
+[data-world='pixel'] .cert-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--line);
+}
+
+@media (max-width: 640px) {
+  [data-world='pixel'] .cert-card:only-child {
+    max-width: 100%;
+  }
 }
 
 /* ---------- Contact ---------- */
@@ -1242,7 +1364,12 @@ html[data-world='pixel'] {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
+/* The pixel display font runs wider than the pro sans-serif, and the nav grew
+   a "Certifications" entry, so the nav needs to drop to the hamburger sooner
+   than the pro world's own breakpoint (860px) — otherwise the desktop nav row
+   overflows the header before this triggers. Kept separate from the 900px
+   tablet breakpoint below since that one only reflows content grids. */
+@media (max-width: 1080px) {
   [data-world='pixel'] .desktop-nav {
     display: none;
   }
@@ -1257,6 +1384,9 @@ html[data-world='pixel'] {
   [data-world='pixel'] .mobile-menu-backdrop {
     display: block;
   }
+}
+
+@media (max-width: 900px) {
   [data-world='pixel'] .about-grid {
     grid-template-columns: 1fr;
   }
@@ -1296,7 +1426,7 @@ html[data-world='pixel'] {
     font-size: 1rem;
   }
   [data-world='pixel'] .mobile-menu {
-    padding: 18px 16px;
+    padding: 18px 16px calc(16px + var(--footer-height));
     max-height: calc(100dvh - var(--header-height));
     overflow-y: auto;
   }

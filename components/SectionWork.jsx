@@ -4,7 +4,7 @@ export default function WorkSection({ t }) {
   return (
     <div className="section-content">
       <div className="section-head">
-        <span className="section-kicker">[ 04 ]</span>
+        <span className="section-kicker">[ 03 ]</span>
         <h2 className="section-title">{t('work.title')}</h2>
         <p className="section-lead">{t('work.lead')}</p>
       </div>
@@ -25,6 +25,16 @@ export default function WorkSection({ t }) {
                 {job.period} · {job.location}
               </div>
               <p className="work-desc">{job.desc}</p>
+
+              {job.stack?.length > 0 && (
+                <div className="work-stack">
+                  {job.stack.map((tech) => (
+                    <span className="stack-chip" key={tech}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
 
               {job.links?.length > 0 && (
                 <div className="work-links">

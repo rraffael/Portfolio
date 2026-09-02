@@ -24,8 +24,9 @@
     "status": "Available for short-term projects",
     "ctaProjects": "View Projects",
     "ctaContact": "Get in Touch",
-    "ctaCvEn": "Download CV (EN)",
-    "ctaCvPt": "Download CV (PT)",
+    "ctaCv": "Download CV",
+    "cvOptionEn": "English",
+    "cvOptionPt": "Portuguese",
     "scroll": "scroll down",
     "scrollHint": "navigate",
     "weather": {
@@ -40,7 +41,7 @@
   },
   "about": {
     "title": "About Me",
-    "lead": "Lead software engineer across the whole software life-cycle — idealization, architecture, development, debugging and optimization.",
+    "lead": "Lead Software Engineer across the whole software life-cycle — idealization, architecture, development, debugging and optimization.",
     "paragraph1": "I'm Raffael, a Brazilian software engineer based in Portugal. I enjoy turning ideas into products and acting as the bridge between technical and business teams. I currently lead the software development team at Kito Health.",
     "paragraph2": "I graduated in IT from Unit (Universidade Tiradentes) in 2019. A lifelong gamer at heart, I bring that same curiosity and playfulness into crafting great software.",
     "stat1Value": "8+",
@@ -48,7 +49,7 @@
     "stat2Value": "10+",
     "stat2Label": "Projects shipped",
     "stat3Value": "3",
-    "stat3Label": "Languages spoken",
+    "stat3Label": "Languages",
     "educationTitle": "Education",
     "education": [
       {
@@ -70,9 +71,20 @@
     "groups": [
       { "title": "Frontend", "items": ["JavaScript", "React", "HTML5", "CSS"] },
       { "title": "Backend", "items": ["Node.js", "Express", "REST APIs"] },
-      { "title": "Tools & Data", "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"] },
+      { "title": "Cloud, Data & Tools", "items": ["Git", "AWS", "MongoDB"] },
       {
-        "title": "AI & LLMs *",
+        "title": "Leadership",
+        "items": [
+          "Technical Leadership",
+          "Team Leadership",
+          "Code Review",
+          "Software Architecture",
+          "Release Management",
+          "Agile Practices (Scrum / Kanban)"
+        ]
+      },
+      {
+        "title": "AI Assistants *",
         "items": ["ChatGPT", "Claude", "GitHub Copilot"],
         "note": "*Used as an assistant tool in recent projects only"
       }
@@ -80,7 +92,7 @@
   },
   "projects": {
     "title": "Projects",
-    "lead": "Personal projects I've designed, built and shipped.",
+    "lead": "Selected projects I designed, built and delivered throughout my journey.",
     "codeLabel": "Code",
     "demoLabel": "Demo",
     "items": [
@@ -90,7 +102,8 @@
         "desc": "Responsive multimedia website I built individually within a group project for the Multimedia Lab at the University of Porto.",
         "stack": ["React", "JavaScript", "HTML5", "Material-UI"],
         "code": "https://github.com/rraffael/MM-7-Seconds",
-        "demo": "https://rraffael.github.io/MM-7-Seconds/"
+        "demo": "https://rraffael.github.io/MM-7-Seconds/",
+        "image": "/projects/7seconds_projeto.png"
       },
       {
         "name": "Through My Eyes",
@@ -98,7 +111,8 @@
         "desc": "Another responsive multimedia site crafted solo within a group project for the Master in Multimedia at the University of Porto.",
         "stack": ["React", "JavaScript", "HTML5", "Material-UI"],
         "code": "https://github.com/rraffael/MM-Through-My-Eyes",
-        "demo": "https://rraffael.github.io/MM-Through-My-Eyes/"
+        "demo": "https://rraffael.github.io/MM-Through-My-Eyes/",
+        "image": "/projects/ThrougMyEyes_projeto.png"
       },
       {
         "name": "Evasion Predict",
@@ -126,8 +140,9 @@
         "role": "Software Team Lead (team of 8)",
         "company": "Kito Health",
         "period": "2025 — Present",
-        "location": "Portugal",
-        "desc": "Now leading a team of 8, still owning the full software life-cycle as both a manager and a developer depending on the phase — architecture, the technical definition of the products and every release are always mine. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
+        "location": "Portugal · Remote",
+        "desc": "Scaled the engineering team from 5 to 8, taking full ownership of architecture, technical direction and every release while mentoring engineers and balancing hands-on development with leadership as the team grew.",
+        "stack": ["JavaScript", "Node.js", "React", "Express", "MongoDB", "AWS"],
         "links": [
           { "label": "Website", "url": "https://kitohealth.org/" },
           { "label": "App (PWA)", "url": "https://app.kitohealth.org/" },
@@ -141,14 +156,14 @@
         "role": "Software Team Lead (team of 5)",
         "company": "Kito Health",
         "period": "2022 — 2025",
-        "location": "Portugal",
+        "location": "Portugal · Remote",
         "desc": "Took over the team: split time between coding and management, running pull request reviews — architecture, the technical direction of the products and every release stayed mine."
       },
       {
         "role": "Software Engineer",
         "company": "Kito Health",
         "period": "2021 — 2022",
-        "location": "Portugal",
+        "location": "Portugal · Remote",
         "desc": "Joined as a developer, working across the full software life-cycle from day one."
       },
       {
@@ -179,7 +194,7 @@
     "lead": "Credentials that back the way I work.",
     "credentialLabel": "Credential ID",
     "verifyLabel": "Verify Credential",
-    "certificateLabel": "View Certificate",
+    "certificateLabel": "Open Certificate",
     "items": [
       {
         "name": "Professional Scrum Master I",
@@ -187,7 +202,8 @@
         "year": "PSM I · Issued Dec 2025",
         "credentialId": "",
         "link": "https://scrum.org/certificates/1275097",
-        "certificateLink": "/certificate-psm1.pdf"
+        "certificateLink": "/certificate-psm1.pdf",
+        "badge": "/badge-psm1.png"
       }
     ]
   },
@@ -212,8 +228,8 @@
     "rights": "All rights reserved."
   },
   "support": {
-    "button": "Buy me a drink",
-    "title": "Buy me a drink 🍹",
+    "button": "Buy me a coffee",
+    "title": "Buy me a coffee ☕",
     "wise": "Pay with Wise",
     "pixLabel": "Pix key (random)",
     "copy": "Copy",
