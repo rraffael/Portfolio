@@ -49,7 +49,11 @@ export default function CertificationsSection({ t }) {
         {items.map((item) => (
           <article className="panel cert-card" key={`${item.name}-${item.year}`}>
             <span className="cert-badge">
-              <IconSparkle />
+              {item.badge ? (
+                <img src={resolveLink(item.badge)} alt="" className="cert-badge-img" />
+              ) : (
+                <IconSparkle />
+              )}
             </span>
             <div className="cert-body">
               <h3 className="cert-name">

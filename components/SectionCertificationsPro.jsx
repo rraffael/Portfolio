@@ -40,7 +40,11 @@ export default function SectionCertificationsPro({ t }) {
         {items.map((item) => (
           <article className="pro-panel pro-cert-card" key={`${item.name}-${item.year}`}>
             <div className="pro-cert-badge">
-              <IconBadge />
+              {item.badge ? (
+                <img src={resolveLink(item.badge)} alt="" className="pro-cert-badge-img" />
+              ) : (
+                <IconBadge />
+              )}
             </div>
             <div className="pro-cert-body">
               {/* "name — issuer" as the heading, "year" as the line below —
