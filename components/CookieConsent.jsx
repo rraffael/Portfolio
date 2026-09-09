@@ -6,8 +6,9 @@ import { useState } from 'react'
 // The parent owns persistence; this component only collects the decision.
 export default function CookieConsent({ t, onAccept, onReject, onSave }) {
   const [showDetails, setShowDetails] = useState(false)
-  // The only opt-in toggle; "necessary" is always on and cannot be disabled.
+  // The opt-in toggles; "necessary" is always on and cannot be disabled.
   const [weather, setWeather] = useState(true)
+  const [analytics, setAnalytics] = useState(true)
 
   return (
     <div
@@ -63,6 +64,25 @@ export default function CookieConsent({ t, onAccept, onReject, onSave }) {
                 <li>{t('cookies.weather.item3')}</li>
               </ul>
             </div>
+
+            <div className="cookie-cat">
+              <div className="cookie-cat-head">
+                <label className="cookie-switch">
+                  <input
+                    type="checkbox"
+                    checked={analytics}
+                    onChange={(e) => setAnalytics(e.target.checked)}
+                  />
+                  <span className="cookie-cat-name">{t('cookies.analytics.title')}</span>
+                </label>
+                <span className="cookie-badge cookie-badge--optional">{t('cookies.optional')}</span>
+              </div>
+              <p className="cookie-cat-desc">{t('cookies.analytics.desc')}</p>
+              <ul className="cookie-cat-list">
+                <li>{t('cookies.analytics.item1')}</li>
+                <li>{t('cookies.analytics.item2')}</li>
+              </ul>
+            </div>
           </div>
         )}
 
@@ -77,7 +97,11 @@ export default function CookieConsent({ t, onAccept, onReject, onSave }) {
               {showDetails ? t('cookies.hide') : t('cookies.customize')}
             </button>
             {showDetails && (
-              <button type="button" className="cookie-btn" onClick={() => onSave(weather)}>
+              <button
+                type="button"
+                className="cookie-btn"
+                onClick={() => onSave(weather, analytics)}
+              >
                 {t('cookies.save')}
               </button>
             )}

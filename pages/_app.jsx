@@ -5,6 +5,7 @@ import '../styles/pixel.css'
 import '../styles/pro.css'
 import WorldTransition from '../components/WorldTransition'
 import CookieConsent from '../components/CookieConsent'
+import Analytics from '../components/Analytics'
 import { getMessage } from '../lib/locales'
 import { loadConsent, saveConsent } from '../lib/consent'
 import { useLocale } from '../lib/useLocale'
@@ -41,12 +42,13 @@ export default function App({ Component, pageProps }) {
     }
   }, [])
 
-  const decideConsent = useCallback((weatherAllowed) => {
-    setConsent(saveConsent(weatherAllowed))
+  const decideConsent = useCallback((weatherAllowed, analyticsAllowed) => {
+    setConsent(saveConsent(weatherAllowed, analyticsAllowed))
     setBannerOpen(false)
   }, [])
 
   const weatherConsent = consent ? consent.weather : false
+  const analyticsConsent = consent ? consent.analytics : false
 
   return (
     <>
@@ -70,13 +72,16 @@ export default function App({ Component, pageProps }) {
         onManageCookies={() => setBannerOpen(true)}
       />
       <WorldTransition />
+      <Analytics enabled={analyticsConsent} />
 
       {isBannerOpen && (
         <CookieConsent
           t={t}
-          onAccept={() => decideConsent(true)}
-          onReject={() => decideConsent(false)}
-          onSave={(weatherAllowed) => decideConsent(weatherAllowed)}
+          onAccept={() => decideConsent(true, true)}
+          onReject={() => decideConsent(false, false)}
+          onSave={(weatherAllowed, analyticsAllowed) =>
+            decideConsent(weatherAllowed, analyticsAllowed)
+          }
         />
       )}
     </>

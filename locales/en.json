@@ -59,18 +59,36 @@
     ],
     "languagesTitle": "Languages",
     "languages": [
-      { "name": "Portuguese", "level": "Native" },
-      { "name": "English", "level": "C1" },
-      { "name": "Spanish", "level": "A2" }
+      {
+        "name": "Portuguese",
+        "level": "Native"
+      },
+      {
+        "name": "English",
+        "level": "C1"
+      },
+      {
+        "name": "Spanish",
+        "level": "A2"
+      }
     ]
   },
   "skills": {
     "title": "Skills",
     "lead": "The stack I use to design, build and ship.",
     "groups": [
-      { "title": "Frontend", "items": ["JavaScript", "React", "HTML5", "CSS"] },
-      { "title": "Backend", "items": ["Node.js", "Express", "REST APIs"] },
-      { "title": "Tools & Data", "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"] },
+      {
+        "title": "Frontend",
+        "items": ["JavaScript", "React", "HTML5", "CSS"]
+      },
+      {
+        "title": "Backend",
+        "items": ["Node.js", "Express", "REST APIs"]
+      },
+      {
+        "title": "Tools & Data",
+        "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"]
+      },
       {
         "title": "AI & LLMs *",
         "items": ["ChatGPT", "Claude", "GitHub Copilot"],
@@ -129,8 +147,14 @@
         "location": "Portugal",
         "desc": "Now leading a team of 8, still owning the full software life-cycle as both a manager and a developer depending on the phase — architecture, the technical definition of the products and every release are always mine. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
         "links": [
-          { "label": "Website", "url": "https://kitohealth.org/" },
-          { "label": "App (PWA)", "url": "https://app.kitohealth.org/" },
+          {
+            "label": "Website",
+            "url": "https://kitohealth.org/"
+          },
+          {
+            "label": "App (PWA)",
+            "url": "https://app.kitohealth.org/"
+          },
           {
             "label": "Play Store",
             "url": "https://play.google.com/store/apps/details?id=org.kito.app"
@@ -222,7 +246,7 @@
   },
   "cookies": {
     "title": "Cookies & privacy",
-    "intro": "This site keeps a couple of things in your browser to remember your preferences and, only if you allow it, calls third-party APIs to show your local weather. No ads, no tracking.",
+    "intro": "This site keeps a couple of things in your browser to remember your preferences and, only if you allow it, calls third-party services for the local weather and for anonymous visit statistics. No ads, and nothing loads before you decide.",
     "customize": "Customize",
     "hide": "Hide details",
     "accept": "Accept all",
@@ -243,6 +267,12 @@
       "item1": "ipapi.co — turns your IP into an approximate location (city, coordinates).",
       "item2": "open-meteo.com — returns the current weather for those coordinates.",
       "item3": "wttr.in — backup weather + location if the first service is unavailable."
+    },
+    "analytics": {
+      "title": "Analytics",
+      "desc": "Google Analytics 4, so I can see which parts of the portfolio people actually visit. It counts visits and page views — no ads, no profiling, and no selling of data. Decline and the tag is never loaded.",
+      "item1": "googletagmanager.com — loads the Google Analytics tag (only after you accept).",
+      "item2": "Google cookies (_ga, _ga_*) — tell repeat visits apart, for up to 2 years."
     }
   },
   "world": {

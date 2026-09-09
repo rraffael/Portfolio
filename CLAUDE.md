@@ -63,8 +63,12 @@ The home avatar is a pixel-art **window** that reflects the visitor's live weath
 
 ### Cookie consent
 
-- `lib/consent.ts` is the whole consent layer: `loadConsent()` / `saveConsent(weather)` persist a versioned record in `localStorage` (`portfolio-consent`). Two categories only: **necessary** (always on — the locale + consent storage) and **weather** (optional — the third-party weather/geolocation APIs `ipapi.co`, `open-meteo.com`, `wttr.in`).
-- `PortfolioPage` reads consent on mount; if there is no prior decision it opens `<CookieConsent>` (`components/CookieConsent.jsx`), a subtle bottom-left banner with Accept all / Reject non-essential / Customize (per-category toggles + explanations). It passes `weatherConsent` down to `SectionHome`, so **the weather feature is strictly opt-in** — `useWeather` makes no network request until consent is granted. The Footer's "🍪 Cookies" button (`onManageCookies`) reopens the banner. All banner copy lives under the `cookies.*` i18n keys.
+- `lib/consent.ts` is the whole consent layer: `loadConsent()` / `saveConsent(weather, analytics)` persist a versioned record in `localStorage` (`portfolio-consent`). Three categories: **necessary** (always on — the locale + consent storage), **weather** (optional — the third-party weather/geolocation APIs `ipapi.co`, `open-meteo.com`, `wttr.in`) and **analytics** (optional — Google Analytics 4). Bumping `CONSENT_VERSION` invalidates older records so the banner asks again.
+- `pages/_app.jsx` reads consent on mount; if there is no prior decision it opens `<CookieConsent>` (`components/CookieConsent.jsx`), a subtle bottom-left banner with Accept all / Reject non-essential / Customize (per-category toggles + explanations). It passes `weatherConsent` down to `SectionHome`, so **the weather feature is strictly opt-in** — `useWeather` makes no network request until consent is granted. The Footer's "🍪 Cookies" button (`onManageCookies`) reopens the banner. All banner copy lives under the `cookies.*` i18n keys.
+
+### Analytics
+
+`components/Analytics.jsx` injects the GA4 tag (`next/script`, `afterInteractive`) and is mounted by `pages/_app.jsx` with `enabled={analyticsConsent}`. With consent denied (or not yet decided) it renders nothing, so `googletagmanager.com` is never requested and the exported HTML carries no tag. The measurement id and the `window['ga-disable-<id>']` kill switch — used when a visitor revokes consent mid-session, after the script has already loaded — live in `lib/analytics.ts`. Client-side navigation between `/` and `/pixel` is covered by GA4 enhanced measurement (page changes from browser history events), so there is no manual pageview wiring.
 
 ### Skills
 

@@ -59,18 +59,36 @@
     ],
     "languagesTitle": "Idiomas",
     "languages": [
-      { "name": "Português", "level": "Nativo" },
-      { "name": "Inglês", "level": "C1" },
-      { "name": "Espanhol", "level": "A2" }
+      {
+        "name": "Português",
+        "level": "Nativo"
+      },
+      {
+        "name": "Inglês",
+        "level": "C1"
+      },
+      {
+        "name": "Espanhol",
+        "level": "A2"
+      }
     ]
   },
   "skills": {
     "title": "Skills",
     "lead": "A stack que uso para desenhar, construir e entregar.",
     "groups": [
-      { "title": "Frontend", "items": ["JavaScript", "React", "HTML5", "CSS"] },
-      { "title": "Backend", "items": ["Node.js", "Express", "REST APIs"] },
-      { "title": "Ferramentas & Dados", "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"] },
+      {
+        "title": "Frontend",
+        "items": ["JavaScript", "React", "HTML5", "CSS"]
+      },
+      {
+        "title": "Backend",
+        "items": ["Node.js", "Express", "REST APIs"]
+      },
+      {
+        "title": "Ferramentas & Dados",
+        "items": ["Git", "AWS", "MongoDB", "Scrum / Kanban"]
+      },
       {
         "title": "IA & LLMs *",
         "items": ["ChatGPT", "Claude", "GitHub Copilot"],
@@ -129,8 +147,14 @@
         "location": "Portugal",
         "desc": "Hoje conduzo uma equipe de 8, ainda responsável por todo o ciclo de vida do software, acumulando gestão e desenvolvimento conforme a fase — a arquitetura, a definição técnica dos produtos e as releases são sempre minhas. (JavaScript, Node.js, React, Express, MongoDB, AWS)",
         "links": [
-          { "label": "Site", "url": "https://kitohealth.org/" },
-          { "label": "App (PWA)", "url": "https://app.kitohealth.org/" },
+          {
+            "label": "Site",
+            "url": "https://kitohealth.org/"
+          },
+          {
+            "label": "App (PWA)",
+            "url": "https://app.kitohealth.org/"
+          },
           {
             "label": "Play Store",
             "url": "https://play.google.com/store/apps/details?id=org.kito.app"
@@ -222,7 +246,7 @@
   },
   "cookies": {
     "title": "Cookies e privacidade",
-    "intro": "Este site guarda algumas coisas no seu navegador para lembrar as suas preferências e, apenas se você permitir, chama APIs de terceiros para mostrar o clima da sua região. Sem anúncios, sem rastreamento.",
+    "intro": "Este site guarda algumas coisas no seu navegador para lembrar as suas preferências e, apenas se você permitir, chama serviços de terceiros para o clima da sua região e para estatísticas anônimas de visita. Sem anúncios, e nada carrega antes de você decidir.",
     "customize": "Personalizar",
     "hide": "Ocultar detalhes",
     "accept": "Aceitar tudo",
@@ -243,6 +267,12 @@
       "item1": "ipapi.co — transforma o seu IP numa localização aproximada (cidade, coordenadas).",
       "item2": "open-meteo.com — retorna o clima atual para essas coordenadas.",
       "item3": "wttr.in — clima + localização de reserva, caso o primeiro serviço esteja indisponível."
+    },
+    "analytics": {
+      "title": "Estatísticas",
+      "desc": "Google Analytics 4, para eu ver quais partes do portfólio as pessoas realmente visitam. Conta visitas e páginas vistas — sem anúncios, sem perfilamento e sem venda de dados. Se recusar, a tag nunca é carregada.",
+      "item1": "googletagmanager.com — carrega a tag do Google Analytics (apenas depois de você aceitar).",
+      "item2": "Cookies do Google (_ga, _ga_*) — distinguem visitas repetidas, por até 2 anos."
     }
   },
   "world": {
